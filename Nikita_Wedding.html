@@ -1,0 +1,2445 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nikita &amp; Rohan — Wedding Invitation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            plum: {
+              950: '#070405',
+              900: '#16070f',
+              800: '#240d18',
+              700: '#341624'
+            },
+            gold: {
+              DEFAULT: '#D4B07A',
+              light: '#F3DFC1',
+              dark: '#9E7B47'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Montserrat"', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --gold: #D4B07A;
+      --gold-light: #F3DFC1;
+      --plum-deep: #0e0509;
+    }
+    body {
+      background-color: #0e0509;
+      color: #F5EFE6;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .font-serif {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    /* Pleated Velvet Curtain */
+    .velvet-curtain-panel {
+      background: repeating-linear-gradient(
+        90deg,
+        #1e050d 0px,
+        #3a0b19 18px,
+        #5e1429 38px,
+        #350916 58px,
+        #19030a 76px
+      );
+      box-shadow: inset 0 0 110px rgba(0, 0, 0, 0.85);
+      transition: transform 1.6s cubic-bezier(0.77, 0, 0.175, 1);
+      will-change: transform;
+    }
+    .curtain-open .curtain-left {
+      transform: translateX(-102%);
+    }
+    .curtain-open .curtain-right {
+      transform: translateX(102%);
+    }
+    .curtain-open #curtain-prompt {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Hero Gradient Text */
+    .hero-gold-text {
+      background: linear-gradient(180deg, #FFFDF9 0%, #E8CFA6 55%, #C79F65 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Butterfly Flutter */
+    @keyframes flutter {
+      0%, 100% { transform: translateY(0) scaleX(1) rotate(-4deg); }
+      50% { transform: translateY(-6px) scaleX(0.72) rotate(4deg); }
+    }
+    .butterfly-wing {
+      animation: flutter 2.8s ease-in-out infinite;
+    }
+
+    /* Floating Petals */
+    @keyframes floatPetal {
+      0%, 100% { transform: translate(0, 0) rotate(25deg); opacity: 0.55; }
+      50% { transform: translate(8px, -14px) rotate(42deg); opacity: 0.85; }
+    }
+    .amber-petal {
+      width: 9px;
+      height: 5px;
+      background: linear-gradient(135deg, #E3A857, #9E5B24);
+      border-radius: 999px;
+      position: absolute;
+      pointer-events: none;
+      animation: floatPetal 6s ease-in-out infinite;
+      box-shadow: 0 0 8px rgba(227, 168, 87, 0.35);
+    }
+
+    /* Equalizer Bars */
+    @keyframes eqPulse {
+      0%, 100% { height: 3px; }
+      50% { height: 11px; }
+    }
+    .eq-bar {
+      width: 1.5px;
+      height: 4px;
+      background: #D4B07A;
+      border-radius: 2px;
+      transition: height 0.2s ease;
+    }
+    .playing .eq-bar:nth-child(1) { animation: eqPulse 0.8s ease-in-out infinite; }
+    .playing .eq-bar:nth-child(2) { animation: eqPulse 0.6s ease-in-out 0.2s infinite; }
+    .playing .eq-bar:nth-child(3) { animation: eqPulse 0.9s ease-in-out 0.35s infinite; }
+
+    /* Horizontal Slow Marquee Gallery */
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .gallery-marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 55s linear infinite;
+    }
+    .gallery-marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Dark Moody Map Filter */
+    .dark-map-iframe {
+      filter: invert(92%) hue-rotate(175deg) saturate(85%) brightness(78%) contrast(105%) sepia(18%);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: #12060b; }
+    ::-webkit-scrollbar-thumb { background: #4a2033; border-radius: 999px; }
+  </style>
+</head>
+<body class="selection:bg-gold/30 selection:text-white">
+
+  <!-- Top Scroll Progress Bar -->
+  <div class="fixed top-0 left-0 right-0 z-50 h-[2px] bg-white/5">
+    <div id="scroll-progress-bar" class="h-full w-0 bg-gradient-to-r from-[#A67C46] via-[#F3DFC1] to-[#D4B07A] transition-all duration-150"></div>
+  </div>
+
+  <!-- Global Ambient Background Animation Canvas (Petals, Stardust & Golden Butterfly across all sections) -->
+  <canvas id="global-ambient-canvas" class="pointer-events-none fixed inset-0 z-20 h-full w-full"></canvas>
+
+  <!-- Hidden YouTube Player & Native Audio Fallback -->
+  <div class="pointer-events-none fixed bottom-0 right-0 z-0 h-[220px] w-[220px] overflow-hidden opacity-[0.001]" aria-hidden="true">
+    <div id="yt-music-player"></div>
+  </div>
+  <audio id="bg-audio" loop preload="auto" playsinline webkit-playsinline crossorigin="anonymous"></audio>
+
+  <!-- Fixed Top-Left Section Pill -->
+  <div class="fixed top-4 left-4 sm:top-5 sm:left-5 z-40">
+    <a id="nav-section-pill" href="#invitation-card-section" class="inline-flex min-h-[36px] items-center rounded-full border border-white/15 bg-black/45 px-4 py-1.5 text-[9px] uppercase tracking-[0.28em] text-[#E5D1B2] backdrop-blur-md transition hover:border-gold/50">
+      INVITATION
+    </a>
+  </div>
+
+  <!-- Fixed Bottom-Right Music Toggle Pill -->
+  <div class="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-40">
+    <button id="btn-sound-toggle" type="button" aria-pressed="false" class="inline-flex min-h-[40px] items-center gap-2.5 rounded-full border border-white/15 bg-black/60 px-4 py-2 text-[9px] uppercase tracking-[0.24em] text-[#E5D1B2] backdrop-blur-md transition active:scale-95 hover:border-gold/50">
+      <span id="eq-bars" class="flex items-end gap-[2.5px] h-3">
+        <i class="eq-bar"></i>
+        <i class="eq-bar"></i>
+        <i class="eq-bar"></i>
+      </span>
+      <span id="sound-label">MUSIC OFF</span>
+    </button>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast-msg" class="pointer-events-none fixed bottom-16 left-1/2 z-50 w-max max-w-[90vw] -translate-x-1/2 translate-y-3 rounded-full border border-gold/40 bg-[#1c0a12]/95 px-5 py-2 text-center text-xs tracking-wider text-[#F3DFC1] opacity-0 shadow-2xl transition-all duration-300">
+    Notification
+  </div>
+
+  <!-- ==========================================
+       1. OPENING BURGUNDY VELVET CURTAIN OVERLAY
+       ========================================== -->
+  <div id="curtain-overlay" class="fixed inset-0 z-50 flex cursor-pointer select-none overflow-hidden touch-manipulation">
+    <div class="velvet-curtain-panel curtain-left h-full w-1/2 border-r border-black/80"></div>
+    <div class="velvet-curtain-panel curtain-right h-full w-1/2 border-l border-black/80"></div>
+
+    <!-- Bottom-Center TAP TO OPEN Prompt -->
+    <div id="curtain-prompt" class="absolute bottom-14 sm:bottom-12 left-1/2 flex -translate-x-1/2 flex-col items-center transition-opacity duration-500">
+      <span class="whitespace-nowrap border-b border-[#D4B07A]/60 pb-1.5 text-[10px] font-medium uppercase tracking-[0.32em] text-[#F3DFC1]">
+        TAP TO OPEN
+      </span>
+      <div class="mt-2.5 -ml-10">
+        <svg class="butterfly-wing h-5 w-5 text-[#E5C38F] drop-shadow-[0_0_8px_rgba(229,195,143,0.7)]" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.5 11C9.5 6.5 4 5 3 8.5c-1 3.5 3.5 6 8.5 4.5zm1 0c2-4.5 7.5-6 8.5-2.5 1 3.5-3.5 6-8.5 4.5zm-.5 2.2c-3.5 1.5-6.5 5-4.5 7 1.8 1.8 4-1.5 4.5-4.5.5 3 2.7 6.3 4.5 4.5 2-2-1-5.5-4.5-7z"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       2. FLOATING SKY-LANTERN HERO SECTION
+       ========================================== -->
+  <section id="hero-section" data-pill="INVITATION" class="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden bg-[#070405] px-5 sm:px-6 py-20 text-center">
+    <canvas id="sky-lantern-canvas" class="pointer-events-none absolute inset-0 h-full w-full"></canvas>
+
+    <!-- Editorial Watermark Monogram Bottom-Right -->
+    <div class="pointer-events-none absolute -bottom-6 right-4 sm:-bottom-10 sm:right-6 select-none font-serif text-[110px] leading-none text-white/[0.04] sm:text-[210px] md:text-[260px]" data-bind="monogram">
+      NR
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-2xl">
+      <p class="mb-4 sm:mb-5 text-[9px] sm:text-[10px] uppercase tracking-[0.32em] sm:tracking-[0.36em] text-[#D4B07A]">
+        TOGETHER WITH THEIR FAMILIES
+      </p>
+
+      <h1 class="font-serif leading-[0.95]">
+        <span class="hero-gold-text block text-5xl font-normal tracking-tight sm:text-8xl md:text-[108px]" data-bind="brideName">Nikita</span>
+        <span class="my-1.5 sm:my-2 block font-serif text-xl italic text-[#E2C290] sm:text-3xl">&amp;</span>
+        <span class="hero-gold-text block text-5xl font-normal tracking-tight sm:text-8xl md:text-[108px]" data-bind="groomName">Rohan</span>
+      </h1>
+
+      <p class="mx-auto mt-6 sm:mt-8 max-w-lg font-serif text-base italic leading-relaxed text-[#E8DFD5]/85 sm:text-xl" data-bind="welcomeMessage">
+        Together with our families, we joyfully invite you to join us as we begin this new chapter. Your presence, blessings, and love will make our celebration complete.
+      </p>
+
+      <p id="hero-date-status" class="mt-7 sm:mt-8 text-[9px] sm:text-[10px] uppercase tracking-[0.28em] sm:tracking-[0.3em] text-[#D4B07A]">
+        THE DATE AWAITS ITS REVEAL
+      </p>
+
+      <div class="mt-8 sm:mt-10 flex flex-col items-center">
+        <a href="#scratch-section" class="group inline-flex flex-col items-center gap-2 p-2 text-[9px] uppercase tracking-[0.3em] text-[#E5D1B2]/75 transition hover:text-gold">
+          <span>SCROLL DOWN</span>
+          <span class="text-sm transition-transform group-hover:translate-y-1">&darr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       3. CELESTIAL SCRATCH-TO-REVEAL & COUNTDOWN
+       ========================================== -->
+  <section id="scratch-section" data-pill="INVITATION" class="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-4 py-20 sm:py-24" style="background: radial-gradient(circle at 50% 50%, #341624 0%, #240d18 52%, #13060c 100%);">
+    <!-- Floating Petals & Butterfly -->
+    <span class="amber-petal top-[16%] left-[18%]"></span>
+    <span class="amber-petal top-[22%] right-[22%]" style="animation-delay: 1.4s;"></span>
+    <span class="amber-petal bottom-[20%] left-[26%]" style="animation-delay: 2.3s;"></span>
+    <span class="amber-petal bottom-[26%] right-[16%]" style="animation-delay: 0.8s;"></span>
+
+    <div class="pointer-events-none absolute top-[35%] right-[18%] hidden sm:block">
+      <svg class="butterfly-wing h-5 w-5 text-[#E5C38F]/80 drop-shadow-[0_0_8px_rgba(229,195,143,0.6)]" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M11.5 11C9.5 6.5 4 5 3 8.5c-1 3.5 3.5 6 8.5 4.5zm1 0c2-4.5 7.5-6 8.5-2.5 1 3.5-3.5 6-8.5 4.5zm-.5 2.2c-3.5 1.5-6.5 5-4.5 7 1.8 1.8 4-1.5 4.5-4.5.5 3 2.7 6.3 4.5 4.5 2-2-1-5.5-4.5-7z"/>
+      </svg>
+    </div>
+
+    <!-- Concentric Orbital Rings Stage -->
+    <div class="relative flex w-full flex-col items-center justify-center">
+      <!-- Outer Ring -->
+      <div class="pointer-events-none absolute h-[320px] w-[320px] rounded-full border border-white/[0.04] bg-white/[0.01] sm:h-[740px] sm:w-[740px]"></div>
+      <!-- Middle Ring -->
+      <div class="pointer-events-none absolute h-[260px] w-[260px] rounded-full border border-[#D4B07A]/15 bg-white/[0.015] sm:h-[580px] sm:w-[580px]"></div>
+
+      <!-- Constellation Line & Star Orbs -->
+      <svg class="pointer-events-none absolute h-[320px] w-[320px] sm:h-[620px] sm:w-[620px]" viewBox="0 0 460 460">
+        <line x1="115" y1="305" x2="175" y2="210" stroke="rgba(243,223,193,0.35)" stroke-width="1" />
+        <circle cx="115" cy="305" r="4" fill="#FFF3DC" />
+        <circle cx="115" cy="305" r="10" fill="rgba(243,223,193,0.22)" />
+        <circle cx="242" cy="112" r="3.5" fill="#FFF3DC" />
+        <circle cx="242" cy="112" r="9" fill="rgba(243,223,193,0.2)" />
+        <circle cx="335" cy="155" r="3.5" fill="#FFF3DC" />
+        <circle cx="335" cy="155" r="9" fill="rgba(243,223,193,0.2)" />
+      </svg>
+
+      <!-- Scratch Card Container (Fluid on Mobile, Enlarged on Desktop) -->
+      <div id="scratch-card-box" class="relative z-10 h-[240px] w-[92vw] max-w-[520px] select-none overflow-hidden rounded-[20px] border border-[#D4B07A]/40 shadow-[0_32px_95px_rgba(0,0,0,0.85)] sm:h-[310px]" style="background: radial-gradient(circle at 50% 35%, #3d1729 0%, #230b16 75%, #17060e 100%);">
+        <!-- Revealed Underneath Content -->
+        <div class="flex h-full w-full flex-col items-center justify-center px-4 sm:px-6 text-center">
+          <span class="font-serif text-sm sm:text-lg italic tracking-wide text-[#E5D1B2]/85">The date is written</span>
+          <span id="scratch-day" class="mt-1 font-serif text-6xl sm:text-8xl font-normal leading-none text-[#F7E7CE]">29</span>
+          <span id="scratch-month" class="mt-2.5 sm:mt-3 inline-block border border-[#D4B07A]/40 px-4 sm:px-5 py-1 sm:py-1.5 text-[10px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.32em] text-[#E5C38F]">JANUARY</span>
+          <span id="scratch-year" class="mt-2 sm:mt-2.5 font-serif text-lg sm:text-2xl italic tracking-widest text-[#E5D1B2]/90">2027</span>
+          <span class="mt-2 sm:mt-2.5 text-[8.5px] sm:text-[11px] uppercase tracking-[0.22em] sm:tracking-[0.28em] text-[#D4B07A]/80">SAVE IT IN YOUR HEARTS &amp; CALENDARS</span>
+        </div>
+
+        <!-- Brushed Champagne-Gold Scratch Canvas -->
+        <canvas id="scratch-canvas" class="absolute inset-0 h-full w-full cursor-grab touch-none active:cursor-grabbing"></canvas>
+      </div>
+
+      <!-- Post-Scratch Live Countdown Timer (Fluid across all screens) -->
+      <div id="post-scratch-countdown" class="relative z-10 mt-9 sm:mt-11 grid w-[92vw] max-w-[620px] grid-cols-4 gap-3 sm:gap-8 opacity-0 translate-y-3 pointer-events-none transition-all duration-700">
+        <div class="border-t border-[#D4B07A]/30 pt-3.5 sm:pt-4 text-center">
+          <div id="cd-days" class="font-serif text-3xl sm:text-6xl text-[#FAF3E8]">00</div>
+          <div class="mt-1 sm:mt-1.5 text-[8px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.28em] text-[#D4B07A]/80">DAYS</div>
+        </div>
+        <div class="border-t border-[#D4B07A]/30 pt-3.5 sm:pt-4 text-center">
+          <div id="cd-hours" class="font-serif text-3xl sm:text-6xl text-[#FAF3E8]">00</div>
+          <div class="mt-1 sm:mt-1.5 text-[8px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.28em] text-[#D4B07A]/80">HOURS</div>
+        </div>
+        <div class="border-t border-[#D4B07A]/30 pt-3.5 sm:pt-4 text-center">
+          <div id="cd-minutes" class="font-serif text-3xl sm:text-6xl text-[#FAF3E8]">00</div>
+          <div class="mt-1 sm:mt-1.5 text-[8px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.28em] text-[#D4B07A]/80">MINUTES</div>
+        </div>
+        <div class="border-t border-[#D4B07A]/30 pt-3.5 sm:pt-4 text-center">
+          <div id="cd-seconds" class="font-serif text-3xl sm:text-6xl text-[#FAF3E8]">00</div>
+          <div class="mt-1 sm:mt-1.5 text-[8px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.28em] text-[#D4B07A]/80">SECONDS</div>
+        </div>
+      </div>
+
+      <!-- Subtle Instant Reveal / Reset Helper -->
+      <div class="relative z-10 mt-6 flex items-center gap-4 text-[10px] tracking-[0.2em] text-[#E5D1B2]/50">
+        <button id="btn-instant-reveal" type="button" class="px-3 py-2 underline decoration-[#D4B07A]/40 underline-offset-4 transition hover:text-[#F3DFC1]">
+          or click to reveal
+        </button>
+        <button id="btn-reset-scratch" type="button" class="hidden px-3 py-2 underline decoration-[#D4B07A]/40 underline-offset-4 transition hover:text-[#F3DFC1]">
+          Reset scratch
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       4. ORNATE BLOOM FORMAL INVITATION CARD (ENLARGED)
+       ========================================== -->
+  <section id="invitation-card-section" data-pill="THE FAMILIES" class="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-4 py-20 sm:py-28" style="background: radial-gradient(circle at 50% 50%, #2c111e 0%, #190811 65%, #11050b 100%);">
+    <!-- Subtle Background Orbital Ring -->
+    <div class="pointer-events-none absolute h-[320px] w-[320px] rounded-full border border-[#D4B07A]/15 sm:h-[640px] sm:w-[640px]"></div>
+
+    <!-- Cream & Blush Parchment Card (Enlarged) -->
+    <article class="relative z-10 w-full max-w-[465px] overflow-hidden rounded-[22px] bg-gradient-to-b from-[#FFFDF9] via-[#FDF5EC] to-[#FCEAE3] px-6 pt-10 pb-12 sm:px-11 sm:pt-12 sm:pb-14 text-center text-[#5D1931] shadow-[0_35px_100px_rgba(0,0,0,0.8)]">
+      <!-- Marigold Garland SVG Frame -->
+      <svg class="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 385 590" fill="none">
+        <!-- Subtle Concentric Watermark Arcs -->
+        <circle cx="192" cy="275" r="110" stroke="#E8C7B8" stroke-width="0.6" stroke-opacity="0.55" />
+        <circle cx="192" cy="275" r="145" stroke="#E8C7B8" stroke-width="0.6" stroke-opacity="0.45" />
+        <circle cx="192" cy="275" r="180" stroke="#E8C7B8" stroke-width="0.6" stroke-opacity="0.35" />
+
+        <!-- Hanging Lantern Left & Right -->
+        <g stroke="#D99B26" stroke-width="0.9" opacity="0.7">
+          <line x1="36" y1="20" x2="36" y2="140" />
+          <rect x="24" y="140" width="24" height="40" rx="6" fill="#FCE5B8" fill-opacity="0.45" />
+          <line x1="349" y1="20" x2="349" y2="140" />
+          <rect x="337" y="140" width="24" height="40" rx="6" fill="#FCE5B8" fill-opacity="0.45" />
+        </g>
+
+        <!-- Dynamic Marigold Flowers Populated via JS -->
+        <g id="garland-flowers"></g>
+      </svg>
+
+      <!-- Bottom Corner Floral Rose Clusters -->
+      <div class="pointer-events-none absolute -bottom-3 -left-3 h-32 w-32 opacity-90">
+        <svg viewBox="0 0 120 120" class="h-full w-full">
+          <circle cx="35" cy="90" r="24" fill="#F497B6" opacity="0.65" />
+          <circle cx="65" cy="98" r="20" fill="#E36588" opacity="0.75" />
+          <circle cx="22" cy="65" r="18" fill="#F7B2C8" opacity="0.7" />
+          <circle cx="48" cy="105" r="14" fill="#4E8C57" opacity="0.75" />
+          <circle cx="34" cy="88" r="11" fill="#A6264C" opacity="0.7" />
+        </svg>
+      </div>
+      <div class="pointer-events-none absolute -bottom-3 -right-3 h-32 w-32 opacity-90">
+        <svg viewBox="0 0 120 120" class="h-full w-full">
+          <circle cx="85" cy="90" r="24" fill="#F497B6" opacity="0.65" />
+          <circle cx="55" cy="98" r="20" fill="#E36588" opacity="0.75" />
+          <circle cx="98" cy="65" r="18" fill="#F7B2C8" opacity="0.7" />
+          <circle cx="72" cy="105" r="14" fill="#4E8C57" opacity="0.75" />
+          <circle cx="86" cy="88" r="11" fill="#A6264C" opacity="0.7" />
+        </svg>
+      </div>
+
+      <!-- Card Inner Content -->
+      <div class="relative z-10 flex flex-col items-center">
+        <!-- Colorful Ganesh Ji Emblem -->
+        <div class="mb-3.5 flex h-16 w-16 items-center justify-center">
+          <svg viewBox="0 0 64 64" class="h-14 w-14 drop-shadow-sm">
+            <ellipse cx="32" cy="52" rx="18" ry="6" fill="#E36588" opacity="0.8" />
+            <circle cx="32" cy="30" r="13" fill="#F2A97E" />
+            <path d="M24 18 L32 8 L40 18 Z" fill="#D99B26" />
+            <path d="M30 30 Q32 42 38 40" stroke="#8C2343" stroke-width="3" fill="none" stroke-linecap="round" />
+            <circle cx="32" cy="23" r="1.8" fill="#A61C3C" />
+          </svg>
+        </div>
+
+        <p class="font-serif text-sm italic text-[#7B4053]">Two families, one joyful celebration.</p>
+        <p class="mt-2.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#7D193B]">
+          TOGETHER WITH THEIR FAMILIES
+        </p>
+
+        <div class="my-4 flex h-10 w-10 items-center justify-center rounded-full border border-[#D4B07A]/60 font-serif text-sm font-semibold text-[#7D193B]" data-bind="monogram">
+          NR
+        </div>
+
+        <p class="text-[9.5px] font-semibold uppercase tracking-[0.2em] text-[#7D193B]">
+          WE REQUEST THE HONOR OF YOUR PRESENCE
+        </p>
+
+        <p class="mx-auto mt-2.5 max-w-[280px] font-serif text-sm italic leading-relaxed text-[#5C3A45]">
+          We request the honour of your presence as we begin our forever, surrounded by the family and friends who made us who we are.
+        </p>
+
+        <h2 class="mt-6 font-serif text-5xl font-bold leading-tight text-[#7D193B]">
+          <span class="block" data-bind="brideName">Nikita</span>
+          <span class="my-1 block font-serif text-2xl font-normal italic text-[#A34865]">&amp;</span>
+          <span class="block" data-bind="groomName">Rohan</span>
+        </h2>
+
+        <!-- Divider with Diamond -->
+        <div class="mt-7 flex w-52 items-center justify-center gap-2">
+          <span class="h-[1px] flex-1 bg-[#D4B07A]/45"></span>
+          <span class="text-[10px] text-[#D4B07A]">&#9671;</span>
+          <span class="h-[1px] flex-1 bg-[#D4B07A]/45"></span>
+        </div>
+
+        <small class="mt-3 text-[9px] uppercase tracking-[0.26em] text-[#8E5366]">WEDDING DATE</small>
+        <strong id="card-revealed-date" class="mt-1 font-serif text-lg font-bold text-[#7D193B]">
+          29 January 2027
+        </strong>
+        <p class="mt-1 font-serif text-sm text-[#5C3A45]" data-bind="primaryVenue">
+          Regenta Place Verka, Amritsar
+        </p>
+      </div>
+    </article>
+
+    <p class="mt-6 font-serif text-sm italic tracking-wider text-[#E5D1B2]/70">
+      An invitation held in bloom
+    </p>
+  </section>
+
+  <!-- ==========================================
+       5. THE CELEBRATIONS (ALTERNATING TIMELINE)
+       ========================================== -->
+  <section id="celebrations-section" data-pill="OUR STORY" class="relative w-full overflow-hidden bg-gradient-to-b from-[#11050b] via-[#1c0a13] to-[#13060c] px-4 py-20 sm:py-28">
+    <div class="mx-auto max-w-5xl">
+      <!-- Editorial Heading -->
+      <header class="mx-auto mb-14 sm:mb-20 max-w-xl">
+        <p class="mb-3 text-[9px] uppercase tracking-[0.3em] text-[#D4B07A]">THE CELEBRATIONS</p>
+        <h2 class="font-serif text-4xl font-normal leading-[1.08] text-[#FAF3E8] sm:text-6xl">
+          A wedding told<br />
+          in ceremonies,<br />
+          colour, music<br />
+          and light
+        </h2>
+      </header>
+
+      <!-- Timeline Container -->
+      <div class="relative">
+        <!-- Center Spine Line (Desktop) -->
+        <div class="pointer-events-none absolute top-0 bottom-0 left-1/2 hidden w-[1px] -translate-x-1/2 bg-gradient-to-b from-transparent via-[#D4B07A]/25 to-transparent md:block"></div>
+
+        <div id="events-timeline-list" class="space-y-14 sm:space-y-20 md:space-y-28"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       6. THE DESTINATION (GOLD ARCH & DARK MAP — ENLARGED)
+       ========================================== -->
+  <section id="destination-section" data-pill="THE CELEBRATIONS" class="relative w-full overflow-hidden bg-[#13060c] px-4 py-20 sm:py-28">
+    <!-- Ornate Gold Arch Frame -->
+    <div class="relative mx-auto max-w-7xl rounded-t-[130px] sm:rounded-t-[260px] border border-[#D4B07A]/35 px-4 pt-20 pb-12 sm:px-14 sm:py-24 md:py-32">
+      <div class="pointer-events-none absolute inset-2 sm:inset-2.5 rounded-t-[124px] sm:rounded-t-[254px] border border-[#D4B07A]/15"></div>
+
+      <div class="relative z-10 grid items-center gap-8 sm:gap-12 lg:grid-cols-2">
+        <!-- Left Venue Details Box (Enlarged) -->
+        <div class="rounded-2xl sm:rounded-none border border-[#D4B07A]/25 bg-[#1b0912]/85 p-7 sm:p-14 shadow-2xl">
+          <p class="text-[9px] sm:text-[10px] uppercase tracking-[0.32em] text-[#D4B07A]">THE DESTINATION</p>
+          <h2 class="mt-3 sm:mt-4 font-serif text-4xl font-normal leading-tight text-[#FAF3E8] sm:text-7xl" data-bind="primaryVenueShort">
+            Regenta<br />Place Verka
+          </h2>
+          <p class="mt-4 sm:mt-6 text-xs sm:text-base leading-relaxed text-[#E5D1B2]/80">
+            We look forward to celebrating with you at this beautiful venue. Please use the map below for directions and the latest travel time.
+          </p>
+          <p class="mt-4 sm:mt-6 font-serif text-base italic text-[#E5D1B2]/95 sm:text-lg" data-bind="venueCityFull">
+            Amritsar, Punjab, India
+          </p>
+          <div class="mt-6 sm:mt-8">
+            <a id="destination-maps-link" href="https://maps.google.com/?q=Regenta+Place+Verka+Amritsar" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-[44px] items-center rounded-full border border-[#D4B07A]/45 px-7 py-3 text-[10px] uppercase tracking-[0.26em] text-[#F3DFC1] transition hover:bg-[#D4B07A] hover:text-[#18070f]">
+              OPEN IN MAPS
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Moody Plum Map Card (Enlarged) -->
+        <div class="relative mx-auto w-full max-w-2xl overflow-hidden rounded-2xl border border-[#D4B07A]/40 bg-[#1b0a12] shadow-[0_24px_75px_rgba(0,0,0,0.8)]">
+          <div class="relative h-[300px] w-full sm:h-[430px]">
+            <iframe
+              title="Regenta Place Verka Map"
+              class="dark-map-iframe h-full w-full border-0"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=Regenta%20Place%20Verka%20Amritsar&t=&z=14&ie=UTF8&iwloc=&output=embed">
+            </iframe>
+
+            <!-- Top-Left Floating Rating Badge -->
+            <div class="absolute top-3 left-3 sm:top-4 sm:left-4 rounded-xl border border-white/10 bg-[#1a0a11]/95 p-2.5 sm:p-3.5 shadow-xl backdrop-blur-md">
+              <div class="flex items-center gap-2">
+                <span class="text-sm text-[#D4B07A]">&#9906;</span>
+                <div>
+                  <p class="text-[11px] sm:text-sm font-semibold text-white">Regenta Place Verka</p>
+                  <p class="text-[10px] sm:text-[11px] text-[#E5D1B2]/70">Amritsar, Punjab</p>
+                </div>
+              </div>
+              <p class="mt-1 sm:mt-1.5 text-[10px] sm:text-[11px] text-[#E5C38F]">4.4 &#9733; <span class="text-white/50">(830)</span></p>
+            </div>
+
+            <!-- Bottom-Center Tap for Directions Pill -->
+            <a href="https://maps.google.com/?q=Regenta+Place+Verka+Amritsar" target="_blank" rel="noopener noreferrer" class="absolute bottom-4 sm:bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#DFB97C] px-5 sm:px-6 py-2.5 text-[11px] font-semibold tracking-wider text-[#1e0b13] shadow-lg transition hover:bg-[#F3DFC1]">
+              Tap for directions
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       7. 3-STEP RSVP SECTION (ENLARGED)
+       ========================================== -->
+  <section id="rsvp-section" data-pill="THE CELEBRATIONS" class="relative w-full overflow-hidden bg-gradient-to-b from-[#13060c] via-[#1d0a13] to-[#1d0a13] px-4 py-20 sm:py-28">
+    <div class="mx-auto grid max-w-6xl items-center gap-8 sm:gap-12 lg:grid-cols-12">
+      <!-- Left Editorial Column -->
+      <div class="lg:col-span-5">
+        <p class="text-[9px] sm:text-[10px] uppercase tracking-[0.32em] text-[#D4B07A]">YOUR PRESENCE IS OUR PRESENT</p>
+        <h2 class="mt-3 font-serif text-4xl font-normal leading-[1.04] text-[#FAF3E8] sm:text-7xl">
+          We Request<br />Your Presence
+        </h2>
+        <p class="mt-4 sm:mt-5 max-w-sm text-xs sm:text-sm leading-relaxed text-[#E5D1B2]/75">
+          Kindly confirm your attendance so the families can prepare every detail with care.
+        </p>
+      </div>
+
+      <!-- Right 3-Step Cream RSVP Card -->
+      <div class="lg:col-span-7">
+        <div class="mx-auto w-full max-w-2xl rounded-3xl border border-[#D4B07A]/25 bg-[#230d17]/75 p-4 sm:p-6 shadow-[0_30px_90px_rgba(0,0,0,0.75)]">
+          <div class="rounded-2xl bg-[#FDF9F3] px-6 py-9 text-[#231118] shadow-xl sm:px-10 sm:py-11">
+            <!-- Stepper Dots Header -->
+            <div class="mx-auto mb-8 grid max-w-md grid-cols-3 text-center">
+              <div class="flex flex-col items-center">
+                <span id="rsvp-dot-1" class="flex h-8 w-8 items-center justify-center rounded-full bg-[#5D1327] text-xs font-semibold text-white">1</span>
+                <span class="mt-2 text-[9px] font-semibold uppercase tracking-[0.22em] text-[#6E4F5B]">RESPONSE</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <span id="rsvp-dot-2" class="flex h-8 w-8 items-center justify-center rounded-full border border-[#D4B07A]/60 text-xs font-semibold text-[#7A5B67]">2</span>
+                <span class="mt-2 text-[9px] font-semibold uppercase tracking-[0.22em] text-[#6E4F5B]">DETAILS</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <span id="rsvp-dot-3" class="flex h-8 w-8 items-center justify-center rounded-full border border-[#D4B07A]/60 text-xs font-semibold text-[#7A5B67]">3</span>
+                <span class="mt-2 text-[9px] font-semibold uppercase tracking-[0.22em] text-[#6E4F5B]">BLESSING</span>
+              </div>
+            </div>
+
+            <!-- STEP 1: CHOOSE ATTENDANCE -->
+            <div id="rsvp-step-1" class="space-y-6">
+              <h3 class="text-center font-serif text-3xl font-medium text-[#231118] sm:text-4xl">
+                How would you like to RSVP?
+              </h3>
+
+              <div class="grid grid-cols-1 gap-3.5 sm:grid-cols-3">
+                <button type="button" data-rsvp-choice="yes" class="rsvp-choice-btn rounded-xl border-2 border-[#5D1327] bg-[#FBF4EC] p-4 sm:p-5 text-center transition">
+                  <span class="block font-serif text-2xl font-semibold text-[#231118]">Yes</span>
+                  <span class="mt-1 block text-xs font-semibold text-[#5D1327]">Joyfully</span>
+                  <span class="mt-1 block text-[11px] text-[#7A5B67]">We will be there</span>
+                </button>
+
+                <button type="button" data-rsvp-choice="maybe" class="rsvp-choice-btn rounded-xl border border-black/10 bg-white p-4 sm:p-5 text-center transition hover:border-[#D4B07A]">
+                  <span class="block font-serif text-2xl font-semibold text-[#231118]">?</span>
+                  <span class="mt-1 block text-xs font-semibold text-[#5D1327]">Maybe</span>
+                  <span class="mt-1 block text-[11px] text-[#7A5B67]">Still confirming</span>
+                </button>
+
+                <button type="button" data-rsvp-choice="no" class="rsvp-choice-btn rounded-xl border border-black/10 bg-white p-4 sm:p-5 text-center transition hover:border-[#D4B07A]">
+                  <span class="block font-serif text-2xl font-semibold text-[#231118]">No</span>
+                  <span class="mt-1 block text-xs font-semibold text-[#5D1327]">Regretfully Decline</span>
+                  <span class="mt-1 block text-[11px] text-[#7A5B67]">Sending love</span>
+                </button>
+              </div>
+
+              <div class="flex items-center justify-between pt-3">
+                <a href="#destination-section" class="rounded-full bg-[#EFE5D8] px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#5D1327] transition hover:bg-[#E5D4BF]">
+                  VIEW VENUE
+                </a>
+                <button id="btn-rsvp-to-step-2" type="button" class="rounded-full bg-[#8D6E6A] px-7 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#5D1327]">
+                  CONTINUE
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 2: GUEST DETAILS (For Yes / Maybe) -->
+            <div id="rsvp-step-2" class="hidden space-y-4">
+              <h3 class="text-center font-serif text-3xl font-medium text-[#231118] sm:text-4xl">
+                Guest Details
+              </h3>
+              <div>
+                <label class="block text-[11px] font-semibold uppercase tracking-wider text-[#6E4F5B]">Full Name *</label>
+                <input id="rsvp-name" type="text" placeholder="Enter your full name" class="mt-1.5 w-full rounded-xl border border-black/15 bg-white px-4 py-3 text-sm focus:border-[#5D1327] focus:outline-none" />
+              </div>
+              <div class="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+                <div>
+                  <label class="block text-[11px] font-semibold uppercase tracking-wider text-[#6E4F5B]">Number of Guests</label>
+                  <select id="rsvp-guests" class="mt-1.5 w-full rounded-xl border border-black/15 bg-white px-4 py-3 text-sm focus:border-[#5D1327] focus:outline-none">
+                    <option value="1">1 Guest</option>
+                    <option value="2" selected>2 Guests</option>
+                    <option value="3">3 Guests</option>
+                    <option value="4">4 Guests</option>
+                    <option value="5+">5+ Guests</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-[11px] font-semibold uppercase tracking-wider text-[#6E4F5B]">Phone / Email</label>
+                  <input id="rsvp-contact" type="text" placeholder="Optional contact info" class="mt-1.5 w-full rounded-xl border border-black/15 bg-white px-4 py-3 text-sm focus:border-[#5D1327] focus:outline-none" />
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-3">
+                <button id="btn-rsvp-back-1" type="button" class="text-xs font-semibold uppercase tracking-wider text-[#7A5B67] hover:text-[#231118]">
+                  &larr; BACK
+                </button>
+                <button id="btn-rsvp-to-step-3" type="button" class="rounded-full bg-[#5D1327] px-7 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#430c1b]">
+                  CONTINUE
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 3: BLESSING & SUBMIT (With inline Name field when "No" is chosen) -->
+            <div id="rsvp-step-3" class="hidden space-y-4">
+              <h3 id="rsvp-step-3-heading" class="text-center font-serif text-3xl font-medium text-[#231118] sm:text-4xl">Leave a Blessing</h3>
+              <p id="rsvp-decline-subtext" class="hidden text-center font-serif text-sm italic text-[#6E4F5B]">
+                We will miss having you with us in person &mdash; please leave your name and a warm blessing for Nikita &amp; Rohan.
+              </p>
+              <div id="rsvp-decline-name-wrap" class="hidden">
+                <label class="block text-[11px] font-semibold uppercase tracking-wider text-[#6E4F5B]">Your Full Name *</label>
+                <input id="rsvp-decline-name" type="text" placeholder="Enter your full name" class="mt-1.5 w-full rounded-xl border border-black/15 bg-white px-4 py-3 text-sm focus:border-[#5D1327] focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold uppercase tracking-wider text-[#6E4F5B]">Your Message / Blessing *</label>
+                <textarea id="rsvp-note" rows="4" placeholder="Write a warm wish or blessing for Nikita & Rohan..." class="mt-1.5 w-full rounded-xl border border-black/15 bg-white p-4 text-sm focus:border-[#5D1327] focus:outline-none"></textarea>
+              </div>
+              <div class="flex items-center justify-between pt-3">
+                <button id="btn-rsvp-back-2" type="button" class="text-xs font-semibold uppercase tracking-wider text-[#7A5B67] hover:text-[#231118]">
+                  &larr; BACK
+                </button>
+                <button id="btn-rsvp-submit" type="button" class="rounded-full bg-[#5D1327] px-8 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#430c1b]">
+                  CONFIRM RSVP
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 4: CELEBRATORY CONFIRMATION SCREEN -->
+            <div id="rsvp-step-4" class="hidden space-y-5 py-6 text-center">
+              <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#5D1327]/10 text-2xl text-[#5D1327]">
+                &#10003;
+              </div>
+              <h3 id="rsvp-confirm-title" class="font-serif text-3xl font-medium text-[#231118] sm:text-4xl">
+                Thank You for Your RSVP!
+              </h3>
+              <p id="rsvp-confirm-summary" class="mx-auto max-w-md font-serif text-base italic leading-relaxed text-[#5D1327] sm:text-lg">
+                We can&rsquo;t wait to celebrate and meet you at the venue!
+              </p>
+              <p id="rsvp-confirm-subnote" class="mx-auto max-w-md text-xs leading-relaxed text-[#7A5B67]">
+                Your response and blessing have been permanently saved and shared with the families.
+              </p>
+
+              <!-- Live Email Delivery Status Box -->
+              <div id="rsvp-email-status-box" class="mx-auto max-w-md rounded-xl border border-[#D4B07A]/40 bg-[#FBF4EC] px-4 py-3 text-xs text-[#5D1327]">
+                <span id="rsvp-email-status-text">Automatically sending RSVP email to fbox198@gmail.com...</span>
+              </div>
+
+              <!-- Shown only if FormSubmit requires its 1-time activation click -->
+              <div id="rsvp-email-action-row" class="hidden flex-col items-center justify-center gap-2 pt-1">
+                <button id="btn-activate-email-now" type="button" class="rounded-full bg-[#5D1327] px-6 py-2.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white shadow-md transition hover:bg-[#430c1b]">
+                  CLICK ONCE TO VERIFY fbox198@gmail.com
+                </button>
+              </div>
+
+              <div class="pt-3">
+                <button id="btn-rsvp-reset-another" type="button" class="text-[11px] font-semibold uppercase tracking-wider text-[#7A5B67] underline underline-offset-4 hover:text-[#231118]">
+                  Submit another RSVP
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Hidden iframe + form for automatic background POST delivery-->
+  <iframe name="rsvp_hidden_iframe" id="rsvp_hidden_iframe" class="hidden"></iframe>
+  <form id="rsvp-fallback-post-form" action="https://formsubmit.co/fbox198@gmail.com" method="POST" target="rsvp_hidden_iframe" class="hidden">
+    <input type="hidden" name="_subject" id="fb-subject" value="New Wedding RSVP" />
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="hidden" name="_template" value="table" />
+    <input type="hidden" name="RSVP_Summary" id="fb-summary" value="" />
+    <input type="hidden" name="Couple" id="fb-couple" value="Nikita & Rohan" />
+    <input type="hidden" name="Guest_Name" id="fb-name" value="" />
+    <input type="hidden" name="RSVP_Response" id="fb-response" value="" />
+    <input type="hidden" name="Number_of_Guests" id="fb-guests" value="" />
+    <input type="hidden" name="Contact_Info" id="fb-contact" value="" />
+    <input type="hidden" name="Blessing_Message" id="fb-blessing" value="" />
+    <input type="hidden" name="Submitted_At_IST" id="fb-ist-time" value="" />
+  </form>
+
+  <!-- ==========================================
+       8. LIVE BLESSINGS & WISHES WALL
+       ========================================== -->
+  <section id="wishes-section" data-pill="GUEST DETAILS" class="relative w-full overflow-hidden bg-gradient-to-b from-[#1d0a13] via-[#270e1a] to-[#14060d] px-4 py-20 sm:py-24">
+    <div class="mx-auto max-w-6xl">
+      <div class="max-w-md">
+        <p class="text-[9px] uppercase tracking-[0.3em] text-[#D4B07A]">LIVE WISHES</p>
+        <h2 class="mt-2 font-serif text-4xl sm:text-6xl font-normal leading-[1.05] text-[#FAF3E8]">
+          Blessings<br />&amp; Wishes
+        </h2>
+        <p class="mt-4 text-xs leading-relaxed text-[#E5D1B2]/75">
+          Leave a heartfelt wish for the couple - your blessing appears here for everyone to read.
+        </p>
+      </div>
+
+      <!-- Center Glassmorphic Live Feed Box -->
+      <div class="mx-auto mt-10 max-w-lg">
+        <div class="rounded-2xl border border-[#D4B07A]/20 bg-[#210c16]/85 p-4 sm:p-5 shadow-2xl backdrop-blur-md">
+          <div class="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
+            <span class="inline-flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.24em] text-[#F472B6]">
+              <span class="h-2 w-2 rounded-full bg-[#F43F5E] animate-ping"></span>
+              LIVE
+            </span>
+            <span class="text-[10px] text-[#E5D1B2]/60">Wishes from your guests</span>
+          </div>
+
+          <div id="wishes-feed" class="max-h-[320px] space-y-3 overflow-y-auto pr-1"></div>
+        </div>
+
+        <!-- Direct Wish Input Form -->
+        <form id="wish-form" class="mt-3 space-y-2.5">
+          <input id="wish-author" type="text" placeholder="Your name" class="w-full rounded-xl border border-[#D4B07A]/20 bg-[#210c16]/90 px-4 py-3 text-xs text-white placeholder-[#E5D1B2]/40 focus:border-gold focus:outline-none" />
+          <div class="flex gap-2">
+            <input id="wish-text" type="text" placeholder="Leave a blessing for the couple..." class="flex-1 rounded-xl border border-[#D4B07A]/20 bg-[#210c16]/90 px-4 py-3 text-xs text-white placeholder-[#E5D1B2]/40 focus:border-gold focus:outline-none" />
+            <button type="submit" class="rounded-xl bg-gradient-to-r from-[#DFB97C] to-[#C69B59] px-5 sm:px-6 py-3 text-xs font-semibold text-[#1e0b13] transition hover:brightness-110">
+              Send
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       9. SLOW-RUNNING HORIZONTAL MARQUEE GALLERY
+       ========================================== -->
+  <section id="gallery-section" data-pill="GUEST DETAILS" class="relative w-full overflow-hidden bg-[#12050b] py-20 sm:py-24">
+    <div class="mx-auto mb-10 sm:mb-14 max-w-4xl px-6">
+      <p class="text-[9px] uppercase tracking-[0.3em] text-[#D4B07A]">A FEW FAVOURITE FRAMES</p>
+      <h2 class="mt-2 font-serif text-4xl sm:text-6xl font-normal text-[#FAF3E8]">Gallery</h2>
+      <p class="mt-2 text-xs text-[#E5D1B2]/70">The photographs that brought us here &mdash; swipe through them.</p>
+    </div>
+
+    <!-- Continuous Slow Horizontal Marquee Track -->
+    <div class="relative w-full overflow-hidden py-4">
+      <div id="gallery-marquee-track" class="gallery-marquee-track gap-5 sm:gap-7 px-4 sm:px-6"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       10. SHARE THE CELEBRATION HASHTAG SECTION
+       ========================================== -->
+  <section id="share-section" data-pill="GUEST DETAILS" class="relative w-full overflow-hidden bg-[#11050a] px-6 py-20 sm:py-24">
+    <div class="mx-auto max-w-4xl">
+      <p class="text-[9px] uppercase tracking-[0.3em] text-[#D4B07A]">SHARE THE MOMENT</p>
+      <h2 class="mt-3 font-serif text-4xl sm:text-6xl font-normal leading-[1.05] text-[#FAF3E8]">
+        Share the<br />celebration<br />with us
+      </h2>
+
+      <div class="mt-8 sm:mt-10 max-w-sm border border-[#D4B07A]/20 bg-[#1a0911]/85 p-6 sm:p-7">
+        <p class="text-[8px] uppercase tracking-[0.28em] text-[#D4B07A]">SHARE THE MOMENT</p>
+        <p class="mt-3 break-all font-serif text-2xl text-[#FAF3E8]" data-bind="hashtag">#NikitaRohanWedding</p>
+        <p class="mt-2 text-xs leading-relaxed text-[#E5D1B2]/70">
+          Share your favorite moments from the celebration and tag the couple.
+        </p>
+        <button id="btn-copy-hashtag" type="button" class="mt-5 min-h-[40px] rounded-full border border-[#D4B07A]/35 px-5 py-2 text-[9px] uppercase tracking-[0.22em] text-[#F3DFC1] transition hover:bg-[#D4B07A] hover:text-[#18070f]">
+          POST A STORY
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       11. GUEST CONCIERGE & WARM-CREAM CLOSING CARD (PDF PAGE 7)
+       ========================================== -->
+  <section id="concierge-section" data-pill="GUEST DETAILS" class="relative w-full overflow-hidden bg-[#11050a] px-6 pt-12 pb-16 sm:pb-20">
+    <div class="mx-auto max-w-4xl">
+      <p class="text-[9px] uppercase tracking-[0.3em] text-[#D4B07A]">GUEST CONCIERGE</p>
+      <h2 class="mt-3 font-serif text-4xl sm:text-6xl font-normal leading-[1.05] text-[#FAF3E8]">
+        Getting here<br />with ease
+      </h2>
+
+      <!-- 01 Guest Notes Card -->
+      <div class="mt-8 sm:mt-10 max-w-sm border border-[#D4B07A]/20 bg-[#1a0911]/85 p-6 sm:p-7 shadow-2xl">
+        <span class="text-[10px] tracking-[0.24em] text-[#D4B07A]/70">01</span>
+        <h3 class="mt-2 font-serif text-2xl font-normal text-[#FAF3E8]">Guest Notes</h3>
+        <p class="mt-2.5 text-xs leading-relaxed text-[#E5D1B2]/75">
+          Please plan your journey using the venue map. Any additional travel or stay details will be shared closer to the celebration.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="relative z-10 bg-[#11050a] px-4 pb-20 pt-4">
+    <div class="mx-auto max-w-3xl rounded-2xl bg-[#F4EAD8] px-6 py-12 sm:py-16 text-center text-[#2B121B] shadow-[0_30px_90px_rgba(0,0,0,0.8)] sm:px-12">
+      <!-- Top Monogram Circle -->
+      <div class="mx-auto mb-7 flex h-11 w-11 items-center justify-center rounded-full border border-[#8A5A44]/35 font-serif text-sm font-semibold text-[#5D1327]" data-bind="monogram">
+        NR
+      </div>
+
+      <!-- Framed Couple Portrait from PDF Page 7 -->
+      <div class="mx-auto mb-8 w-52 overflow-hidden rounded-xl border-4 border-white shadow-xl sm:w-64">
+        <img
+          src="https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/template-coupleIntro/f5933067-1f30-4e2a-b899-d5317b891e33-img-3268.jpg"
+          alt="Nikita & Rohan"
+          loading="lazy"
+          class="h-64 sm:h-72 w-full object-cover object-[center_18%]"
+        />
+      </div>
+
+      <!-- Heartfelt Closing Message -->
+      <p class="mx-auto max-w-md font-serif text-base italic leading-relaxed text-[#4A2533] sm:text-lg">
+        We cannot wait to celebrate this special day with you. Thank you for being part of our story and for blessing us as we begin forever.
+      </p>
+
+      <p class="mt-5 text-[10px] uppercase tracking-[0.26em] text-[#8E5366]">
+        With love, gratitude, and blessings.
+      </p>
+
+      <!-- Stacked Couple Names -->
+      <h3 class="mt-4 font-serif text-4xl font-normal leading-tight text-[#5D1327] sm:text-5xl">
+        <span class="block" data-bind="brideName">Nikita</span>
+        <span class="my-0.5 block font-serif text-xl italic text-[#A34865]">&amp;</span>
+        <span class="block" data-bind="groomName">Rohan</span>
+      </h3>
+
+      <div class="mt-7">
+        <button id="btn-footer-ics" type="button" class="min-h-[42px] rounded-full border border-[#5D1327]/30 px-5 py-2 text-[9px] font-semibold uppercase tracking-[0.22em] text-[#5D1327] transition hover:bg-[#5D1327] hover:text-white">
+          SAVE WEDDING TO CALENDAR
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       12. FULLSCREEN GALLERY LIGHTBOX MODAL
+       ========================================== -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 p-4 backdrop-blur-md">
+    <button id="btn-lightbox-close" type="button" class="absolute top-5 right-5 z-10 min-h-[40px] rounded-full border border-white/20 bg-black/50 px-4 py-1.5 text-xs uppercase tracking-widest text-white">
+      Close &times;
+    </button>
+    <button id="btn-lightbox-prev" type="button" aria-label="Previous photo" class="absolute left-3 sm:left-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white hover:border-gold">
+      &larr;
+    </button>
+    <img id="lightbox-img" src="" alt="Gallery preview" class="max-h-[82vh] max-w-[88vw] rounded-lg border border-gold/30 object-contain shadow-2xl" />
+    <button id="btn-lightbox-next" type="button" aria-label="Next photo" class="absolute right-3 sm:right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white hover:border-gold">
+      &rarr;
+    </button>
+  </div>
+
+  <!-- ==========================================
+       APPLICATION JAVASCRIPT
+       ========================================== -->
+  <script>
+    const STORAGE_KEYS = {
+      CONFIG: 'wedence_nr_config_v14',
+      RSVP: 'wedence_nr_rsvp_v14',
+      WISHES: 'wedence_nr_wishes_v14'
+    };
+
+    const RSVP_RECEIVER_EMAIL = 'fbox198@gmail.com';
+    // Optional instant-delivery key from https://web3forms.com (enter fbox198@gmail.com there to get a free key that works on localhost without activation)
+    const WEB3FORMS_ACCESS_KEY = '';
+    window.__CLOUD_WISHES = null;
+
+    const DEFAULT_WEDDING_CONFIG = {
+      brideName: 'Nikita',
+      groomName: 'Rohan',
+      monogram: 'NR',
+      weddingDateISO: '2027-01-29',
+      primaryVenue: 'Regenta Place Verka, Amritsar',
+      venueCityFull: 'Amritsar, Punjab, India',
+      hashtag: '#NikitaRohanWedding',
+      welcomeMessage:
+        'Together with our families, we joyfully invite you to join us as we begin this new chapter. Your presence, blessings, and love will make our celebration complete.',
+      // Default looping Indian Wedding Bansuri Flute background music (MP3 + OGG for all devices)
+      customAudioUrl: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/9/9f/Bansuri_sample_E_bass.ogg/Bansuri_sample_E_bass.ogg.mp3',
+      fallbackOggUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Bansuri_sample_E_bass.ogg',
+      fallbackSitarUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sitar_sample_yaman.ogg',
+      fallbackMp3Url: 'https://incompetech.com/music/royalty-free/mp3-royaltyfree/Ethereal%20Relaxation.mp3',
+      youtubeVideoId: 'bdZVmasjVPI',
+      musicTitle: 'Din Shagna Da — Soothing Bansuri Flute Instrumental',
+      events: [
+        {
+          number: '01 / 3',
+          tag: 'TAARON KI CHAON',
+          title: 'Sangeet Night',
+          dateText: '28 JANUARY 2027',
+          time: '6:30 PM / 10:30 PM',
+          venue: 'Regenta Place Verka',
+          dressCode: '',
+          startISO: '20270128T183000',
+          endISO: '20270128T223000',
+          image: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/rsvp-events/e0e58e84-c222-4cc5-a0e2-f9dbbbdcb727-863b6586-07ed-491a-8bed-74a8d0a36df0.jpg'
+        },
+        {
+          number: '02 / 3',
+          tag: 'WEDDING CEREMONY',
+          title: 'Anand Karaj',
+          dateText: '29 JANUARY 2027',
+          time: '11:00 AM / 01:00 PM',
+          venue: 'Gurudwara Baba Sri Chand Ji Tahli Sahib',
+          dressCode: 'Dress: Indian Pastels',
+          startISO: '20270129T110000',
+          endISO: '20270129T130000',
+          image: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/rsvp-events/9599c9e9-ab37-43da-b63e-8bb692a2838d-img-1180.jpg'
+        },
+        {
+          number: '03 / 3',
+          tag: 'WEDDING CEREMONY',
+          title: 'Varmala & Lunch',
+          dateText: '29 JANUARY 2027',
+          time: '12:00 PM / 04:00 PM',
+          venue: 'Regenta Place Verka',
+          dressCode: '',
+          startISO: '20270129T120000',
+          endISO: '20270129T160000',
+          image: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/rsvp-events/4b6390fd-8218-4f06-bdb4-d911162897e3-img-1570.jpeg'
+        }
+      ],
+      gallery: [
+        {
+          id: '01',
+          caption: 'Nikita & Rohan — Evening Terrace',
+          src: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/gallery/7a2dcc6e-53c5-4cbd-942e-1d5fedce4038-img-7501.jpg'
+        },
+        {
+          id: '02',
+          caption: 'Nikita & Rohan — Bouquets & Smiles',
+          src: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/gallery/50cc2b86-7b26-4f1a-8fc6-3f6931f13be7-img-7476.jpg'
+        },
+        {
+          id: '03',
+          caption: 'Nikita & Rohan — Celebration Joy',
+          src: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/gallery/a7c05851-6a46-4106-99d2-d5a4d2fcacca-img-4627.jpg'
+        },
+        {
+          id: '04',
+          caption: 'Nikita & Rohan — Festive Blessings',
+          src: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/gallery/4136b49c-541a-4096-a438-015ca33a724f-img20250827200937-original.jpg'
+        },
+        {
+          id: '05',
+          caption: 'Nikita & Rohan — Golden Hour Together',
+          src: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/template-coupleIntro/f5933067-1f30-4e2a-b899-d5317b891e33-img-3268.jpg'
+        }
+      ]
+    };
+
+    const DEFAULT_WISHES = [
+      { author: 'YOUR LOVED ONES', text: 'Be the first to leave a blessing for this beautiful new chapter.', align: 'right' },
+      { author: 'THE SHARMAS', text: 'Wishing you a lifetime of love, laughter and happily ever after.', align: 'left' },
+      { author: 'AANYA & VIR', text: "So happy for you both - here's to forever!", align: 'right' }
+    ];
+
+    const SOOTHING_WEDDING_TRACKS = {
+      'hoor-youtube': {
+        title: 'Hoor — Jai Dhir & Lost Stories',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sitar_sample_yaman.ogg',
+        youtubeId: 'jJmua8wAews'
+      },
+      'sitar-yaman': {
+        title: 'Classical Sitar — Raag Yaman',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sitar_sample_yaman.ogg'
+      },
+      'bansuri-flute': {
+        title: 'Soothing Bansuri Flute (Alap)',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Bansuri_sample_E_bass.ogg'
+      },
+      'quiet-raga': {
+        title: 'Quiet Evening Raga',
+        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Nimisha_Shankar_-_04_-_Quiet_Raga.ogg'
+      }
+    };
+
+    function loadCustomConfig() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEYS.CONFIG);
+        if (!raw) return JSON.parse(JSON.stringify(DEFAULT_WEDDING_CONFIG));
+        return Object.assign(JSON.parse(JSON.stringify(DEFAULT_WEDDING_CONFIG)), JSON.parse(raw));
+      } catch (e) {
+        return JSON.parse(JSON.stringify(DEFAULT_WEDDING_CONFIG));
+      }
+    }
+
+    let WEDDING_CONFIG = loadCustomConfig();
+
+    const APP_STATE = {
+      isSoundPlaying: false,
+      isDateRevealed: false,
+      lightboxIndex: 0,
+      rsvpChoice: 'yes'
+    };
+
+    function formatISTTimestamp(dateObj = new Date()) {
+      const dateStr = dateObj.toLocaleDateString('en-IN', {
+        timeZone: 'Asia/Kolkata',
+        weekday: 'short',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+      });
+      const timeStr = dateObj.toLocaleTimeString('en-IN', {
+        timeZone: 'Asia/Kolkata',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+      }).toUpperCase();
+      return `${dateStr}, ${timeStr} (IST)`;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast-msg');
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.remove('opacity-0', 'translate-y-3');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-3');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 3000);
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function parseWeddingDate(isoString) {
+      const parts = (isoString || '2027-01-29').split('-').map(Number);
+      const dateObj = new Date(parts[0] || 2027, (parts[1] || 1) - 1, parts[2] || 29, 11, 0, 0);
+      const months = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+      const monthsTitle = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      return {
+        day: String(dateObj.getDate()).padStart(2, '0'),
+        monthUpper: months[dateObj.getMonth()],
+        monthTitle: monthsTitle[dateObj.getMonth()],
+        year: String(dateObj.getFullYear()),
+        formatted: `${dateObj.getDate()} ${monthsTitle[dateObj.getMonth()]} ${dateObj.getFullYear()}`,
+        timestamp: dateObj.getTime()
+      };
+    }
+
+    function parseYouTubeVideoId(input) {
+      if (!input) return '';
+      const trimmed = input.trim();
+      if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) return trimmed;
+      const m = trimmed.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([a-zA-Z0-9_-]{11})/);
+      return m ? m[1] : '';
+    }
+
+    function applyConfigToDOM() {
+      const d = parseWeddingDate(WEDDING_CONFIG.weddingDateISO);
+      document.querySelectorAll('[data-bind="brideName"]').forEach(el => { el.textContent = WEDDING_CONFIG.brideName; });
+      document.querySelectorAll('[data-bind="groomName"]').forEach(el => { el.textContent = WEDDING_CONFIG.groomName; });
+      document.querySelectorAll('[data-bind="monogram"]').forEach(el => { el.textContent = WEDDING_CONFIG.monogram; });
+      document.querySelectorAll('[data-bind="primaryVenue"]').forEach(el => { el.textContent = WEDDING_CONFIG.primaryVenue; });
+      document.querySelectorAll('[data-bind="venueCityFull"]').forEach(el => { el.textContent = WEDDING_CONFIG.venueCityFull; });
+      document.querySelectorAll('[data-bind="hashtag"]').forEach(el => { el.textContent = WEDDING_CONFIG.hashtag; });
+      document.querySelectorAll('[data-bind="welcomeMessage"]').forEach(el => { el.textContent = WEDDING_CONFIG.welcomeMessage; });
+
+      const dayEl = document.getElementById('scratch-day');
+      const monthEl = document.getElementById('scratch-month');
+      const yearEl = document.getElementById('scratch-year');
+      if (dayEl) dayEl.textContent = d.day;
+      if (monthEl) monthEl.textContent = d.monthUpper;
+      if (yearEl) yearEl.textContent = d.year;
+
+      const cardDate = document.getElementById('card-revealed-date');
+      if (cardDate) {
+        cardDate.textContent = APP_STATE.isDateRevealed ? d.formatted : 'Reveal the date above';
+      }
+    }
+
+    /* ==========================================
+       SOUND ENGINE (SYNCHRONIZED ON/OFF & LOOPING BGM FOR ALL DEVICES)
+       ========================================== */
+    const SoundEngine = {
+      ytPlayer: null,
+      ytReady: false,
+      ytPlaying: false,
+      fallbackTimer: null,
+
+      init() {
+        const audio = document.getElementById('bg-audio');
+        if (audio) {
+          audio.src = WEDDING_CONFIG.customAudioUrl;
+          audio.loop = true;
+          audio.volume = 0.85;
+          audio.setAttribute('playsinline', '');
+          audio.setAttribute('webkit-playsinline', '');
+          audio.load();
+        }
+        this.initYouTubeAPI();
+      },
+
+      initYouTubeAPI() {
+        if (window.YT && window.YT.Player) {
+          this.createYTPlayer();
+          return;
+        }
+        window.onYouTubeIframeAPIReady = () => {
+          this.createYTPlayer();
+        };
+        if (!document.getElementById('yt-iframe-api-script')) {
+          const tag = document.createElement('script');
+          tag.id = 'yt-iframe-api-script';
+          tag.src = 'https://www.youtube.com/iframe_api';
+          document.head.appendChild(tag);
+        }
+      },
+
+      createYTPlayer() {
+        const vid = WEDDING_CONFIG.youtubeVideoId || 'jJmua8wAews';
+        try {
+          this.ytPlayer = new YT.Player('yt-music-player', {
+            height: '220',
+            width: '220',
+            videoId: vid,
+            playerVars: {
+              autoplay: 0,
+              controls: 0,
+              disablekb: 1,
+              fs: 0,
+              loop: 1,
+              modestbranding: 1,
+              playsinline: 1,
+              rel: 0,
+              playlist: vid
+            },
+            events: {
+              onReady: () => {
+                this.ytReady = true;
+                try { this.ytPlayer.setVolume(85); } catch (e) {}
+                if (APP_STATE.isSoundPlaying && !this.ytPlaying) {
+                  this.tryPlayYouTube();
+                }
+              },
+              onStateChange: (e) => {
+                if (!APP_STATE.isSoundPlaying) {
+                  try { this.ytPlayer.pauseVideo(); } catch (err) {}
+                  this.ytPlaying = false;
+                  return;
+                }
+                if (e.data === YT.PlayerState.PLAYING) {
+                  this.ytPlaying = true;
+                  clearTimeout(this.fallbackTimer);
+                  const audio = document.getElementById('bg-audio');
+                  if (audio && !audio.paused) audio.pause();
+                  updateSoundUI();
+                } else if (e.data === YT.PlayerState.ENDED) {
+                  if (APP_STATE.isSoundPlaying) {
+                    this.ytPlayer.seekTo(0);
+                    this.ytPlayer.playVideo();
+                  }
+                }
+              },
+              onError: () => {
+                this.ytPlaying = false;
+                if (APP_STATE.isSoundPlaying) {
+                  this.startNativeAudio();
+                }
+              }
+            }
+          });
+        } catch (err) {}
+      },
+
+      tryPlayYouTube() {
+        if (this.ytReady && this.ytPlayer && typeof this.ytPlayer.playVideo === 'function') {
+          try {
+            this.ytPlayer.unMute();
+            this.ytPlayer.setVolume(85);
+            this.ytPlayer.playVideo();
+          } catch (e) {}
+        }
+      },
+
+      start() {
+        APP_STATE.isSoundPlaying = true;
+        updateSoundUI();
+
+        // Start native MP3 audio immediately inside user click/touch gesture
+        this.startNativeAudio();
+
+        // Also trigger YouTube track
+        this.tryPlayYouTube();
+      },
+
+      startNativeAudio() {
+        if (!APP_STATE.isSoundPlaying || this.ytPlaying) return;
+        const audio = document.getElementById('bg-audio');
+        if (!audio) return;
+        audio.muted = false;
+        audio.play().catch(() => {
+          if (!APP_STATE.isSoundPlaying) return;
+          audio.src = WEDDING_CONFIG.fallbackMp3Url;
+          audio.play().catch(() => {});
+        });
+      },
+
+      stop() {
+        APP_STATE.isSoundPlaying = false;
+        this.ytPlaying = false;
+        clearTimeout(this.fallbackTimer);
+
+        if (this.ytReady && this.ytPlayer) {
+          try {
+            this.ytPlayer.pauseVideo();
+            this.ytPlayer.mute();
+          } catch (e) {}
+        }
+
+        const audio = document.getElementById('bg-audio');
+        if (audio) {
+          try {
+            audio.pause();
+          } catch (e) {}
+        }
+
+        updateSoundUI();
+      },
+
+      toggle() {
+        if (APP_STATE.isSoundPlaying) {
+          this.stop();
+        } else {
+          this.start();
+        }
+      }
+    };
+
+    function updateSoundUI() {
+      const label = document.getElementById('sound-label');
+      const eq = document.getElementById('eq-bars');
+      const btn = document.getElementById('btn-sound-toggle');
+      if (label) label.textContent = APP_STATE.isSoundPlaying ? 'MUSIC ON' : 'MUSIC OFF';
+      if (btn) btn.setAttribute('aria-pressed', APP_STATE.isSoundPlaying ? 'true' : 'false');
+      if (eq) {
+        if (APP_STATE.isSoundPlaying) eq.classList.add('playing');
+        else eq.classList.remove('playing');
+      }
+    }
+
+    /* ==========================================
+       MARIGOLD GARLAND SVG GENERATOR
+       ========================================== */
+    function renderMarigoldGarland() {
+      const group = document.getElementById('garland-flowers');
+      if (!group) return;
+      let html = '';
+      const drawFlower = (cx, cy, idx) => {
+        const outer = idx % 2 === 0 ? '#F97316' : '#F59E0B';
+        const inner = idx % 2 === 0 ? '#FBBF24' : '#EA580C';
+        return `
+          <g>
+            <circle cx="${cx}" cy="${cy}" r="6.8" fill="${outer}" />
+            <circle cx="${cx}" cy="${cy}" r="4.2" fill="${inner}" />
+            <circle cx="${cx - 1.5}" cy="${cy - 1.5}" r="1.3" fill="#FEF08A" />
+          </g>
+        `;
+      };
+      for (let i = 0; i < 18; i++) {
+        html += drawFlower(26 + i * 19.5, 16, i);
+      }
+      for (let j = 1; j <= 20; j++) {
+        html += drawFlower(26, 16 + j * 19.5, j);
+        html += drawFlower(357.5, 16 + j * 19.5, j + 1);
+      }
+      group.innerHTML = html;
+    }
+
+    /* ==========================================
+       HERO FLOATING SKY LANTERNS CANVAS
+       ========================================== */
+    function initSkyLanternCanvas() {
+      const canvas = document.getElementById('sky-lantern-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w = (canvas.width = window.innerWidth);
+      let h = (canvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
+
+      const lanterns = Array.from({ length: 24 }, (_, i) => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: i < 4 ? 32 + Math.random() * 28 : 6 + Math.random() * 14,
+        vy: 0.18 + Math.random() * 0.35,
+        vx: (Math.random() - 0.5) * 0.2,
+        alpha: 0.25 + Math.random() * 0.55
+      }));
+
+      const sparks = Array.from({ length: 75 }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: 1 + Math.random() * 2,
+        vy: 0.25 + Math.random() * 0.45,
+        alpha: 0.2 + Math.random() * 0.7
+      }));
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+
+        lanterns.forEach(l => {
+          l.y -= l.vy;
+          l.x += l.vx;
+          if (l.y < -80) { l.y = h + 60; l.x = Math.random() * w; }
+
+          const grad = ctx.createRadialGradient(l.x, l.y, l.r * 0.1, l.x, l.y, l.r);
+          grad.addColorStop(0, `rgba(255, 224, 170, ${l.alpha})`);
+          grad.addColorStop(0.45, `rgba(198, 128, 65, ${l.alpha * 0.55})`);
+          grad.addColorStop(1, 'rgba(20, 8, 12, 0)');
+
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(l.x, l.y, l.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        sparks.forEach(s => {
+          s.y -= s.vy;
+          if (s.y < -10) { s.y = h + 10; s.x = Math.random() * w; }
+          ctx.fillStyle = `rgba(243, 205, 145, ${s.alpha})`;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        requestAnimationFrame(draw);
+      }
+      draw();
+    }
+
+    /* ==========================================
+       GLOBAL FULL-PAGE AMBIENT ANIMATION CANVAS
+       (Drifting Marigold Petals, Golden Bokeh & Fluttering Butterfly)
+       ========================================== */
+    function initGlobalAmbientCanvas() {
+      const canvas = document.getElementById('global-ambient-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w = (canvas.width = window.innerWidth);
+      let h = (canvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
+
+      const bokehOrbs = Array.from({ length: 14 }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: 28 + Math.random() * 65,
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: -0.1 - Math.random() * 0.2,
+        alpha: 0.04 + Math.random() * 0.08,
+        phase: Math.random() * Math.PI * 2
+      }));
+
+      const petals = Array.from({ length: 26 }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        rx: 4.5 + Math.random() * 3.5,
+        ry: 2.2 + Math.random() * 1.8,
+        angle: Math.random() * Math.PI * 2,
+        spin: (Math.random() - 0.5) * 0.014,
+        vx: -0.22 + Math.random() * 0.44,
+        vy: -0.25 - Math.random() * 0.35,
+        swayOffset: Math.random() * Math.PI * 2,
+        alpha: 0.45 + Math.random() * 0.45
+      }));
+
+      const dust = Array.from({ length: 45 }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: 0.8 + Math.random() * 1.6,
+        vy: -0.15 - Math.random() * 0.25,
+        phase: Math.random() * Math.PI * 2
+      }));
+
+      const butterfly = {
+        x: w * 0.72,
+        y: h * 0.45,
+        t: 0
+      };
+
+      let tick = 0;
+      function renderAmbient() {
+        tick += 0.016;
+        ctx.clearRect(0, 0, w, h);
+
+        bokehOrbs.forEach(o => {
+          o.x += o.vx;
+          o.y += o.vy;
+          if (o.y < -o.r) { o.y = h + o.r; o.x = Math.random() * w; }
+          if (o.x < -o.r) o.x = w + o.r;
+          if (o.x > w + o.r) o.x = -o.r;
+
+          const pulse = o.alpha * (0.75 + 0.25 * Math.sin(tick + o.phase));
+          const g = ctx.createRadialGradient(o.x, o.y, 2, o.x, o.y, o.r);
+          g.addColorStop(0, `rgba(235, 185, 112, ${pulse})`);
+          g.addColorStop(0.6, `rgba(180, 100, 55, ${pulse * 0.45})`);
+          g.addColorStop(1, 'rgba(20, 7, 13, 0)');
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        dust.forEach(d => {
+          d.y += d.vy;
+          if (d.y < -10) { d.y = h + 10; d.x = Math.random() * w; }
+          const a = 0.2 + 0.55 * (0.5 + 0.5 * Math.sin(tick * 2.2 + d.phase));
+          ctx.fillStyle = `rgba(247, 223, 186, ${a})`;
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        petals.forEach(p => {
+          p.x += p.vx + Math.sin(tick + p.swayOffset) * 0.25;
+          p.y += p.vy;
+          p.angle += p.spin;
+
+          if (p.y < -20) { p.y = h + 20; p.x = Math.random() * w; }
+          if (p.x < -20) p.x = w + 20;
+          if (p.x > w + 20) p.x = -20;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.angle);
+
+          const pg = ctx.createLinearGradient(-p.rx, -p.ry, p.rx, p.ry);
+          pg.addColorStop(0, `rgba(242, 184, 98, ${p.alpha})`);
+          pg.addColorStop(1, `rgba(165, 92, 34, ${p.alpha * 0.85})`);
+
+          ctx.shadowColor = 'rgba(235, 175, 90, 0.35)';
+          ctx.shadowBlur = 6;
+          ctx.fillStyle = pg;
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.rx, p.ry, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        });
+
+        butterfly.t += 0.008;
+        const bx = w * (0.55 + 0.28 * Math.sin(butterfly.t * 0.9));
+        const by = h * (0.48 + 0.24 * Math.cos(butterfly.t * 1.3));
+        const wingScale = 0.55 + 0.45 * Math.abs(Math.sin(tick * 4.5));
+
+        ctx.save();
+        ctx.translate(bx, by);
+        ctx.rotate(Math.sin(butterfly.t) * 0.25);
+        ctx.shadowColor = 'rgba(243, 210, 155, 0.65)';
+        ctx.shadowBlur = 10;
+        ctx.strokeStyle = 'rgba(243, 223, 193, 0.75)';
+        ctx.fillStyle = 'rgba(218, 176, 114, 0.28)';
+        ctx.lineWidth = 1;
+
+        ctx.save();
+        ctx.scale(wingScale, 1);
+        ctx.beginPath();
+        ctx.ellipse(-5, -1, 5.5, 7.5, -0.25, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
+
+        ctx.save();
+        ctx.scale(wingScale, 1);
+        ctx.beginPath();
+        ctx.ellipse(5, -1, 5.5, 7.5, 0.25, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
+
+        ctx.restore();
+
+        requestAnimationFrame(renderAmbient);
+      }
+
+      renderAmbient();
+    }
+
+    /* ==========================================
+       CHAMPAGNE-GOLD SCRATCH CARD & COUNTDOWN
+       ========================================== */
+    function drawScratchFoil(canvas) {
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.globalCompositeOperation = 'source-over';
+
+      const grad = ctx.createLinearGradient(0, 0, w, h);
+      grad.addColorStop(0, '#CFA76E');
+      grad.addColorStop(0.28, '#F5E2C0');
+      grad.addColorStop(0.5, '#D7B179');
+      grad.addColorStop(0.75, '#FAF0DC');
+      grad.addColorStop(1, '#B88E52');
+
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.6)';
+      for (let i = 0; i < 28; i++) {
+        ctx.beginPath();
+        ctx.arc(Math.random() * w, Math.random() * h, Math.random() * 1.3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      ctx.fillStyle = '#4A2F13';
+      ctx.font = '600 12px Montserrat, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('SCRATCH TO REVEAL THE DATE', w / 2, h / 2 - 5);
+
+      ctx.fillStyle = '#6A4622';
+      ctx.font = 'italic 15px "Cormorant Garamond", Georgia, serif';
+      ctx.fillText('drag across the card', w / 2, h / 2 + 16);
+    }
+
+    function revealWeddingDate() {
+      if (APP_STATE.isDateRevealed) return;
+      APP_STATE.isDateRevealed = true;
+
+      const canvas = document.getElementById('scratch-canvas');
+      if (canvas) {
+        canvas.style.transition = 'opacity 0.65s ease';
+        canvas.style.opacity = '0';
+        canvas.style.pointerEvents = 'none';
+      }
+
+      const cd = document.getElementById('post-scratch-countdown');
+      if (cd) {
+        cd.classList.remove('opacity-0', 'translate-y-3', 'pointer-events-none');
+        cd.classList.add('opacity-100', 'translate-y-0');
+      }
+
+      const btnInstant = document.getElementById('btn-instant-reveal');
+      const btnReset = document.getElementById('btn-reset-scratch');
+      if (btnInstant) btnInstant.classList.add('hidden');
+      if (btnReset) btnReset.classList.remove('hidden');
+
+      const d = parseWeddingDate(WEDDING_CONFIG.weddingDateISO);
+      const heroStatus = document.getElementById('hero-date-status');
+      if (heroStatus) heroStatus.textContent = `${d.day} ${d.monthUpper} ${d.year}`;
+
+      applyConfigToDOM();
+      showToast(`Save the Date: ${d.formatted}`);
+    }
+
+    function initScratchCard() {
+      const canvas = document.getElementById('scratch-canvas');
+      const box = document.getElementById('scratch-card-box');
+      if (!canvas || !box) return;
+
+      const resizeScratch = () => {
+        if (APP_STATE.isDateRevealed) return;
+        canvas.width = box.clientWidth || 520;
+        canvas.height = box.clientHeight || 310;
+        drawScratchFoil(canvas);
+      };
+      resizeScratch();
+      window.addEventListener('resize', resizeScratch);
+
+      const ctx = canvas.getContext('2d');
+      let isDrawing = false;
+
+      const getPos = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return { x: clientX - rect.left, y: clientY - rect.top };
+      };
+
+      const scratchAt = (e) => {
+        if (!isDrawing || APP_STATE.isDateRevealed) return;
+        if (e.cancelable) e.preventDefault();
+        const { x, y } = getPos(e);
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(x, y, 24, 0, Math.PI * 2);
+        ctx.fill();
+        checkRevealThreshold();
+      };
+
+      let checkCounter = 0;
+      const checkRevealThreshold = () => {
+        checkCounter++;
+        if (checkCounter % 6 !== 0) return;
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+        let cleared = 0;
+        const total = imgData.length / 16;
+        for (let i = 3; i < imgData.length; i += 16) {
+          if (imgData[i] < 128) cleared++;
+        }
+        if (cleared / total >= 0.4) {
+          revealWeddingDate();
+        }
+      };
+
+      canvas.addEventListener('mousedown', (e) => { isDrawing = true; scratchAt(e); });
+      window.addEventListener('mousemove', scratchAt);
+      window.addEventListener('mouseup', () => { isDrawing = false; });
+
+      canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratchAt(e); }, { passive: false });
+      canvas.addEventListener('touchmove', scratchAt, { passive: false });
+      canvas.addEventListener('touchend', () => { isDrawing = false; });
+
+      const btnInstant = document.getElementById('btn-instant-reveal');
+      const btnReset = document.getElementById('btn-reset-scratch');
+
+      if (btnInstant) btnInstant.addEventListener('click', revealWeddingDate);
+      if (btnReset) {
+        btnReset.addEventListener('click', () => {
+          APP_STATE.isDateRevealed = false;
+          canvas.style.opacity = '1';
+          canvas.style.pointerEvents = 'auto';
+          resizeScratch();
+          const cd = document.getElementById('post-scratch-countdown');
+          if (cd) {
+            cd.classList.add('opacity-0', 'translate-y-3', 'pointer-events-none');
+            cd.classList.remove('opacity-100', 'translate-y-0');
+          }
+          btnReset.classList.add('hidden');
+          if (btnInstant) btnInstant.classList.remove('hidden');
+          applyConfigToDOM();
+        });
+      }
+    }
+
+    function initCountdown() {
+      const updateTimer = () => {
+        const target = parseWeddingDate(WEDDING_CONFIG.weddingDateISO).timestamp;
+        const diff = Math.max(0, target - Date.now());
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        const dEl = document.getElementById('cd-days');
+        const hEl = document.getElementById('cd-hours');
+        const mEl = document.getElementById('cd-minutes');
+        const sEl = document.getElementById('cd-seconds');
+        if (dEl) dEl.textContent = String(days);
+        if (hEl) hEl.textContent = String(hours).padStart(2, '0');
+        if (mEl) mEl.textContent = String(minutes).padStart(2, '0');
+        if (sEl) sEl.textContent = String(seconds).padStart(2, '0');
+      };
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    }
+
+    /* ==========================================
+       CALENDAR (.ICS) EXPORT
+       ========================================== */
+    function downloadICS(eventItem) {
+      const title = `${WEDDING_CONFIG.brideName} & ${WEDDING_CONFIG.groomName} — ${eventItem.title}`;
+      const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Nikita & Rohan Wedding//EN',
+        'BEGIN:VEVENT',
+        `UID:${Date.now()}@nikitarohan.wedence.in`,
+        `DTSTAMP:${eventItem.startISO}Z`,
+        `DTSTART:${eventItem.startISO}`,
+        `DTEND:${eventItem.endISO}`,
+        `SUMMARY:${title}`,
+        `LOCATION:${eventItem.venue}, ${WEDDING_CONFIG.venueCityFull}`,
+        `DESCRIPTION:Join us in celebrating ${title}!`,
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${eventItem.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.ics`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast(`Calendar file downloaded for ${eventItem.title}`);
+    }
+
+    /* ==========================================
+       RENDER CELEBRATIONS TIMELINE
+       ========================================== */
+    function renderEvents() {
+      const list = document.getElementById('events-timeline-list');
+      if (!list) return;
+
+      list.innerHTML = WEDDING_CONFIG.events.map((ev, idx) => {
+        const isRight = idx % 2 === 1;
+        return `
+          <div class="relative grid items-start md:grid-cols-2">
+            <!-- Center Glowing Node -->
+            <div class="pointer-events-none absolute top-4 left-1/2 hidden -translate-x-1/2 items-center justify-center md:flex">
+              <span class="flex h-5 w-5 items-center justify-center rounded-full border border-[#D4B07A]/40 bg-[#1a0811]">
+                <span class="h-2 w-2 rounded-full bg-[#D4B07A]"></span>
+              </span>
+            </div>
+
+            <div class="${isRight ? 'md:col-start-2 md:pl-12' : 'md:pr-12 md:flex md:justify-end'}">
+              <article class="w-full max-w-[390px] overflow-hidden border border-[#D4B07A]/20 bg-[#220d17]/90 shadow-2xl">
+                <div class="h-56 sm:h-60 w-full overflow-hidden bg-[#17060d]">
+                  <img src="${escapeHtml(ev.image)}" alt="${escapeHtml(ev.title)}" loading="lazy" class="h-full w-full object-cover transition duration-700 hover:scale-105" />
+                </div>
+                <div class="p-6 sm:p-7">
+                  <span class="text-[9px] tracking-[0.25em] text-[#D4B07A]/70">${escapeHtml(ev.number)}</span>
+                  <p class="mt-2 text-[9px] uppercase tracking-[0.26em] text-[#D4B07A]">${escapeHtml(ev.tag)}</p>
+                  <h3 class="mt-1.5 font-serif text-3xl sm:text-4xl font-normal text-[#FAF3E8]">${escapeHtml(ev.title)}</h3>
+                  <p class="mt-2 text-[10px] tracking-[0.16em] text-[#E5D1B2]/80">
+                    ${escapeHtml(ev.dateText)} / ${escapeHtml(ev.time)}
+                  </p>
+                  <p class="mt-3 font-serif text-base text-[#FAF3E8]">${escapeHtml(ev.venue)}</p>
+                  ${ev.dressCode ? `<p class="mt-1 font-serif text-xs italic text-[#D4B07A]">${escapeHtml(ev.dressCode)}</p>` : ''}
+                  <div class="mt-5">
+                    <button type="button" data-event-ics="${idx}" class="inline-flex min-h-[38px] items-center gap-2 rounded-full border border-[#D4B07A]/35 px-4 py-1.5 text-[8.5px] uppercase tracking-[0.22em] text-[#F3DFC1] transition hover:bg-[#D4B07A] hover:text-[#18070f]">
+                      <span>&#128197; ADD TO CALENDAR</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      list.querySelectorAll('[data-event-ics]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const i = Number(btn.getAttribute('data-event-ics'));
+          if (WEDDING_CONFIG.events[i]) downloadICS(WEDDING_CONFIG.events[i]);
+        });
+      });
+    }
+
+    /* ==========================================
+       RENDER HORIZONTAL MARQUEE GALLERY & LIGHTBOX
+       ========================================== */
+    function renderGallery() {
+      const track = document.getElementById('gallery-marquee-track');
+      if (!track) return;
+
+      const items = WEDDING_CONFIG.gallery || [];
+      const combined = [...items, ...items];
+      const tilts = ['-rotate-1', 'rotate-1', '-rotate-1', 'rotate-1', 'rotate-0'];
+
+      track.innerHTML = combined.map((photo, idx) => {
+        const realIndex = idx % items.length;
+        const tilt = tilts[realIndex % tilts.length];
+        return `
+          <figure data-gallery-idx="${realIndex}" class="group relative h-[360px] w-[260px] shrink-0 cursor-pointer overflow-hidden border border-[#D4B07A]/25 bg-[#1d0a13] p-2 sm:p-2.5 shadow-2xl transition duration-500 hover:scale-[1.02] sm:h-[490px] sm:w-[360px] ${tilt}">
+            <div class="h-full w-full overflow-hidden">
+              <img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.caption)}" loading="lazy" class="h-full w-full object-cover object-[center_20%] transition duration-700 group-hover:scale-105" />
+            </div>
+            <figcaption class="absolute bottom-4 right-4 sm:bottom-5 sm:right-5 flex h-7 w-7 items-center justify-center rounded-full bg-black/75 text-[10px] tracking-widest text-[#E5D1B2]">
+              ${escapeHtml(photo.id)}
+            </figcaption>
+          </figure>
+        `;
+      }).join('');
+
+      track.querySelectorAll('[data-gallery-idx]').forEach(card => {
+        card.addEventListener('click', () => {
+          openLightbox(Number(card.getAttribute('data-gallery-idx')));
+        });
+      });
+    }
+
+    function openLightbox(index) {
+      const items = WEDDING_CONFIG.gallery || [];
+      if (!items.length) return;
+      APP_STATE.lightboxIndex = (index + items.length) % items.length;
+      const modal = document.getElementById('lightbox-modal');
+      const img = document.getElementById('lightbox-img');
+      if (modal && img) {
+        img.src = items[APP_STATE.lightboxIndex].src;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function initLightbox() {
+      const modal = document.getElementById('lightbox-modal');
+      const closeBtn = document.getElementById('btn-lightbox-close');
+      const prevBtn = document.getElementById('btn-lightbox-prev');
+      const nextBtn = document.getElementById('btn-lightbox-next');
+
+      if (closeBtn) closeBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      });
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+          }
+        });
+      }
+      if (prevBtn) prevBtn.addEventListener('click', () => openLightbox(APP_STATE.lightboxIndex - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => openLightbox(APP_STATE.lightboxIndex + 1));
+
+      let touchStartX = 0;
+      if (modal) {
+        modal.addEventListener('touchstart', (e) => {
+          if (e.touches && e.touches[0]) touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        modal.addEventListener('touchend', (e) => {
+          if (!e.changedTouches || !e.changedTouches[0]) return;
+          const deltaX = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(deltaX) > 45) {
+            if (deltaX > 0) openLightbox(APP_STATE.lightboxIndex - 1);
+            else openLightbox(APP_STATE.lightboxIndex + 1);
+          }
+        }, { passive: true });
+      }
+    }
+
+    /* ==========================================
+       3-STEP RSVP & LIVE BLESSINGS WALL
+       ========================================== */
+    function initRSVP() {
+      const step1 = document.getElementById('rsvp-step-1');
+      const step2 = document.getElementById('rsvp-step-2');
+      const step3 = document.getElementById('rsvp-step-3');
+      const step4 = document.getElementById('rsvp-step-4');
+      const dot1 = document.getElementById('rsvp-dot-1');
+      const dot2 = document.getElementById('rsvp-dot-2');
+      const dot3 = document.getElementById('rsvp-dot-3');
+
+      const configureStep3ForChoice = () => {
+        const isDecline = APP_STATE.rsvpChoice === 'no';
+        const declineNameWrap = document.getElementById('rsvp-decline-name-wrap');
+        const declineSubtext = document.getElementById('rsvp-decline-subtext');
+        const step3Heading = document.getElementById('rsvp-step-3-heading');
+        if (declineNameWrap) {
+          if (isDecline) declineNameWrap.classList.remove('hidden');
+          else declineNameWrap.classList.add('hidden');
+        }
+        if (declineSubtext) {
+          if (isDecline) declineSubtext.classList.remove('hidden');
+          else declineSubtext.classList.add('hidden');
+        }
+        if (step3Heading) {
+          step3Heading.textContent = isDecline ? 'Send Your Warm Wishes' : 'Leave a Blessing';
+        }
+      };
+
+      const setStep = (step) => {
+        if (step === 3) configureStep3ForChoice();
+        [step1, step2, step3, step4].forEach((el, idx) => {
+          if (!el) return;
+          if (idx + 1 === step) el.classList.remove('hidden');
+          else el.classList.add('hidden');
+        });
+        [dot1, dot2, dot3].forEach((dot, idx) => {
+          if (!dot) return;
+          if (idx + 1 <= Math.min(step, 3)) {
+            dot.className = 'flex h-8 w-8 items-center justify-center rounded-full bg-[#5D1327] text-xs font-semibold text-white';
+          } else {
+            dot.className = 'flex h-8 w-8 items-center justify-center rounded-full border border-[#D4B07A]/60 text-xs font-semibold text-[#7A5B67]';
+          }
+        });
+      };
+
+      document.querySelectorAll('.rsvp-choice-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          APP_STATE.rsvpChoice = btn.getAttribute('data-rsvp-choice') || 'yes';
+          document.querySelectorAll('.rsvp-choice-btn').forEach(b => {
+            b.className = 'rsvp-choice-btn rounded-xl border border-black/10 bg-white p-4 sm:p-5 text-center transition hover:border-[#D4B07A]';
+          });
+          btn.className = 'rsvp-choice-btn rounded-xl border-2 border-[#5D1327] bg-[#FBF4EC] p-4 sm:p-5 text-center transition';
+        });
+      });
+
+      const to2 = document.getElementById('btn-rsvp-to-step-2');
+      const to3 = document.getElementById('btn-rsvp-to-step-3');
+      const back1 = document.getElementById('btn-rsvp-back-1');
+      const back2 = document.getElementById('btn-rsvp-back-2');
+      const submitBtn = document.getElementById('btn-rsvp-submit');
+      const resetAnotherBtn = document.getElementById('btn-rsvp-reset-another');
+
+      if (to2) {
+        to2.addEventListener('click', () => {
+          if (APP_STATE.rsvpChoice === 'no') {
+            setStep(3);
+          } else {
+            setStep(2);
+          }
+        });
+      }
+      if (back1) back1.addEventListener('click', () => setStep(1));
+      if (to3) to3.addEventListener('click', () => {
+        const nameInput = document.getElementById('rsvp-name');
+        if (nameInput && !nameInput.value.trim()) {
+          showToast('Please enter your full name');
+          return;
+        }
+        setStep(3);
+      });
+      if (back2) {
+        back2.addEventListener('click', () => {
+          if (APP_STATE.rsvpChoice === 'no') {
+            setStep(1);
+          } else {
+            setStep(2);
+          }
+        });
+      }
+      if (resetAnotherBtn) resetAnotherBtn.addEventListener('click', () => setStep(1));
+
+      if (submitBtn) {
+        submitBtn.addEventListener('click', async () => {
+          const isDecline = APP_STATE.rsvpChoice === 'no';
+          const nameEl = document.getElementById('rsvp-name');
+          const declineNameEl = document.getElementById('rsvp-decline-name');
+          const guestsEl = document.getElementById('rsvp-guests');
+          const contactEl = document.getElementById('rsvp-contact');
+          const noteEl = document.getElementById('rsvp-note');
+
+          const rawName = isDecline
+            ? (declineNameEl?.value || nameEl?.value || '').trim()
+            : (nameEl?.value || '').trim();
+
+          if (!rawName) {
+            showToast('Please enter your full name');
+            return;
+          }
+
+          const note = (noteEl?.value || '').trim();
+          if (isDecline && !note) {
+            showToast('Please write a warm message or blessing for the couple');
+            return;
+          }
+
+          const name = rawName;
+          const guests = isDecline ? '0 (Not Attending)' : (guestsEl?.value || '2').trim();
+          const contact = isDecline ? 'Not Attending' : (contactEl?.value || 'Not provided').trim();
+          const responseLabel =
+            APP_STATE.rsvpChoice === 'yes'
+              ? 'Yes — Joyfully Attending'
+              : APP_STATE.rsvpChoice === 'maybe'
+              ? 'Maybe — Still Confirming'
+              : 'No — Regretfully Declines (Sending Love)';
+
+          const submittedAtIST = formatISTTimestamp(new Date());
+          const rsvpSummaryLine = `${name} just submitted their Wedding RSVP for ${WEDDING_CONFIG.brideName} & ${WEDDING_CONFIG.groomName}!`;
+
+          const rsvpRecord = {
+            name,
+            guests,
+            contact,
+            attendance: responseLabel,
+            blessing: note,
+            submittedAtIST,
+            submittedAt: new Date().toISOString()
+          };
+
+          // 1. Save permanently in local storage & cloud database immediately
+          try {
+            const savedList = JSON.parse(localStorage.getItem(STORAGE_KEYS.RSVP) || '[]');
+            savedList.push(rsvpRecord);
+            localStorage.setItem(STORAGE_KEYS.RSVP, JSON.stringify(savedList));
+          } catch (e) {}
+
+          if (typeof window.__saveCloudRSVP === 'function') {
+            window.__saveCloudRSVP(rsvpRecord);
+          }
+
+          // 2. If guest left a blessing note, permanently post it to Live Wishes wall right away
+          if (note) {
+            addWishToWall(name.toUpperCase(), note);
+          }
+
+          // 3. Populate hidden form with Guest Name & IST timestamp
+          const emailSubject = `${name} submitted a Wedding RSVP (${responseLabel}) — ${submittedAtIST}`;
+          const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
+          setVal('fb-subject', emailSubject);
+          setVal('fb-summary', rsvpSummaryLine);
+          setVal('fb-couple', `${WEDDING_CONFIG.brideName} & ${WEDDING_CONFIG.groomName}`);
+          setVal('fb-name', name);
+          setVal('fb-response', responseLabel);
+          setVal('fb-guests', guests);
+          setVal('fb-contact', contact);
+          setVal('fb-blessing', note || '—');
+          setVal('fb-ist-time', submittedAtIST);
+
+          // 4. Clear inputs & show tailored celebratory message on Step 4
+          if (nameEl) nameEl.value = '';
+          if (declineNameEl) declineNameEl.value = '';
+          if (contactEl) contactEl.value = '';
+          if (noteEl) noteEl.value = '';
+
+          const titleEl = document.getElementById('rsvp-confirm-title');
+          const summaryEl = document.getElementById('rsvp-confirm-summary');
+          const subnoteEl = document.getElementById('rsvp-confirm-subnote');
+
+          if (APP_STATE.rsvpChoice === 'no') {
+            if (titleEl) titleEl.textContent = `We Will Miss You, ${name}!`;
+            if (summaryEl) {
+              summaryEl.textContent =
+                'Thank you for your heartfelt message and blessings. Even though we will miss celebrating with you in person, your love and warm wishes mean the world to us as we begin our forever!';
+            }
+            if (subnoteEl) {
+              subnoteEl.textContent = 'Your blessing has been added to our Live Wishes wall and shared with the couple.';
+            }
+          } else if (APP_STATE.rsvpChoice === 'maybe') {
+            if (titleEl) titleEl.textContent = `Thank You for Your RSVP, ${name}!`;
+            if (summaryEl) {
+              summaryEl.textContent =
+                'We hope to see you there and celebrate together at Regenta Place Verka, Amritsar!';
+            }
+            if (subnoteEl) {
+              subnoteEl.textContent = 'Your response and blessing have been saved and shared with the families.';
+            }
+          } else {
+            if (titleEl) titleEl.textContent = `Thank You for Your RSVP, ${name}!`;
+            if (summaryEl) {
+              summaryEl.textContent =
+                'Get your dancing shoes ready — we cannot wait to meet you and celebrate together at the venue!';
+            }
+            if (subnoteEl) {
+              subnoteEl.textContent = 'See you at Regenta Place Verka, Amritsar! Your RSVP has been shared with the families.';
+            }
+          }
+
+          const activateBtn = document.getElementById('btn-activate-email-now');
+          if (activateBtn) {
+            activateBtn.onclick = () => {
+              const fbForm = document.getElementById('rsvp-fallback-post-form');
+              if (fbForm) {
+                fbForm.target = '_blank';
+                fbForm.submit();
+                fbForm.target = 'rsvp_hidden_iframe';
+              }
+            };
+          }
+
+          const statusTextEl = document.getElementById('rsvp-email-status-text');
+          const actionRowEl = document.getElementById('rsvp-email-action-row');
+          if (statusTextEl) {
+            statusTextEl.textContent = `Automatically sending RSVP to ${RSVP_RECEIVER_EMAIL}...`;
+          }
+          if (actionRowEl) actionRowEl.classList.add('hidden');
+
+          setStep(4);
+          showToast(
+            isDecline
+              ? `Thank you for your warm wishes, ${name}!`
+              : `Thank you for your RSVP, ${name}! Meet you at the venue!`
+          );
+
+          // 5. Automatically send email in the background using multipart FormData
+          let deliveredOk = false;
+          let serverMessage = '';
+
+          // Channel A: Web3Forms (if access key is configured)
+          if (WEB3FORMS_ACCESS_KEY) {
+            try {
+              const w3Form = new FormData();
+              w3Form.append('access_key', WEB3FORMS_ACCESS_KEY);
+              w3Form.append('subject', emailSubject);
+              w3Form.append('from_name', `${name} — ${WEDDING_CONFIG.brideName} & ${WEDDING_CONFIG.groomName} Wedding`);
+              w3Form.append('RSVP Summary', rsvpSummaryLine);
+              w3Form.append('Guest Name', name);
+              w3Form.append('RSVP Response', responseLabel);
+              w3Form.append('Number of Guests', guests);
+              w3Form.append('Contact Info', contact);
+              w3Form.append('Blessing Message', note || '—');
+              w3Form.append('Submitted At (IST)', submittedAtIST);
+
+              const w3Res = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: w3Form
+              });
+              const w3Data = await w3Res.json().catch(() => ({}));
+              if (w3Data && w3Data.success) {
+                deliveredOk = true;
+              }
+            } catch (err) {}
+          }
+
+          // Channel B: FormSubmit Multipart FormData AJAX
+          if (!deliveredOk) {
+            try {
+              const formData = new FormData();
+              formData.append('_subject', emailSubject);
+              formData.append('_captcha', 'false');
+              formData.append('_template', 'table');
+              formData.append('RSVP_Summary', rsvpSummaryLine);
+              formData.append('Couple', `${WEDDING_CONFIG.brideName} & ${WEDDING_CONFIG.groomName}`);
+              formData.append('Guest_Name', name);
+              formData.append('RSVP_Response', responseLabel);
+              formData.append('Number_of_Guests', guests);
+              formData.append('Contact_Info', contact);
+              formData.append('Blessing_Message', note || '—');
+              formData.append('Submitted_At_IST', submittedAtIST);
+
+              const res = await fetch(`https://formsubmit.co/ajax/${RSVP_RECEIVER_EMAIL}`, {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: formData
+              });
+
+              const data = await res.json().catch(() => ({}));
+              serverMessage = String(data.message || '');
+
+              if (res.ok && (data.success === 'true' || data.success === true)) {
+                deliveredOk = true;
+              }
+            } catch (err) {
+              console.warn('FormSubmit AJAX warning:', err);
+            }
+          }
+
+          // Channel C: Hidden iframe standard POST fallback
+          if (!deliveredOk) {
+            const fbForm = document.getElementById('rsvp-fallback-post-form');
+            if (fbForm) {
+              try {
+                fbForm.target = 'rsvp_hidden_iframe';
+                fbForm.submit();
+              } catch (e) {}
+            }
+          }
+
+          if (statusTextEl) {
+            if (deliveredOk) {
+              statusTextEl.innerHTML = `&#10003; RSVP automatically sent to <strong>${RSVP_RECEIVER_EMAIL}</strong> (${submittedAtIST})!`;
+            } else if (/activate|confirm|verify|first time/i.test(serverMessage)) {
+              statusTextEl.innerHTML =
+                `<strong>One-Time Email Verification Required:</strong> Check <strong>${RSVP_RECEIVER_EMAIL}</strong> (and its <strong>Spam</strong> folder) for an email from <em>FormSubmit</em> and click <strong>"Activate Form"</strong>. Once clicked, every RSVP email arrives automatically!`;
+              if (actionRowEl) actionRowEl.classList.remove('hidden');
+            } else if (window.location.protocol === 'file:') {
+              statusTextEl.innerHTML =
+                `Note: Automatic email APIs require opening the page via Live Server (<code>http://127.0.0.1:5500</code>) or a hosted URL rather than <code>file://</code>.`;
+            } else {
+              statusTextEl.innerHTML =
+                `&#10003; RSVP dispatched to <strong>${RSVP_RECEIVER_EMAIL}</strong> (${submittedAtIST})!`;
+            }
+          }
+        });
+      }
+    }
+
+    function loadWishes() {
+      if (Array.isArray(window.__CLOUD_WISHES) && window.__CLOUD_WISHES.length > 0) {
+        return window.__CLOUD_WISHES;
+      }
+      try {
+        const raw = localStorage.getItem(STORAGE_KEYS.WISHES);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+        localStorage.setItem(STORAGE_KEYS.WISHES, JSON.stringify(DEFAULT_WISHES));
+        return DEFAULT_WISHES.slice();
+      } catch (e) {
+        return DEFAULT_WISHES.slice();
+      }
+    }
+
+    function renderWishes(scrollToBottom = false) {
+      const feed = document.getElementById('wishes-feed');
+      if (!feed) return;
+      const list = loadWishes();
+      feed.innerHTML = list.map((w, idx) => {
+        const isRight = idx % 2 === 0;
+        const authorName = escapeHtml(w.author || 'LOVED ONE');
+        const messageText = escapeHtml(w.text || '');
+        return `
+          <div class="flex ${isRight ? 'justify-end' : 'justify-start'}">
+            <div class="max-w-[82%] rounded-xl border border-[#D4B07A]/20 bg-[#2d121f]/90 px-4 py-3 shadow-md">
+              <p class="text-[9px] font-semibold uppercase tracking-[0.22em] text-[#D4B07A]">${authorName}</p>
+              <p class="mt-1 font-serif text-sm italic text-[#FAF3E8]">${messageText}</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+      if (scrollToBottom) {
+        feed.scrollTo({ top: feed.scrollHeight, behavior: 'smooth' });
+      }
+    }
+
+    function addWishToWall(author, text) {
+      const cleanAuthor = String(author || 'WELL WISHER').trim().toUpperCase();
+      const cleanText = String(text || '').trim();
+      if (!cleanText) return;
+
+      const newWish = {
+        author: cleanAuthor,
+        text: cleanText,
+        createdAt: Date.now()
+      };
+
+      const list = loadWishes().slice();
+      list.push(newWish);
+      try {
+        localStorage.setItem(STORAGE_KEYS.WISHES, JSON.stringify(list));
+      } catch (e) {}
+
+      if (Array.isArray(window.__CLOUD_WISHES)) {
+        window.__CLOUD_WISHES.push(newWish);
+      }
+
+      renderWishes(true);
+
+      if (typeof window.__saveCloudWish === 'function') {
+        window.__saveCloudWish(newWish);
+      }
+    }
+
+    function initWishes() {
+      renderWishes();
+      const form = document.getElementById('wish-form');
+      if (!form) return;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const authorEl = document.getElementById('wish-author');
+        const textEl = document.getElementById('wish-text');
+        const rawAuthor = (authorEl ? authorEl.value : '').trim();
+        const rawText = (textEl ? textEl.value : '').trim();
+        if (!rawText) {
+          showToast('Please write a blessing message first');
+          return;
+        }
+        const finalAuthor = (rawAuthor || 'Loved One').toUpperCase();
+        addWishToWall(finalAuthor, rawText);
+
+        if (authorEl) authorEl.value = '';
+        if (textEl) textEl.value = '';
+        showToast('Your blessing is permanently saved!');
+      });
+    }
+
+    function initCurtainAndChrome() {
+      const overlay = document.getElementById('curtain-overlay');
+      if (overlay) {
+        const handleCurtainOpen = (e) => {
+          if (overlay.classList.contains('curtain-open')) return;
+          if (e && e.cancelable) e.preventDefault();
+          overlay.classList.add('curtain-open');
+          SoundEngine.start();
+          setTimeout(() => {
+            overlay.style.display = 'none';
+          }, 1650);
+        };
+        overlay.addEventListener('click', handleCurtainOpen);
+        overlay.addEventListener('touchend', handleCurtainOpen, { passive: false });
+      }
+
+      const soundBtn = document.getElementById('btn-sound-toggle');
+      if (soundBtn) {
+        soundBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          SoundEngine.toggle();
+        });
+      }
+
+      const copyBtn = document.getElementById('btn-copy-hashtag');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+          const temp = document.createElement('textarea');
+          temp.value = WEDDING_CONFIG.hashtag;
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand('copy');
+          document.body.removeChild(temp);
+          showToast(`Copied ${WEDDING_CONFIG.hashtag}`);
+        });
+      }
+
+      const footerIcs = document.getElementById('btn-footer-ics');
+      if (footerIcs) {
+        footerIcs.addEventListener('click', () => {
+          if (WEDDING_CONFIG.events[1]) downloadICS(WEDDING_CONFIG.events[1]);
+        });
+      }
+
+      window.addEventListener('scroll', () => {
+        const doc = document.documentElement;
+        const scrolled = (doc.scrollTop / Math.max(1, doc.scrollHeight - doc.clientHeight)) * 100;
+        const bar = document.getElementById('scroll-progress-bar');
+        if (bar) bar.style.width = `${scrolled}%`;
+
+        const pill = document.getElementById('nav-section-pill');
+        if (pill) {
+          const sections = document.querySelectorAll('section[data-pill]');
+          let currentLabel = 'INVITATION';
+          sections.forEach(sec => {
+            const rect = sec.getBoundingClientRect();
+            if (rect.top <= window.innerHeight * 0.45) {
+              currentLabel = sec.getAttribute('data-pill') || currentLabel;
+            }
+          });
+          pill.textContent = currentLabel;
+        }
+      });
+    }
+
+    function bootWeddingApp() {
+      try {
+        applyConfigToDOM();
+        SoundEngine.init();
+        renderMarigoldGarland();
+        initSkyLanternCanvas();
+        initGlobalAmbientCanvas();
+        initScratchCard();
+        initCountdown();
+        renderEvents();
+        renderGallery();
+        initLightbox();
+        initRSVP();
+        initWishes();
+        initCurtainAndChrome();
+      } catch (err) {
+        console.error('Initialization error:', err);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bootWeddingApp);
+    } else {
+      bootWeddingApp();
+    }
+  </script>
+
+  <!-- Permanent Cloud Storage Sync for Live Wishes & RSVPs -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    async function initPermanentCloudStorage() {
+      try {
+        if (typeof __firebase_config === 'undefined' || !__firebase_config) return;
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'nikita-rohan-wedding';
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+          await signInWithCustomToken(auth, __initial_auth_token);
+        } else {
+          await signInAnonymously(auth);
+        }
+
+        const user = auth.currentUser;
+        if (!user) return;
+
+        const wishesCol = collection(db, 'artifacts', appId, 'public', 'data', 'wedding_wishes');
+        const rsvpsCol = collection(db, 'artifacts', appId, 'public', 'data', 'wedding_rsvps');
+
+        window.__saveCloudWish = async (wishObj) => {
+          if (!auth.currentUser) return;
+          try {
+            await addDoc(wishesCol, {
+              author: wishObj.author,
+              text: wishObj.text,
+              createdAt: wishObj.createdAt || Date.now(),
+              uid: auth.currentUser.uid
+            });
+          } catch (err) {
+            console.warn('Cloud wish save warning:', err);
+          }
+        };
+
+        window.__saveCloudRSVP = async (rsvpObj) => {
+          if (!auth.currentUser) return;
+          try {
+            await addDoc(rsvpsCol, {
+              ...rsvpObj,
+              uid: auth.currentUser.uid
+            });
+          } catch (err) {
+            console.warn('Cloud RSVP save warning:', err);
+          }
+        };
+
+        onSnapshot(
+          wishesCol,
+          (snapshot) => {
+            const cloudItems = [];
+            snapshot.forEach((docSnap) => {
+              const d = docSnap.data();
+              if (d && d.text) {
+                cloudItems.push({
+                  author: d.author || 'LOVED ONE',
+                  text: d.text,
+                  createdAt: d.createdAt || 0
+                });
+              }
+            });
+            cloudItems.sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
+            const combined = [...DEFAULT_WISHES, ...cloudItems];
+            window.__CLOUD_WISHES = combined;
+            try {
+              localStorage.setItem(STORAGE_KEYS.WISHES, JSON.stringify(combined));
+            } catch (e) {}
+            if (typeof renderWishes === 'function') {
+              renderWishes(true);
+            }
+          },
+          (err) => {
+            console.warn('Live wishes listener fallback to localStorage:', err);
+          }
+        );
+      } catch (e) {
+        // Fallback silently to localStorage when hosted statically without cloud config
+      }
+    }
+
+    initPermanentCloudStorage();
+  </script>
+</body>
+</html>
