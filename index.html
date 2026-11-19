@@ -130,7 +130,7 @@
     .gallery-marquee-track {
       display: flex;
       width: max-content;
-      animation: marqueeScroll 55s linear infinite;
+      animation: marqueeScroll 28s linear infinite;
     }
     .gallery-marquee-track:hover {
       animation-play-state: paused;
@@ -211,6 +211,9 @@
        2. FLOATING SKY-LANTERN HERO SECTION
        ========================================== -->
   <section id="hero-section" data-pill="INVITATION" class="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden bg-[#070405] px-5 sm:px-6 py-20 text-center">
+    <!-- Gurudwara Background Photo with Subtle Dark Vignette for Small Warm Lights -->
+    <div class="pointer-events-none absolute inset-0 bg-cover bg-center opacity-35" style="background-image: url('https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/rsvp-events/9599c9e9-ab37-43da-b63e-8bb692a2838d-img-1180.jpg');"></div>
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#070405]/80 via-[#070405]/55 to-[#070405]/88"></div>
     <canvas id="sky-lantern-canvas" class="pointer-events-none absolute inset-0 h-full w-full"></canvas>
 
     <!-- Editorial Watermark Monogram Bottom-Right -->
@@ -377,14 +380,28 @@
 
       <!-- Card Inner Content -->
       <div class="relative z-10 flex flex-col items-center">
-        <!-- Colorful Ganesh Ji Emblem -->
-        <div class="mb-3.5 flex h-16 w-16 items-center justify-center">
-          <svg viewBox="0 0 64 64" class="h-14 w-14 drop-shadow-sm">
-            <ellipse cx="32" cy="52" rx="18" ry="6" fill="#E36588" opacity="0.8" />
-            <circle cx="32" cy="30" r="13" fill="#F2A97E" />
-            <path d="M24 18 L32 8 L40 18 Z" fill="#D99B26" />
-            <path d="M30 30 Q32 42 38 40" stroke="#8C2343" stroke-width="3" fill="none" stroke-linecap="round" />
-            <circle cx="32" cy="23" r="1.8" fill="#A61C3C" />
+        <!-- Detailed Traditional Ganesh Ji Emblem -->
+        <div class="mb-3.5 flex h-20 w-20 items-center justify-center">
+          <svg viewBox="0 0 100 100" class="h-18 w-18 drop-shadow-sm">
+            <!-- Ornate Aureole Halo -->
+            <circle cx="50" cy="48" r="40" fill="#FFF3DC" stroke="#D99B26" stroke-width="1.5" stroke-dasharray="3 2" />
+            <!-- Mukut (Crown) -->
+            <path d="M36 27 L50 8 L64 27 Z" fill="#D99B26" stroke="#8C2343" stroke-width="1.2" />
+            <circle cx="50" cy="18" r="2.5" fill="#A61C3C" />
+            <path d="M33 28 Q50 23 67 28" stroke="#8C2343" stroke-width="2.2" fill="none" stroke-linecap="round" />
+            <!-- Ears -->
+            <path d="M32 34 C20 30, 18 52, 32 52" fill="#F6B88F" stroke="#8C2343" stroke-width="1.4" />
+            <path d="M68 34 C80 30, 82 52, 68 52" fill="#F6B88F" stroke="#8C2343" stroke-width="1.4" />
+            <!-- Face & Curved Trunk -->
+            <path d="M33 32 C33 24, 67 24, 67 32 C67 46, 61 54, 53 56 C52 66, 61 70, 65 65 C68 62, 64 58, 61 61" fill="#F8C6A2" stroke="#8C2343" stroke-width="1.6" stroke-linecap="round" />
+            <!-- Tilak & Eyes -->
+            <path d="M47 31 L50 37 L53 31" stroke="#B91C1C" stroke-width="1.8" fill="none" stroke-linecap="round" />
+            <circle cx="50" cy="39" r="1.2" fill="#B91C1C" />
+            <path d="M39 39 Q42 37 45 39" stroke="#5D1931" stroke-width="1.5" fill="none" stroke-linecap="round" />
+            <path d="M55 39 Q58 37 61 39" stroke="#5D1931" stroke-width="1.5" fill="none" stroke-linecap="round" />
+            <!-- Lotus Base -->
+            <ellipse cx="50" cy="82" rx="22" ry="6" fill="#E36588" opacity="0.85" />
+            <path d="M34 81 Q50 72 66 81" fill="#F497B6" stroke="#8C2343" stroke-width="1" />
           </svg>
         </div>
 
@@ -393,8 +410,17 @@
           TOGETHER WITH THEIR FAMILIES
         </p>
 
-        <div class="my-4 flex h-10 w-10 items-center justify-center rounded-full border border-[#D4B07A]/60 font-serif text-sm font-semibold text-[#7D193B]" data-bind="monogram">
-          NR
+        <!-- Interlocking Floral Crest Logo (Replacing Plain NR Text) -->
+        <div class="my-4 flex h-14 w-14 items-center justify-center">
+          <svg viewBox="0 0 80 80" class="h-14 w-14">
+            <circle cx="40" cy="40" r="34" fill="#FFF8EE" stroke="#D4B07A" stroke-width="1.5" />
+            <circle cx="40" cy="40" r="29" fill="none" stroke="#8C2343" stroke-width="0.7" stroke-dasharray="2 2" />
+            <!-- Top & Bottom Tiny Marigold Accents -->
+            <circle cx="40" cy="8" r="3" fill="#F97316" />
+            <circle cx="40" cy="72" r="3" fill="#FACC15" />
+            <!-- Monogram Emblem -->
+            <text x="40" y="45" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="21" font-weight="700" fill="#7D193B" letter-spacing="1">N&amp;R</text>
+          </svg>
         </div>
 
         <p class="text-[9.5px] font-semibold uppercase tracking-[0.2em] text-[#7D193B]">
@@ -756,12 +782,21 @@
     <div class="mx-auto mb-10 sm:mb-14 max-w-4xl px-6">
       <p class="text-[9px] uppercase tracking-[0.3em] text-[#D4B07A]">A FEW FAVOURITE FRAMES</p>
       <h2 class="mt-2 font-serif text-4xl sm:text-6xl font-normal text-[#FAF3E8]">Gallery</h2>
-      <p class="mt-2 text-xs text-[#E5D1B2]/70">The photographs that brought us here &mdash; swipe through them.</p>
+      <p class="mt-2 text-xs text-[#E5D1B2]/70">The photographs that brought us here &mdash; use the arrows to browse.</p>
     </div>
 
-    <!-- Continuous Slow Horizontal Marquee Track -->
+    <!-- Continuous Horizontal Marquee Track with Left & Right Screen Arrows -->
     <div class="relative w-full overflow-hidden py-4">
-      <div id="gallery-marquee-track" class="gallery-marquee-track gap-5 sm:gap-7 px-4 sm:px-6"></div>
+      <button id="btn-gallery-arrow-left" type="button" aria-label="Scroll gallery left" class="absolute left-3 sm:left-6 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#D4B07A]/50 bg-[#18070f]/85 text-base text-[#F3DFC1] shadow-xl backdrop-blur-md transition hover:bg-[#D4B07A] hover:text-[#18070f]">
+        &larr;
+      </button>
+      <button id="btn-gallery-arrow-right" type="button" aria-label="Scroll gallery right" class="absolute right-3 sm:right-6 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#D4B07A]/50 bg-[#18070f]/85 text-base text-[#F3DFC1] shadow-xl backdrop-blur-md transition hover:bg-[#D4B07A] hover:text-[#18070f]">
+        &rarr;
+      </button>
+
+      <div id="gallery-viewport" class="w-full overflow-hidden">
+        <div id="gallery-marquee-track" class="gallery-marquee-track gap-5 sm:gap-7 px-4 sm:px-6 transition-transform duration-500 ease-out"></div>
+      </div>
     </div>
   </section>
 
@@ -777,7 +812,7 @@
 
       <div class="mt-8 sm:mt-10 max-w-sm border border-[#D4B07A]/20 bg-[#1a0911]/85 p-6 sm:p-7">
         <p class="text-[8px] uppercase tracking-[0.28em] text-[#D4B07A]">SHARE THE MOMENT</p>
-        <p class="mt-3 break-all font-serif text-2xl text-[#FAF3E8]" data-bind="hashtag">#NikitaRohanWedding</p>
+        <p class="mt-3 break-all font-serif text-2xl text-[#FAF3E8]" data-bind="hashtag">#NikitaKiRohan</p>
         <p class="mt-2 text-xs leading-relaxed text-[#E5D1B2]/70">
           Share your favorite moments from the celebration and tag the couple.
         </p>
@@ -789,27 +824,9 @@
   </section>
 
   <!-- ==========================================
-       11. GUEST CONCIERGE & WARM-CREAM CLOSING CARD (PDF PAGE 7)
+       11. WARM-CREAM CLOSING CARD
        ========================================== -->
-  <section id="concierge-section" data-pill="GUEST DETAILS" class="relative w-full overflow-hidden bg-[#11050a] px-6 pt-12 pb-16 sm:pb-20">
-    <div class="mx-auto max-w-4xl">
-      <p class="text-[9px] uppercase tracking-[0.3em] text-[#D4B07A]">GUEST CONCIERGE</p>
-      <h2 class="mt-3 font-serif text-4xl sm:text-6xl font-normal leading-[1.05] text-[#FAF3E8]">
-        Getting here<br />with ease
-      </h2>
-
-      <!-- 01 Guest Notes Card -->
-      <div class="mt-8 sm:mt-10 max-w-sm border border-[#D4B07A]/20 bg-[#1a0911]/85 p-6 sm:p-7 shadow-2xl">
-        <span class="text-[10px] tracking-[0.24em] text-[#D4B07A]/70">01</span>
-        <h3 class="mt-2 font-serif text-2xl font-normal text-[#FAF3E8]">Guest Notes</h3>
-        <p class="mt-2.5 text-xs leading-relaxed text-[#E5D1B2]/75">
-          Please plan your journey using the venue map. Any additional travel or stay details will be shared closer to the celebration.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <footer class="relative z-10 bg-[#11050a] px-4 pb-20 pt-4">
+  <footer class="relative z-10 bg-[#11050a] px-4 pb-20 pt-10">
     <div class="mx-auto max-w-3xl rounded-2xl bg-[#F4EAD8] px-6 py-12 sm:py-16 text-center text-[#2B121B] shadow-[0_30px_90px_rgba(0,0,0,0.8)] sm:px-12">
       <!-- Top Monogram Circle -->
       <div class="mx-auto mb-7 flex h-11 w-11 items-center justify-center rounded-full border border-[#8A5A44]/35 font-serif text-sm font-semibold text-[#5D1327]" data-bind="monogram">
@@ -871,9 +888,9 @@
        ========================================== -->
   <script>
     const STORAGE_KEYS = {
-      CONFIG: 'wedence_nr_config_v14',
-      RSVP: 'wedence_nr_rsvp_v14',
-      WISHES: 'wedence_nr_wishes_v14'
+      CONFIG: 'wedence_nr_config_v15',
+      RSVP: 'wedence_nr_rsvp_v15',
+      WISHES: 'wedence_nr_wishes_v15'
     };
 
     const RSVP_RECEIVER_EMAIL = 'fbox198@gmail.com';
@@ -888,7 +905,7 @@
       weddingDateISO: '2027-01-29',
       primaryVenue: 'Regenta Place Verka, Amritsar',
       venueCityFull: 'Amritsar, Punjab, India',
-      hashtag: '#NikitaRohanWedding',
+      hashtag: '#NikitaKiRohan',
       welcomeMessage:
         'Together with our families, we joyfully invite you to join us as we begin this new chapter. Your presence, blessings, and love will make our celebration complete.',
       // Default looping Indian Wedding Bansuri Flute background music (MP3 + OGG for all devices)
@@ -904,10 +921,10 @@
           tag: 'TAARON KI CHAON',
           title: 'Sangeet Night',
           dateText: '28 JANUARY 2027',
-          time: '6:30 PM / 10:30 PM',
+          time: '6:00 PM',
           venue: 'Regenta Place Verka',
           dressCode: '',
-          startISO: '20270128T183000',
+          startISO: '20270128T180000',
           endISO: '20270128T223000',
           image: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/rsvp-events/e0e58e84-c222-4cc5-a0e2-f9dbbbdcb727-863b6586-07ed-491a-8bed-74a8d0a36df0.jpg'
         },
@@ -916,7 +933,7 @@
           tag: 'WEDDING CEREMONY',
           title: 'Anand Karaj',
           dateText: '29 JANUARY 2027',
-          time: '11:00 AM / 01:00 PM',
+          time: '11:00 AM',
           venue: 'Gurudwara Baba Sri Chand Ji Tahli Sahib',
           dressCode: 'Dress: Indian Pastels',
           startISO: '20270129T110000',
@@ -928,12 +945,12 @@
           tag: 'WEDDING CEREMONY',
           title: 'Varmala & Lunch',
           dateText: '29 JANUARY 2027',
-          time: '12:00 PM / 04:00 PM',
+          time: '1:00 PM',
           venue: 'Regenta Place Verka',
           dressCode: '',
-          startISO: '20270129T120000',
+          startISO: '20270129T130000',
           endISO: '20270129T160000',
-          image: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/rsvp-events/4b6390fd-8218-4f06-bdb4-d911162897e3-img-1570.jpeg'
+          image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=900&q=80'
         }
       ],
       gallery: [
@@ -1265,27 +1282,31 @@
     }
 
     /* ==========================================
-       MARIGOLD GARLAND SVG GENERATOR
+       MARIGOLD GARLAND SVG GENERATOR (ORANGE & YELLOW)
        ========================================== */
     function renderMarigoldGarland() {
       const group = document.getElementById('garland-flowers');
       if (!group) return;
       let html = '';
       const drawFlower = (cx, cy, idx) => {
-        const outer = idx % 2 === 0 ? '#F97316' : '#F59E0B';
-        const inner = idx % 2 === 0 ? '#FBBF24' : '#EA580C';
+        const isOrange = idx % 2 === 0;
+        const outer = isOrange ? '#F97316' : '#FACC15';
+        const mid = isOrange ? '#FB923C' : '#FDE047';
+        const center = isOrange ? '#C2410C' : '#CA8A04';
         return `
           <g>
-            <circle cx="${cx}" cy="${cy}" r="6.8" fill="${outer}" />
-            <circle cx="${cx}" cy="${cy}" r="4.2" fill="${inner}" />
-            <circle cx="${cx - 1.5}" cy="${cy - 1.5}" r="1.3" fill="#FEF08A" />
+            <circle cx="${cx}" cy="${cy}" r="7.2" fill="${outer}" />
+            <circle cx="${cx}" cy="${cy}" r="4.6" fill="${mid}" />
+            <circle cx="${cx}" cy="${cy}" r="1.8" fill="${center}" />
           </g>
         `;
       };
+      // Top horizontal row
       for (let i = 0; i < 18; i++) {
         html += drawFlower(26 + i * 19.5, 16, i);
       }
-      for (let j = 1; j <= 20; j++) {
+      // Left and right full vertical borders (orange & yellow marigolds)
+      for (let j = 1; j <= 28; j++) {
         html += drawFlower(26, 16 + j * 19.5, j);
         html += drawFlower(357.5, 16 + j * 19.5, j + 1);
       }
@@ -1603,7 +1624,7 @@
         const { x, y } = getPos(e);
         ctx.globalCompositeOperation = 'destination-out';
         ctx.beginPath();
-        ctx.arc(x, y, 24, 0, Math.PI * 2);
+        ctx.arc(x, y, 42, 0, Math.PI * 2);
         ctx.fill();
         checkRevealThreshold();
       };
@@ -1611,14 +1632,14 @@
       let checkCounter = 0;
       const checkRevealThreshold = () => {
         checkCounter++;
-        if (checkCounter % 6 !== 0) return;
+        if (checkCounter % 3 !== 0) return;
         const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
         let cleared = 0;
         const total = imgData.length / 16;
         for (let i = 3; i < imgData.length; i += 16) {
           if (imgData[i] < 128) cleared++;
         }
-        if (cleared / total >= 0.4) {
+        if (cleared / total >= 0.25) {
           revealWeddingDate();
         }
       };
@@ -1761,7 +1782,7 @@
     }
 
     /* ==========================================
-       RENDER HORIZONTAL MARQUEE GALLERY & LIGHTBOX
+       RENDER HORIZONTAL MARQUEE GALLERY & ARROW CONTROLS
        ========================================== */
     function renderGallery() {
       const track = document.getElementById('gallery-marquee-track');
@@ -1775,7 +1796,7 @@
         const realIndex = idx % items.length;
         const tilt = tilts[realIndex % tilts.length];
         return `
-          <figure data-gallery-idx="${realIndex}" class="group relative h-[360px] w-[260px] shrink-0 cursor-pointer overflow-hidden border border-[#D4B07A]/25 bg-[#1d0a13] p-2 sm:p-2.5 shadow-2xl transition duration-500 hover:scale-[1.02] sm:h-[490px] sm:w-[360px] ${tilt}">
+          <figure class="group relative h-[360px] w-[260px] shrink-0 select-none overflow-hidden border border-[#D4B07A]/25 bg-[#1d0a13] p-2 sm:p-2.5 shadow-2xl transition duration-500 sm:h-[490px] sm:w-[360px] ${tilt}">
             <div class="h-full w-full overflow-hidden">
               <img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.caption)}" loading="lazy" class="h-full w-full object-cover object-[center_20%] transition duration-700 group-hover:scale-105" />
             </div>
@@ -1786,23 +1807,24 @@
         `;
       }).join('');
 
-      track.querySelectorAll('[data-gallery-idx]').forEach(card => {
-        card.addEventListener('click', () => {
-          openLightbox(Number(card.getAttribute('data-gallery-idx')));
-        });
-      });
-    }
+      const leftBtn = document.getElementById('btn-gallery-arrow-left');
+      const rightBtn = document.getElementById('btn-gallery-arrow-right');
+      let manualOffset = 0;
 
-    function openLightbox(index) {
-      const items = WEDDING_CONFIG.gallery || [];
-      if (!items.length) return;
-      APP_STATE.lightboxIndex = (index + items.length) % items.length;
-      const modal = document.getElementById('lightbox-modal');
-      const img = document.getElementById('lightbox-img');
-      if (modal && img) {
-        img.src = items[APP_STATE.lightboxIndex].src;
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
+      const nudgeGallery = (delta) => {
+        track.style.animation = 'none';
+        const halfWidth = track.scrollWidth / 2 || 1400;
+        manualOffset += delta;
+        if (manualOffset > 0) manualOffset = -halfWidth + delta;
+        if (Math.abs(manualOffset) >= halfWidth) manualOffset = 0;
+        track.style.transform = `translateX(${manualOffset}px)`;
+      };
+
+      if (leftBtn) {
+        leftBtn.addEventListener('click', () => nudgeGallery(340));
+      }
+      if (rightBtn) {
+        rightBtn.addEventListener('click', () => nudgeGallery(-340));
       }
     }
 
@@ -1846,7 +1868,7 @@
     /* ==========================================
        3-STEP RSVP & LIVE BLESSINGS WALL
        ========================================== */
-    function initRSVP() {
+    window.initRSVP = function initRSVP() {
       const step1 = document.getElementById('rsvp-step-1');
       const step2 = document.getElementById('rsvp-step-2');
       const step3 = document.getElementById('rsvp-step-3');
@@ -2168,7 +2190,7 @@
           }
         });
       }
-    }
+    };
 
     function loadWishes() {
       if (Array.isArray(window.__CLOUD_WISHES) && window.__CLOUD_WISHES.length > 0) {
@@ -2337,7 +2359,7 @@
         renderEvents();
         renderGallery();
         initLightbox();
-        initRSVP();
+        if (typeof window.initRSVP === 'function') window.initRSVP();
         initWishes();
         initCurtainAndChrome();
       } catch (err) {
