@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nikita &amp; Rohan — Wedding Invitation</title>
+  <title>Nikita & Rohan — Wedding Invitation</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -122,18 +122,12 @@
     .playing .eq-bar:nth-child(2) { animation: eqPulse 0.6s ease-in-out 0.2s infinite; }
     .playing .eq-bar:nth-child(3) { animation: eqPulse 0.9s ease-in-out 0.35s infinite; }
 
-    /* Horizontal Slow Marquee Gallery */
-    @keyframes marqueeScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+    /* Horizontal Slow Marquee Gallery (JS-driven for reliable timed pause & auto-resume) */
     .gallery-marquee-track {
       display: flex;
       width: max-content;
-      animation: marqueeScroll 28s linear infinite;
-    }
-    .gallery-marquee-track:hover {
-      animation-play-state: paused;
+      animation: none !important;
+      will-change: transform;
     }
 
     /* Dark Moody Map Filter */
@@ -188,7 +182,7 @@
   </div>
 
   <!-- ==========================================
-       1. OPENING BURGUNDY VELVET CURTAIN OVERLAY
+1. OPENING BURGUNDY VELVET CURTAIN OVERLAY
        ========================================== -->
   <div id="curtain-overlay" class="fixed inset-0 z-50 flex cursor-pointer select-none overflow-hidden touch-manipulation">
     <div class="velvet-curtain-panel curtain-left h-full w-1/2 border-r border-black/80"></div>
@@ -208,12 +202,19 @@
   </div>
 
   <!-- ==========================================
-       2. FLOATING SKY-LANTERN HERO SECTION
+2. FLOATING SKY-LANTERN HERO SECTION
        ========================================== -->
   <section id="hero-section" data-pill="INVITATION" class="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden bg-[#070405] px-5 sm:px-6 py-20 text-center">
-    <!-- Gurudwara Background Photo with Subtle Dark Vignette for Small Warm Lights -->
-    <div class="pointer-events-none absolute inset-0 bg-cover bg-center opacity-35" style="background-image: url('https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/rsvp-events/9599c9e9-ab37-43da-b63e-8bb692a2838d-img-1180.jpg');"></div>
-    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#070405]/80 via-[#070405]/55 to-[#070405]/88"></div>
+    <!-- Illuminated Golden Temple (Sri Harmandir Sahib, Amritsar) Night Background revealed after Curtain Opens -->
+    <div id="hero-temple-bg" class="pointer-events-none absolute inset-0 overflow-hidden opacity-0 scale-105 transition-all duration-[1800ms] ease-out">
+      <img
+        src="https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=1920&q=85"
+        onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop&w=1920&q=85';"
+        alt="Sri Harmandir Sahib Golden Temple at Night"
+        class="h-full w-full object-cover object-center"
+      />
+    </div>
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#070405]/70 via-[#070405]/38 to-[#070405]/85"></div>
     <canvas id="sky-lantern-canvas" class="pointer-events-none absolute inset-0 h-full w-full"></canvas>
 
     <!-- Editorial Watermark Monogram Bottom-Right -->
@@ -222,35 +223,35 @@
     </div>
 
     <div class="relative z-10 mx-auto max-w-2xl">
-      <p class="mb-4 sm:mb-5 text-[9px] sm:text-[10px] uppercase tracking-[0.32em] sm:tracking-[0.36em] text-[#D4B07A]">
+      <p class="mb-4 sm:mb-5 text-[9px] sm:text-[10px] uppercase tracking-[0.32em] sm:tracking-[0.36em] text-[#D4B07A] drop-shadow">
         TOGETHER WITH THEIR FAMILIES
       </p>
 
-      <h1 class="font-serif leading-[0.95]">
+      <h1 class="font-serif leading-[0.95] drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)]">
         <span class="hero-gold-text block text-5xl font-normal tracking-tight sm:text-8xl md:text-[108px]" data-bind="brideName">Nikita</span>
-        <span class="my-1.5 sm:my-2 block font-serif text-xl italic text-[#E2C290] sm:text-3xl">&amp;</span>
+        <span class="my-1.5 sm:my-2 block font-serif text-xl italic text-[#E2C290] sm:text-3xl">&</span>
         <span class="hero-gold-text block text-5xl font-normal tracking-tight sm:text-8xl md:text-[108px]" data-bind="groomName">Rohan</span>
       </h1>
 
-      <p class="mx-auto mt-6 sm:mt-8 max-w-lg font-serif text-base italic leading-relaxed text-[#E8DFD5]/85 sm:text-xl" data-bind="welcomeMessage">
+      <p class="mx-auto mt-6 sm:mt-8 max-w-lg font-serif text-base italic leading-relaxed text-[#F5EFE6]/95 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)] sm:text-xl" data-bind="welcomeMessage">
         Together with our families, we joyfully invite you to join us as we begin this new chapter. Your presence, blessings, and love will make our celebration complete.
       </p>
 
-      <p id="hero-date-status" class="mt-7 sm:mt-8 text-[9px] sm:text-[10px] uppercase tracking-[0.28em] sm:tracking-[0.3em] text-[#D4B07A]">
+      <p id="hero-date-status" class="mt-7 sm:mt-8 text-[9px] sm:text-[10px] uppercase tracking-[0.28em] sm:tracking-[0.3em] text-[#D4B07A] drop-shadow">
         THE DATE AWAITS ITS REVEAL
       </p>
 
       <div class="mt-8 sm:mt-10 flex flex-col items-center">
-        <a href="#scratch-section" class="group inline-flex flex-col items-center gap-2 p-2 text-[9px] uppercase tracking-[0.3em] text-[#E5D1B2]/75 transition hover:text-gold">
+        <a href="#scratch-section" class="group inline-flex flex-col items-center gap-2 p-2 text-[9px] uppercase tracking-[0.3em] text-[#E5D1B2]/85 transition hover:text-gold">
           <span>SCROLL DOWN</span>
-          <span class="text-sm transition-transform group-hover:translate-y-1">&darr;</span>
+          <span class="text-sm transition-transform group-hover:translate-y-1">↓</span>
         </a>
       </div>
     </div>
   </section>
 
   <!-- ==========================================
-       3. CELESTIAL SCRATCH-TO-REVEAL & COUNTDOWN
+3. CELESTIAL SCRATCH-TO-REVEAL & COUNTDOWN
        ========================================== -->
   <section id="scratch-section" data-pill="INVITATION" class="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-4 py-20 sm:py-24" style="background: radial-gradient(circle at 50% 50%, #341624 0%, #240d18 52%, #13060c 100%);">
     <!-- Floating Petals & Butterfly -->
@@ -283,7 +284,7 @@
         <circle cx="335" cy="155" r="9" fill="rgba(243,223,193,0.2)" />
       </svg>
 
-      <!-- Scratch Card Container (Fluid on Mobile, Enlarged on Desktop) -->
+      <!-- Scratch Card Container -->
       <div id="scratch-card-box" class="relative z-10 h-[240px] w-[92vw] max-w-[520px] select-none overflow-hidden rounded-[20px] border border-[#D4B07A]/40 shadow-[0_32px_95px_rgba(0,0,0,0.85)] sm:h-[310px]" style="background: radial-gradient(circle at 50% 35%, #3d1729 0%, #230b16 75%, #17060e 100%);">
         <!-- Revealed Underneath Content -->
         <div class="flex h-full w-full flex-col items-center justify-center px-4 sm:px-6 text-center">
@@ -291,14 +292,14 @@
           <span id="scratch-day" class="mt-1 font-serif text-6xl sm:text-8xl font-normal leading-none text-[#F7E7CE]">29</span>
           <span id="scratch-month" class="mt-2.5 sm:mt-3 inline-block border border-[#D4B07A]/40 px-4 sm:px-5 py-1 sm:py-1.5 text-[10px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.32em] text-[#E5C38F]">JANUARY</span>
           <span id="scratch-year" class="mt-2 sm:mt-2.5 font-serif text-lg sm:text-2xl italic tracking-widest text-[#E5D1B2]/90">2027</span>
-          <span class="mt-2 sm:mt-2.5 text-[8.5px] sm:text-[11px] uppercase tracking-[0.22em] sm:tracking-[0.28em] text-[#D4B07A]/80">SAVE IT IN YOUR HEARTS &amp; CALENDARS</span>
+          <span class="mt-2 sm:mt-2.5 text-[8.5px] sm:text-[11px] uppercase tracking-[0.22em] sm:tracking-[0.28em] text-[#D4B07A]/80">SAVE IT IN YOUR HEARTS & CALENDARS</span>
         </div>
 
         <!-- Brushed Champagne-Gold Scratch Canvas -->
         <canvas id="scratch-canvas" class="absolute inset-0 h-full w-full cursor-grab touch-none active:cursor-grabbing"></canvas>
       </div>
 
-      <!-- Post-Scratch Live Countdown Timer (Fluid across all screens) -->
+      <!-- Post-Scratch Live Countdown Timer -->
       <div id="post-scratch-countdown" class="relative z-10 mt-9 sm:mt-11 grid w-[92vw] max-w-[620px] grid-cols-4 gap-3 sm:gap-8 opacity-0 translate-y-3 pointer-events-none transition-all duration-700">
         <div class="border-t border-[#D4B07A]/30 pt-3.5 sm:pt-4 text-center">
           <div id="cd-days" class="font-serif text-3xl sm:text-6xl text-[#FAF3E8]">00</div>
@@ -331,17 +332,16 @@
   </section>
 
   <!-- ==========================================
-       4. ORNATE BLOOM FORMAL INVITATION CARD (ENLARGED)
+4. ORNATE BLOOM FORMAL INVITATION CARD (MOBILE GARLAND SAFE-ZONE FIXED)
        ========================================== -->
   <section id="invitation-card-section" data-pill="THE FAMILIES" class="relative flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden px-4 py-20 sm:py-28" style="background: radial-gradient(circle at 50% 50%, #2c111e 0%, #190811 65%, #11050b 100%);">
     <!-- Subtle Background Orbital Ring -->
     <div class="pointer-events-none absolute h-[320px] w-[320px] rounded-full border border-[#D4B07A]/15 sm:h-[640px] sm:w-[640px]"></div>
 
-    <!-- Cream & Blush Parchment Card (Enlarged) -->
-    <article class="relative z-10 w-full max-w-[465px] overflow-hidden rounded-[22px] bg-gradient-to-b from-[#FFFDF9] via-[#FDF5EC] to-[#FCEAE3] px-6 pt-10 pb-12 sm:px-11 sm:pt-12 sm:pb-14 text-center text-[#5D1931] shadow-[0_35px_100px_rgba(0,0,0,0.8)]">
+    <!-- Cream & Blush Parchment Card -->
+    <article class="relative z-10 w-full max-w-[465px] overflow-hidden rounded-[22px] bg-gradient-to-b from-[#FFFDF9] via-[#FDF5EC] to-[#FCEAE3] px-11 pt-10 pb-12 sm:px-14 sm:pt-12 sm:pb-14 text-center text-[#5D1931] shadow-[0_35px_100px_rgba(0,0,0,0.8)]">
       <!-- Marigold Garland SVG Frame -->
       <svg class="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 385 590" fill="none">
-        <!-- Subtle Concentric Watermark Arcs -->
         <circle cx="192" cy="275" r="110" stroke="#E8C7B8" stroke-width="0.6" stroke-opacity="0.55" />
         <circle cx="192" cy="275" r="145" stroke="#E8C7B8" stroke-width="0.6" stroke-opacity="0.45" />
         <circle cx="192" cy="275" r="180" stroke="#E8C7B8" stroke-width="0.6" stroke-opacity="0.35" />
@@ -354,12 +354,11 @@
           <rect x="337" y="140" width="24" height="40" rx="6" fill="#FCE5B8" fill-opacity="0.45" />
         </g>
 
-        <!-- Dynamic Marigold Flowers Populated via JS -->
         <g id="garland-flowers"></g>
       </svg>
 
       <!-- Bottom Corner Floral Rose Clusters -->
-      <div class="pointer-events-none absolute -bottom-3 -left-3 h-32 w-32 opacity-90">
+      <div class="pointer-events-none absolute -bottom-3 -left-3 h-28 w-28 sm:h-32 sm:w-32 opacity-90">
         <svg viewBox="0 0 120 120" class="h-full w-full">
           <circle cx="35" cy="90" r="24" fill="#F497B6" opacity="0.65" />
           <circle cx="65" cy="98" r="20" fill="#E36588" opacity="0.75" />
@@ -368,7 +367,7 @@
           <circle cx="34" cy="88" r="11" fill="#A6264C" opacity="0.7" />
         </svg>
       </div>
-      <div class="pointer-events-none absolute -bottom-3 -right-3 h-32 w-32 opacity-90">
+      <div class="pointer-events-none absolute -bottom-3 -right-3 h-28 w-28 sm:h-32 sm:w-32 opacity-90">
         <svg viewBox="0 0 120 120" class="h-full w-full">
           <circle cx="85" cy="90" r="24" fill="#F497B6" opacity="0.65" />
           <circle cx="55" cy="98" r="20" fill="#E36588" opacity="0.75" />
@@ -378,77 +377,69 @@
         </svg>
       </div>
 
-      <!-- Card Inner Content -->
-      <div class="relative z-10 flex flex-col items-center">
+      <!-- Card Inner Content (Safe-zone padded away from side garlands) -->
+      <div class="relative z-10 mx-auto flex w-full max-w-[235px] sm:max-w-[280px] flex-col items-center">
         <!-- Detailed Traditional Ganesh Ji Emblem -->
-        <div class="mb-3.5 flex h-20 w-20 items-center justify-center">
-          <svg viewBox="0 0 100 100" class="h-18 w-18 drop-shadow-sm">
-            <!-- Ornate Aureole Halo -->
+        <div class="mb-3 flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center">
+          <svg viewBox="0 0 100 100" class="h-full w-full drop-shadow-sm">
             <circle cx="50" cy="48" r="40" fill="#FFF3DC" stroke="#D99B26" stroke-width="1.5" stroke-dasharray="3 2" />
-            <!-- Mukut (Crown) -->
             <path d="M36 27 L50 8 L64 27 Z" fill="#D99B26" stroke="#8C2343" stroke-width="1.2" />
             <circle cx="50" cy="18" r="2.5" fill="#A61C3C" />
             <path d="M33 28 Q50 23 67 28" stroke="#8C2343" stroke-width="2.2" fill="none" stroke-linecap="round" />
-            <!-- Ears -->
             <path d="M32 34 C20 30, 18 52, 32 52" fill="#F6B88F" stroke="#8C2343" stroke-width="1.4" />
             <path d="M68 34 C80 30, 82 52, 68 52" fill="#F6B88F" stroke="#8C2343" stroke-width="1.4" />
-            <!-- Face & Curved Trunk -->
             <path d="M33 32 C33 24, 67 24, 67 32 C67 46, 61 54, 53 56 C52 66, 61 70, 65 65 C68 62, 64 58, 61 61" fill="#F8C6A2" stroke="#8C2343" stroke-width="1.6" stroke-linecap="round" />
-            <!-- Tilak & Eyes -->
             <path d="M47 31 L50 37 L53 31" stroke="#B91C1C" stroke-width="1.8" fill="none" stroke-linecap="round" />
             <circle cx="50" cy="39" r="1.2" fill="#B91C1C" />
             <path d="M39 39 Q42 37 45 39" stroke="#5D1931" stroke-width="1.5" fill="none" stroke-linecap="round" />
             <path d="M55 39 Q58 37 61 39" stroke="#5D1931" stroke-width="1.5" fill="none" stroke-linecap="round" />
-            <!-- Lotus Base -->
             <ellipse cx="50" cy="82" rx="22" ry="6" fill="#E36588" opacity="0.85" />
             <path d="M34 81 Q50 72 66 81" fill="#F497B6" stroke="#8C2343" stroke-width="1" />
           </svg>
         </div>
 
-        <p class="font-serif text-sm italic text-[#7B4053]">Two families, one joyful celebration.</p>
-        <p class="mt-2.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#7D193B]">
+        <p class="font-serif text-[13px] sm:text-sm italic text-[#7B4053]">Two families, one joyful celebration.</p>
+        <p class="mt-2 text-[8.5px] sm:text-[10px] font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-[#7D193B]">
           TOGETHER WITH THEIR FAMILIES
         </p>
 
-        <!-- Interlocking Floral Crest Logo (Replacing Plain NR Text) -->
-        <div class="my-4 flex h-14 w-14 items-center justify-center">
-          <svg viewBox="0 0 80 80" class="h-14 w-14">
+        <!-- Interlocking Floral Crest Logo -->
+        <div class="my-3.5 sm:my-4 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center">
+          <svg viewBox="0 0 80 80" class="h-full w-full">
             <circle cx="40" cy="40" r="34" fill="#FFF8EE" stroke="#D4B07A" stroke-width="1.5" />
             <circle cx="40" cy="40" r="29" fill="none" stroke="#8C2343" stroke-width="0.7" stroke-dasharray="2 2" />
-            <!-- Top & Bottom Tiny Marigold Accents -->
             <circle cx="40" cy="8" r="3" fill="#F97316" />
             <circle cx="40" cy="72" r="3" fill="#FACC15" />
-            <!-- Monogram Emblem -->
-            <text x="40" y="45" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="21" font-weight="700" fill="#7D193B" letter-spacing="1">N&amp;R</text>
+            <text x="40" y="45" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="21" font-weight="700" fill="#7D193B" letter-spacing="1">N&R</text>
           </svg>
         </div>
 
-        <p class="text-[9.5px] font-semibold uppercase tracking-[0.2em] text-[#7D193B]">
+        <p class="text-[8.5px] sm:text-[9.5px] font-semibold uppercase leading-snug tracking-[0.16em] sm:tracking-[0.2em] text-[#7D193B]">
           WE REQUEST THE HONOR OF YOUR PRESENCE
         </p>
 
-        <p class="mx-auto mt-2.5 max-w-[280px] font-serif text-sm italic leading-relaxed text-[#5C3A45]">
+        <p class="mt-2.5 font-serif text-[12.5px] sm:text-sm italic leading-[1.48] text-[#5C3A45]">
           We request the honour of your presence as we begin our forever, surrounded by the family and friends who made us who we are.
         </p>
 
-        <h2 class="mt-6 font-serif text-5xl font-bold leading-tight text-[#7D193B]">
+        <h2 class="mt-5 sm:mt-6 font-serif text-4xl sm:text-5xl font-bold leading-[1.08] text-[#7D193B]">
           <span class="block" data-bind="brideName">Nikita</span>
-          <span class="my-1 block font-serif text-2xl font-normal italic text-[#A34865]">&amp;</span>
+          <span class="my-1 block font-serif text-xl sm:text-2xl font-normal italic text-[#A34865]">&</span>
           <span class="block" data-bind="groomName">Rohan</span>
         </h2>
 
         <!-- Divider with Diamond -->
-        <div class="mt-7 flex w-52 items-center justify-center gap-2">
+        <div class="mt-6 sm:mt-7 flex w-40 sm:w-52 items-center justify-center gap-2">
           <span class="h-[1px] flex-1 bg-[#D4B07A]/45"></span>
-          <span class="text-[10px] text-[#D4B07A]">&#9671;</span>
+          <span class="text-[10px] text-[#D4B07A]">◇</span>
           <span class="h-[1px] flex-1 bg-[#D4B07A]/45"></span>
         </div>
 
-        <small class="mt-3 text-[9px] uppercase tracking-[0.26em] text-[#8E5366]">WEDDING DATE</small>
-        <strong id="card-revealed-date" class="mt-1 font-serif text-lg font-bold text-[#7D193B]">
+        <small class="mt-3 text-[8.5px] sm:text-[9px] uppercase tracking-[0.24em] text-[#8E5366]">WEDDING DATE</small>
+        <strong id="card-revealed-date" class="mt-1 font-serif text-base sm:text-lg font-bold text-[#7D193B]">
           29 January 2027
         </strong>
-        <p class="mt-1 font-serif text-sm text-[#5C3A45]" data-bind="primaryVenue">
+        <p class="mt-1 font-serif text-[13px] sm:text-sm text-[#5C3A45]" data-bind="primaryVenue">
           Regenta Place Verka, Amritsar
         </p>
       </div>
@@ -460,11 +451,10 @@
   </section>
 
   <!-- ==========================================
-       5. THE CELEBRATIONS (ALTERNATING TIMELINE)
+5. THE CELEBRATIONS (ALTERNATING TIMELINE)
        ========================================== -->
   <section id="celebrations-section" data-pill="OUR STORY" class="relative w-full overflow-hidden bg-gradient-to-b from-[#11050b] via-[#1c0a13] to-[#13060c] px-4 py-20 sm:py-28">
     <div class="mx-auto max-w-5xl">
-      <!-- Editorial Heading -->
       <header class="mx-auto mb-14 sm:mb-20 max-w-xl">
         <p class="mb-3 text-[9px] uppercase tracking-[0.3em] text-[#D4B07A]">THE CELEBRATIONS</p>
         <h2 class="font-serif text-4xl font-normal leading-[1.08] text-[#FAF3E8] sm:text-6xl">
@@ -475,26 +465,21 @@
         </h2>
       </header>
 
-      <!-- Timeline Container -->
       <div class="relative">
-        <!-- Center Spine Line (Desktop) -->
         <div class="pointer-events-none absolute top-0 bottom-0 left-1/2 hidden w-[1px] -translate-x-1/2 bg-gradient-to-b from-transparent via-[#D4B07A]/25 to-transparent md:block"></div>
-
         <div id="events-timeline-list" class="space-y-14 sm:space-y-20 md:space-y-28"></div>
       </div>
     </div>
   </section>
 
   <!-- ==========================================
-       6. THE DESTINATION (GOLD ARCH & DARK MAP — ENLARGED)
+6. THE DESTINATION (GOLD ARCH & DARK MAP)
        ========================================== -->
   <section id="destination-section" data-pill="THE CELEBRATIONS" class="relative w-full overflow-hidden bg-[#13060c] px-4 py-20 sm:py-28">
-    <!-- Ornate Gold Arch Frame -->
     <div class="relative mx-auto max-w-7xl rounded-t-[130px] sm:rounded-t-[260px] border border-[#D4B07A]/35 px-4 pt-20 pb-12 sm:px-14 sm:py-24 md:py-32">
       <div class="pointer-events-none absolute inset-2 sm:inset-2.5 rounded-t-[124px] sm:rounded-t-[254px] border border-[#D4B07A]/15"></div>
 
       <div class="relative z-10 grid items-center gap-8 sm:gap-12 lg:grid-cols-2">
-        <!-- Left Venue Details Box (Enlarged) -->
         <div class="rounded-2xl sm:rounded-none border border-[#D4B07A]/25 bg-[#1b0912]/85 p-7 sm:p-14 shadow-2xl">
           <p class="text-[9px] sm:text-[10px] uppercase tracking-[0.32em] text-[#D4B07A]">THE DESTINATION</p>
           <h2 class="mt-3 sm:mt-4 font-serif text-4xl font-normal leading-tight text-[#FAF3E8] sm:text-7xl" data-bind="primaryVenueShort">
@@ -513,7 +498,6 @@
           </div>
         </div>
 
-        <!-- Right Moody Plum Map Card (Enlarged) -->
         <div class="relative mx-auto w-full max-w-2xl overflow-hidden rounded-2xl border border-[#D4B07A]/40 bg-[#1b0a12] shadow-[0_24px_75px_rgba(0,0,0,0.8)]">
           <div class="relative h-[300px] w-full sm:h-[430px]">
             <iframe
@@ -524,19 +508,17 @@
               src="https://maps.google.com/maps?q=Regenta%20Place%20Verka%20Amritsar&t=&z=14&ie=UTF8&iwloc=&output=embed">
             </iframe>
 
-            <!-- Top-Left Floating Rating Badge -->
             <div class="absolute top-3 left-3 sm:top-4 sm:left-4 rounded-xl border border-white/10 bg-[#1a0a11]/95 p-2.5 sm:p-3.5 shadow-xl backdrop-blur-md">
               <div class="flex items-center gap-2">
-                <span class="text-sm text-[#D4B07A]">&#9906;</span>
+                <span class="text-sm text-[#D4B07A]">⚲</span>
                 <div>
                   <p class="text-[11px] sm:text-sm font-semibold text-white">Regenta Place Verka</p>
                   <p class="text-[10px] sm:text-[11px] text-[#E5D1B2]/70">Amritsar, Punjab</p>
                 </div>
               </div>
-              <p class="mt-1 sm:mt-1.5 text-[10px] sm:text-[11px] text-[#E5C38F]">4.4 &#9733; <span class="text-white/50">(830)</span></p>
+              <p class="mt-1 sm:mt-1.5 text-[10px] sm:text-[11px] text-[#E5C38F]">4.4 ★ <span class="text-white/50">(830)</span></p>
             </div>
 
-            <!-- Bottom-Center Tap for Directions Pill -->
             <a href="https://maps.google.com/?q=Regenta+Place+Verka+Amritsar" target="_blank" rel="noopener noreferrer" class="absolute bottom-4 sm:bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#DFB97C] px-5 sm:px-6 py-2.5 text-[11px] font-semibold tracking-wider text-[#1e0b13] shadow-lg transition hover:bg-[#F3DFC1]">
               Tap for directions
             </a>
@@ -547,11 +529,10 @@
   </section>
 
   <!-- ==========================================
-       7. 3-STEP RSVP SECTION (ENLARGED)
+7. 3-STEP RSVP SECTION
        ========================================== -->
   <section id="rsvp-section" data-pill="THE CELEBRATIONS" class="relative w-full overflow-hidden bg-gradient-to-b from-[#13060c] via-[#1d0a13] to-[#1d0a13] px-4 py-20 sm:py-28">
     <div class="mx-auto grid max-w-6xl items-center gap-8 sm:gap-12 lg:grid-cols-12">
-      <!-- Left Editorial Column -->
       <div class="lg:col-span-5">
         <p class="text-[9px] sm:text-[10px] uppercase tracking-[0.32em] text-[#D4B07A]">YOUR PRESENCE IS OUR PRESENT</p>
         <h2 class="mt-3 font-serif text-4xl font-normal leading-[1.04] text-[#FAF3E8] sm:text-7xl">
@@ -562,11 +543,9 @@
         </p>
       </div>
 
-      <!-- Right 3-Step Cream RSVP Card -->
       <div class="lg:col-span-7">
         <div class="mx-auto w-full max-w-2xl rounded-3xl border border-[#D4B07A]/25 bg-[#230d17]/75 p-4 sm:p-6 shadow-[0_30px_90px_rgba(0,0,0,0.75)]">
           <div class="rounded-2xl bg-[#FDF9F3] px-6 py-9 text-[#231118] shadow-xl sm:px-10 sm:py-11">
-            <!-- Stepper Dots Header -->
             <div class="mx-auto mb-8 grid max-w-md grid-cols-3 text-center">
               <div class="flex flex-col items-center">
                 <span id="rsvp-dot-1" class="flex h-8 w-8 items-center justify-center rounded-full bg-[#5D1327] text-xs font-semibold text-white">1</span>
@@ -582,7 +561,7 @@
               </div>
             </div>
 
-            <!-- STEP 1: CHOOSE ATTENDANCE -->
+            <!-- STEP 1 -->
             <div id="rsvp-step-1" class="space-y-6">
               <h3 class="text-center font-serif text-3xl font-medium text-[#231118] sm:text-4xl">
                 How would you like to RSVP?
@@ -618,7 +597,7 @@
               </div>
             </div>
 
-            <!-- STEP 2: GUEST DETAILS (For Yes / Maybe) -->
+            <!-- STEP 2 -->
             <div id="rsvp-step-2" class="hidden space-y-4">
               <h3 class="text-center font-serif text-3xl font-medium text-[#231118] sm:text-4xl">
                 Guest Details
@@ -645,7 +624,7 @@
               </div>
               <div class="flex items-center justify-between pt-3">
                 <button id="btn-rsvp-back-1" type="button" class="text-xs font-semibold uppercase tracking-wider text-[#7A5B67] hover:text-[#231118]">
-                  &larr; BACK
+                  ← BACK
                 </button>
                 <button id="btn-rsvp-to-step-3" type="button" class="rounded-full bg-[#5D1327] px-7 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#430c1b]">
                   CONTINUE
@@ -653,11 +632,11 @@
               </div>
             </div>
 
-            <!-- STEP 3: BLESSING & SUBMIT (With inline Name field when "No" is chosen) -->
+            <!-- STEP 3 -->
             <div id="rsvp-step-3" class="hidden space-y-4">
               <h3 id="rsvp-step-3-heading" class="text-center font-serif text-3xl font-medium text-[#231118] sm:text-4xl">Leave a Blessing</h3>
               <p id="rsvp-decline-subtext" class="hidden text-center font-serif text-sm italic text-[#6E4F5B]">
-                We will miss having you with us in person &mdash; please leave your name and a warm blessing for Nikita &amp; Rohan.
+                We will miss having you with us in person — please leave your name and a warm blessing for Nikita & Rohan.
               </p>
               <div id="rsvp-decline-name-wrap" class="hidden">
                 <label class="block text-[11px] font-semibold uppercase tracking-wider text-[#6E4F5B]">Your Full Name *</label>
@@ -669,7 +648,7 @@
               </div>
               <div class="flex items-center justify-between pt-3">
                 <button id="btn-rsvp-back-2" type="button" class="text-xs font-semibold uppercase tracking-wider text-[#7A5B67] hover:text-[#231118]">
-                  &larr; BACK
+                  ← BACK
                 </button>
                 <button id="btn-rsvp-submit" type="button" class="rounded-full bg-[#5D1327] px-8 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#430c1b]">
                   CONFIRM RSVP
@@ -677,27 +656,25 @@
               </div>
             </div>
 
-            <!-- STEP 4: CELEBRATORY CONFIRMATION SCREEN -->
+            <!-- STEP 4 -->
             <div id="rsvp-step-4" class="hidden space-y-5 py-6 text-center">
               <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#5D1327]/10 text-2xl text-[#5D1327]">
-                &#10003;
+                ✓
               </div>
               <h3 id="rsvp-confirm-title" class="font-serif text-3xl font-medium text-[#231118] sm:text-4xl">
                 Thank You for Your RSVP!
               </h3>
               <p id="rsvp-confirm-summary" class="mx-auto max-w-md font-serif text-base italic leading-relaxed text-[#5D1327] sm:text-lg">
-                We can&rsquo;t wait to celebrate and meet you at the venue!
+                We can’t wait to celebrate and meet you at the venue!
               </p>
               <p id="rsvp-confirm-subnote" class="mx-auto max-w-md text-xs leading-relaxed text-[#7A5B67]">
                 Your response and blessing have been permanently saved and shared with the families.
               </p>
 
-              <!-- Live Email Delivery Status Box -->
               <div id="rsvp-email-status-box" class="mx-auto max-w-md rounded-xl border border-[#D4B07A]/40 bg-[#FBF4EC] px-4 py-3 text-xs text-[#5D1327]">
                 <span id="rsvp-email-status-text">Automatically sending RSVP email to fbox198@gmail.com...</span>
               </div>
 
-              <!-- Shown only if FormSubmit requires its 1-time activation click -->
               <div id="rsvp-email-action-row" class="hidden flex-col items-center justify-center gap-2 pt-1">
                 <button id="btn-activate-email-now" type="button" class="rounded-full bg-[#5D1327] px-6 py-2.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white shadow-md transition hover:bg-[#430c1b]">
                   CLICK ONCE TO VERIFY fbox198@gmail.com
@@ -733,21 +710,20 @@
   </form>
 
   <!-- ==========================================
-       8. LIVE BLESSINGS & WISHES WALL
+8. LIVE BLESSINGS & WISHES WALL
        ========================================== -->
   <section id="wishes-section" data-pill="GUEST DETAILS" class="relative w-full overflow-hidden bg-gradient-to-b from-[#1d0a13] via-[#270e1a] to-[#14060d] px-4 py-20 sm:py-24">
     <div class="mx-auto max-w-6xl">
       <div class="max-w-md">
         <p class="text-[9px] uppercase tracking-[0.3em] text-[#D4B07A]">LIVE WISHES</p>
         <h2 class="mt-2 font-serif text-4xl sm:text-6xl font-normal leading-[1.05] text-[#FAF3E8]">
-          Blessings<br />&amp; Wishes
+          Blessings<br />& Wishes
         </h2>
         <p class="mt-4 text-xs leading-relaxed text-[#E5D1B2]/75">
           Leave a heartfelt wish for the couple - your blessing appears here for everyone to read.
         </p>
       </div>
 
-      <!-- Center Glassmorphic Live Feed Box -->
       <div class="mx-auto mt-10 max-w-lg">
         <div class="rounded-2xl border border-[#D4B07A]/20 bg-[#210c16]/85 p-4 sm:p-5 shadow-2xl backdrop-blur-md">
           <div class="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
@@ -761,7 +737,6 @@
           <div id="wishes-feed" class="max-h-[320px] space-y-3 overflow-y-auto pr-1"></div>
         </div>
 
-        <!-- Direct Wish Input Form -->
         <form id="wish-form" class="mt-3 space-y-2.5">
           <input id="wish-author" type="text" placeholder="Your name" class="w-full rounded-xl border border-[#D4B07A]/20 bg-[#210c16]/90 px-4 py-3 text-xs text-white placeholder-[#E5D1B2]/40 focus:border-gold focus:outline-none" />
           <div class="flex gap-2">
@@ -776,32 +751,31 @@
   </section>
 
   <!-- ==========================================
-       9. SLOW-RUNNING HORIZONTAL MARQUEE GALLERY
+9. SLOW-RUNNING HORIZONTAL MARQUEE GALLERY
        ========================================== -->
   <section id="gallery-section" data-pill="GUEST DETAILS" class="relative w-full overflow-hidden bg-[#12050b] py-20 sm:py-24">
     <div class="mx-auto mb-10 sm:mb-14 max-w-4xl px-6">
       <p class="text-[9px] uppercase tracking-[0.3em] text-[#D4B07A]">A FEW FAVOURITE FRAMES</p>
       <h2 class="mt-2 font-serif text-4xl sm:text-6xl font-normal text-[#FAF3E8]">Gallery</h2>
-      <p class="mt-2 text-xs text-[#E5D1B2]/70">The photographs that brought us here &mdash; use the arrows to browse.</p>
+      <p class="mt-2 text-xs text-[#E5D1B2]/70">The photographs that brought us here — use the arrows to browse or tap a photo to pause.</p>
     </div>
 
-    <!-- Continuous Horizontal Marquee Track with Left & Right Screen Arrows -->
     <div class="relative w-full overflow-hidden py-4">
       <button id="btn-gallery-arrow-left" type="button" aria-label="Scroll gallery left" class="absolute left-3 sm:left-6 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#D4B07A]/50 bg-[#18070f]/85 text-base text-[#F3DFC1] shadow-xl backdrop-blur-md transition hover:bg-[#D4B07A] hover:text-[#18070f]">
-        &larr;
+        ←
       </button>
       <button id="btn-gallery-arrow-right" type="button" aria-label="Scroll gallery right" class="absolute right-3 sm:right-6 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#D4B07A]/50 bg-[#18070f]/85 text-base text-[#F3DFC1] shadow-xl backdrop-blur-md transition hover:bg-[#D4B07A] hover:text-[#18070f]">
-        &rarr;
+        →
       </button>
 
       <div id="gallery-viewport" class="w-full overflow-hidden">
-        <div id="gallery-marquee-track" class="gallery-marquee-track gap-5 sm:gap-7 px-4 sm:px-6 transition-transform duration-500 ease-out"></div>
+        <div id="gallery-marquee-track" class="gallery-marquee-track gap-5 sm:gap-7 px-4 sm:px-6"></div>
       </div>
     </div>
   </section>
 
   <!-- ==========================================
-       10. SHARE THE CELEBRATION HASHTAG SECTION
+10. SHARE THE CELEBRATION HASHTAG SECTION
        ========================================== -->
   <section id="share-section" data-pill="GUEST DETAILS" class="relative w-full overflow-hidden bg-[#11050a] px-6 py-20 sm:py-24">
     <div class="mx-auto max-w-4xl">
@@ -824,16 +798,14 @@
   </section>
 
   <!-- ==========================================
-       11. WARM-CREAM CLOSING CARD
+11. WARM-CREAM CLOSING CARD
        ========================================== -->
   <footer class="relative z-10 bg-[#11050a] px-4 pb-20 pt-10">
     <div class="mx-auto max-w-3xl rounded-2xl bg-[#F4EAD8] px-6 py-12 sm:py-16 text-center text-[#2B121B] shadow-[0_30px_90px_rgba(0,0,0,0.8)] sm:px-12">
-      <!-- Top Monogram Circle -->
       <div class="mx-auto mb-7 flex h-11 w-11 items-center justify-center rounded-full border border-[#8A5A44]/35 font-serif text-sm font-semibold text-[#5D1327]" data-bind="monogram">
         NR
       </div>
 
-      <!-- Framed Couple Portrait from PDF Page 7 -->
       <div class="mx-auto mb-8 w-52 overflow-hidden rounded-xl border-4 border-white shadow-xl sm:w-64">
         <img
           src="https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/template-coupleIntro/f5933067-1f30-4e2a-b899-d5317b891e33-img-3268.jpg"
@@ -843,7 +815,6 @@
         />
       </div>
 
-      <!-- Heartfelt Closing Message -->
       <p class="mx-auto max-w-md font-serif text-base italic leading-relaxed text-[#4A2533] sm:text-lg">
         We cannot wait to celebrate this special day with you. Thank you for being part of our story and for blessing us as we begin forever.
       </p>
@@ -852,10 +823,9 @@
         With love, gratitude, and blessings.
       </p>
 
-      <!-- Stacked Couple Names -->
       <h3 class="mt-4 font-serif text-4xl font-normal leading-tight text-[#5D1327] sm:text-5xl">
         <span class="block" data-bind="brideName">Nikita</span>
-        <span class="my-0.5 block font-serif text-xl italic text-[#A34865]">&amp;</span>
+        <span class="my-0.5 block font-serif text-xl italic text-[#A34865]">&</span>
         <span class="block" data-bind="groomName">Rohan</span>
       </h3>
 
@@ -868,18 +838,18 @@
   </footer>
 
   <!-- ==========================================
-       12. FULLSCREEN GALLERY LIGHTBOX MODAL
+12. FULLSCREEN GALLERY LIGHTBOX MODAL
        ========================================== -->
   <div id="lightbox-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 p-4 backdrop-blur-md">
     <button id="btn-lightbox-close" type="button" class="absolute top-5 right-5 z-10 min-h-[40px] rounded-full border border-white/20 bg-black/50 px-4 py-1.5 text-xs uppercase tracking-widest text-white">
-      Close &times;
+      Close ×
     </button>
     <button id="btn-lightbox-prev" type="button" aria-label="Previous photo" class="absolute left-3 sm:left-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white hover:border-gold">
-      &larr;
+      ←
     </button>
     <img id="lightbox-img" src="" alt="Gallery preview" class="max-h-[82vh] max-w-[88vw] rounded-lg border border-gold/30 object-contain shadow-2xl" />
     <button id="btn-lightbox-next" type="button" aria-label="Next photo" class="absolute right-3 sm:right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white hover:border-gold">
-      &rarr;
+      →
     </button>
   </div>
 
@@ -888,13 +858,12 @@
        ========================================== -->
   <script>
     const STORAGE_KEYS = {
-      CONFIG: 'wedence_nr_config_v15',
-      RSVP: 'wedence_nr_rsvp_v15',
-      WISHES: 'wedence_nr_wishes_v15'
+      CONFIG: 'wedence_nr_config_v18',
+      RSVP: 'wedence_nr_rsvp_v18',
+      WISHES: 'wedence_nr_wishes_v18'
     };
 
     const RSVP_RECEIVER_EMAIL = 'fbox198@gmail.com';
-    // Optional instant-delivery key from https://web3forms.com (enter fbox198@gmail.com there to get a free key that works on localhost without activation)
     const WEB3FORMS_ACCESS_KEY = '';
     window.__CLOUD_WISHES = null;
 
@@ -908,7 +877,6 @@
       hashtag: '#NikitaKiRohan',
       welcomeMessage:
         'Together with our families, we joyfully invite you to join us as we begin this new chapter. Your presence, blessings, and love will make our celebration complete.',
-      // Default looping Indian Wedding Bansuri Flute background music (MP3 + OGG for all devices)
       customAudioUrl: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/9/9f/Bansuri_sample_E_bass.ogg/Bansuri_sample_E_bass.ogg.mp3',
       fallbackOggUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Bansuri_sample_E_bass.ogg',
       fallbackSitarUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sitar_sample_yaman.ogg',
@@ -950,7 +918,8 @@
           dressCode: '',
           startISO: '20270129T130000',
           endISO: '20270129T160000',
-          image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=900&q=80'
+          fitContain: true,
+          image: 'https://lh3.googleusercontent.com/d/15isD8bEp1p8yRZh7Mf2oNmTBAfCkY7wD'
         }
       ],
       gallery: [
@@ -987,26 +956,6 @@
       { author: 'THE SHARMAS', text: 'Wishing you a lifetime of love, laughter and happily ever after.', align: 'left' },
       { author: 'AANYA & VIR', text: "So happy for you both - here's to forever!", align: 'right' }
     ];
-
-    const SOOTHING_WEDDING_TRACKS = {
-      'hoor-youtube': {
-        title: 'Hoor — Jai Dhir & Lost Stories',
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sitar_sample_yaman.ogg',
-        youtubeId: 'jJmua8wAews'
-      },
-      'sitar-yaman': {
-        title: 'Classical Sitar — Raag Yaman',
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sitar_sample_yaman.ogg'
-      },
-      'bansuri-flute': {
-        title: 'Soothing Bansuri Flute (Alap)',
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Bansuri_sample_E_bass.ogg'
-      },
-      'quiet-raga': {
-        title: 'Quiet Evening Raga',
-        url: 'https://commons.wikimedia.org/wiki/Special:FilePath/Nimisha_Shankar_-_04_-_Quiet_Raga.ogg'
-      }
-    };
 
     function loadCustomConfig() {
       try {
@@ -1059,10 +1008,10 @@
 
     function escapeHtml(str) {
       return String(str || '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
+        .replace(/&/g, '&')
+        .replace(/</g, '<')
+        .replace(/>/g, '>')
+        .replace(/"/g, '"');
     }
 
     function parseWeddingDate(isoString) {
@@ -1078,14 +1027,6 @@
         formatted: `${dateObj.getDate()} ${monthsTitle[dateObj.getMonth()]} ${dateObj.getFullYear()}`,
         timestamp: dateObj.getTime()
       };
-    }
-
-    function parseYouTubeVideoId(input) {
-      if (!input) return '';
-      const trimmed = input.trim();
-      if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) return trimmed;
-      const m = trimmed.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([a-zA-Z0-9_-]{11})/);
-      return m ? m[1] : '';
     }
 
     function applyConfigToDOM() {
@@ -1112,7 +1053,7 @@
     }
 
     /* ==========================================
-       SOUND ENGINE (SYNCHRONIZED ON/OFF & LOOPING BGM FOR ALL DEVICES)
+       SOUND ENGINE
        ========================================== */
     const SoundEngine = {
       ytPlayer: null,
@@ -1218,11 +1159,7 @@
       start() {
         APP_STATE.isSoundPlaying = true;
         updateSoundUI();
-
-        // Start native MP3 audio immediately inside user click/touch gesture
         this.startNativeAudio();
-
-        // Also trigger YouTube track
         this.tryPlayYouTube();
       },
 
@@ -1282,7 +1219,7 @@
     }
 
     /* ==========================================
-       MARIGOLD GARLAND SVG GENERATOR (ORANGE & YELLOW)
+       MARIGOLD GARLAND SVG GENERATOR
        ========================================== */
     function renderMarigoldGarland() {
       const group = document.getElementById('garland-flowers');
@@ -1301,11 +1238,9 @@
           </g>
         `;
       };
-      // Top horizontal row
       for (let i = 0; i < 18; i++) {
         html += drawFlower(26 + i * 19.5, 16, i);
       }
-      // Left and right full vertical borders (orange & yellow marigolds)
       for (let j = 1; j <= 28; j++) {
         html += drawFlower(26, 16 + j * 19.5, j);
         html += drawFlower(357.5, 16 + j * 19.5, j + 1);
@@ -1380,7 +1315,6 @@
 
     /* ==========================================
        GLOBAL FULL-PAGE AMBIENT ANIMATION CANVAS
-       (Drifting Marigold Petals, Golden Bokeh & Fluttering Butterfly)
        ========================================== */
     function initGlobalAmbientCanvas() {
       const canvas = document.getElementById('global-ambient-canvas');
@@ -1735,12 +1669,18 @@
     function renderEvents() {
       const list = document.getElementById('events-timeline-list');
       if (!list) return;
-
       list.innerHTML = WEDDING_CONFIG.events.map((ev, idx) => {
         const isRight = idx % 2 === 1;
+        const isContain = Boolean(ev.fitContain);
+        const mediaWrapperClass = isContain
+          ? 'aspect-[9/16] max-h-[460px] w-full overflow-hidden bg-[#FAF3E8] flex items-center justify-center'
+          : 'aspect-[4/3] sm:h-64 w-full overflow-hidden bg-[#17060d]';
+        const imgClass = isContain
+          ? 'h-full w-full object-contain object-center transition duration-700 hover:scale-[1.03]'
+          : 'h-full w-full object-cover object-center transition duration-700 hover:scale-105';
+
         return `
           <div class="relative grid items-start md:grid-cols-2">
-            <!-- Center Glowing Node -->
             <div class="pointer-events-none absolute top-4 left-1/2 hidden -translate-x-1/2 items-center justify-center md:flex">
               <span class="flex h-5 w-5 items-center justify-center rounded-full border border-[#D4B07A]/40 bg-[#1a0811]">
                 <span class="h-2 w-2 rounded-full bg-[#D4B07A]"></span>
@@ -1749,8 +1689,8 @@
 
             <div class="${isRight ? 'md:col-start-2 md:pl-12' : 'md:pr-12 md:flex md:justify-end'}">
               <article class="w-full max-w-[390px] overflow-hidden border border-[#D4B07A]/20 bg-[#220d17]/90 shadow-2xl">
-                <div class="h-56 sm:h-60 w-full overflow-hidden bg-[#17060d]">
-                  <img src="${escapeHtml(ev.image)}" alt="${escapeHtml(ev.title)}" loading="lazy" class="h-full w-full object-cover transition duration-700 hover:scale-105" />
+                <div class="${mediaWrapperClass}">
+                  <img src="${escapeHtml(ev.image)}" alt="${escapeHtml(ev.title)}" loading="lazy" class="${imgClass}" />
                 </div>
                 <div class="p-6 sm:p-7">
                   <span class="text-[9px] tracking-[0.25em] text-[#D4B07A]/70">${escapeHtml(ev.number)}</span>
@@ -1763,7 +1703,7 @@
                   ${ev.dressCode ? `<p class="mt-1 font-serif text-xs italic text-[#D4B07A]">${escapeHtml(ev.dressCode)}</p>` : ''}
                   <div class="mt-5">
                     <button type="button" data-event-ics="${idx}" class="inline-flex min-h-[38px] items-center gap-2 rounded-full border border-[#D4B07A]/35 px-4 py-1.5 text-[8.5px] uppercase tracking-[0.22em] text-[#F3DFC1] transition hover:bg-[#D4B07A] hover:text-[#18070f]">
-                      <span>&#128197; ADD TO CALENDAR</span>
+                      <span>📅 ADD TO CALENDAR</span>
                     </button>
                   </div>
                 </div>
@@ -1782,7 +1722,7 @@
     }
 
     /* ==========================================
-       RENDER HORIZONTAL MARQUEE GALLERY & ARROW CONTROLS
+       RENDER HORIZONTAL MARQUEE GALLERY & TIMED AUTO-RESUME
        ========================================== */
     function renderGallery() {
       const track = document.getElementById('gallery-marquee-track');
@@ -1796,9 +1736,9 @@
         const realIndex = idx % items.length;
         const tilt = tilts[realIndex % tilts.length];
         return `
-          <figure class="group relative h-[360px] w-[260px] shrink-0 select-none overflow-hidden border border-[#D4B07A]/25 bg-[#1d0a13] p-2 sm:p-2.5 shadow-2xl transition duration-500 sm:h-[490px] sm:w-[360px] ${tilt}">
+          <figure class="gallery-photo-card group relative h-[360px] w-[260px] shrink-0 cursor-pointer select-none overflow-hidden border border-[#D4B07A]/25 bg-[#1d0a13] p-2 sm:p-2.5 shadow-2xl transition duration-500 sm:h-[490px] sm:w-[360px] ${tilt}">
             <div class="h-full w-full overflow-hidden">
-              <img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.caption)}" loading="lazy" class="h-full w-full object-cover object-[center_20%] transition duration-700 group-hover:scale-105" />
+              <img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.caption)}" loading="lazy" draggable="false" class="h-full w-full object-cover object-[center_20%] transition duration-700 group-hover:scale-105" />
             </div>
             <figcaption class="absolute bottom-4 right-4 sm:bottom-5 sm:right-5 flex h-7 w-7 items-center justify-center rounded-full bg-black/75 text-[10px] tracking-widest text-[#E5D1B2]">
               ${escapeHtml(photo.id)}
@@ -1809,23 +1749,72 @@
 
       const leftBtn = document.getElementById('btn-gallery-arrow-left');
       const rightBtn = document.getElementById('btn-gallery-arrow-right');
-      let manualOffset = 0;
+
+      let currentOffset = 0;
+      let pauseUntil = 0;
+      let lastTimestamp = null;
+      const SCROLL_SPEED_PX_PER_SEC = 52;
+
+      if (window.__galleryRafId) {
+        cancelAnimationFrame(window.__galleryRafId);
+      }
+
+      const pauseFor = (durationMs) => {
+        pauseUntil = performance.now() + durationMs;
+      };
+
+      const wrapOffset = (offset, halfWidth) => {
+        if (halfWidth <= 0) return offset;
+        let wrapped = offset % halfWidth;
+        if (wrapped > 0) wrapped -= halfWidth;
+        return wrapped;
+      };
+
+      function animateMarquee(now) {
+        if (lastTimestamp === null) lastTimestamp = now;
+        const dt = Math.min((now - lastTimestamp) / 1000, 0.1);
+        lastTimestamp = now;
+
+        if (now >= pauseUntil) {
+          const halfWidth = track.scrollWidth / 2;
+          if (halfWidth > 0) {
+            currentOffset = wrapOffset(currentOffset - SCROLL_SPEED_PX_PER_SEC * dt, halfWidth);
+            track.style.transition = 'none';
+            track.style.transform = `translate3d(${currentOffset}px, 0, 0)`;
+          }
+        }
+
+        window.__galleryRafId = requestAnimationFrame(animateMarquee);
+      }
+      window.__galleryRafId = requestAnimationFrame(animateMarquee);
 
       const nudgeGallery = (delta) => {
-        track.style.animation = 'none';
         const halfWidth = track.scrollWidth / 2 || 1400;
-        manualOffset += delta;
-        if (manualOffset > 0) manualOffset = -halfWidth + delta;
-        if (Math.abs(manualOffset) >= halfWidth) manualOffset = 0;
-        track.style.transform = `translateX(${manualOffset}px)`;
+        currentOffset = wrapOffset(currentOffset + delta, halfWidth);
+        track.style.transition = 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)';
+        track.style.transform = `translate3d(${currentOffset}px, 0, 0)`;
+        pauseFor(1000);
       };
 
       if (leftBtn) {
-        leftBtn.addEventListener('click', () => nudgeGallery(340));
+        leftBtn.onclick = (e) => {
+          e.stopPropagation();
+          nudgeGallery(340);
+        };
       }
       if (rightBtn) {
-        rightBtn.addEventListener('click', () => nudgeGallery(-340));
+        rightBtn.onclick = (e) => {
+          e.stopPropagation();
+          nudgeGallery(-340);
+        };
       }
+
+      track.onclick = (e) => {
+        const card = e.target.closest('.gallery-photo-card');
+        if (!card) return;
+        e.stopPropagation();
+        pauseFor(2000);
+      };
     }
 
     function initLightbox() {
@@ -2005,7 +1994,6 @@
             submittedAt: new Date().toISOString()
           };
 
-          // 1. Save permanently in local storage & cloud database immediately
           try {
             const savedList = JSON.parse(localStorage.getItem(STORAGE_KEYS.RSVP) || '[]');
             savedList.push(rsvpRecord);
@@ -2016,12 +2004,10 @@
             window.__saveCloudRSVP(rsvpRecord);
           }
 
-          // 2. If guest left a blessing note, permanently post it to Live Wishes wall right away
           if (note) {
             addWishToWall(name.toUpperCase(), note);
           }
 
-          // 3. Populate hidden form with Guest Name & IST timestamp
           const emailSubject = `${name} submitted a Wedding RSVP (${responseLabel}) — ${submittedAtIST}`;
           const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
           setVal('fb-subject', emailSubject);
@@ -2034,7 +2020,6 @@
           setVal('fb-blessing', note || '—');
           setVal('fb-ist-time', submittedAtIST);
 
-          // 4. Clear inputs & show tailored celebratory message on Step 4
           if (nameEl) nameEl.value = '';
           if (declineNameEl) declineNameEl.value = '';
           if (contactEl) contactEl.value = '';
@@ -2099,11 +2084,9 @@
               : `Thank you for your RSVP, ${name}! Meet you at the venue!`
           );
 
-          // 5. Automatically send email in the background using multipart FormData
           let deliveredOk = false;
           let serverMessage = '';
 
-          // Channel A: Web3Forms (if access key is configured)
           if (WEB3FORMS_ACCESS_KEY) {
             try {
               const w3Form = new FormData();
@@ -2129,7 +2112,6 @@
             } catch (err) {}
           }
 
-          // Channel B: FormSubmit Multipart FormData AJAX
           if (!deliveredOk) {
             try {
               const formData = new FormData();
@@ -2162,7 +2144,6 @@
             }
           }
 
-          // Channel C: Hidden iframe standard POST fallback
           if (!deliveredOk) {
             const fbForm = document.getElementById('rsvp-fallback-post-form');
             if (fbForm) {
@@ -2175,7 +2156,7 @@
 
           if (statusTextEl) {
             if (deliveredOk) {
-              statusTextEl.innerHTML = `&#10003; RSVP automatically sent to <strong>${RSVP_RECEIVER_EMAIL}</strong> (${submittedAtIST})!`;
+              statusTextEl.innerHTML = `✓ RSVP automatically sent to <strong>${RSVP_RECEIVER_EMAIL}</strong> (${submittedAtIST})!`;
             } else if (/activate|confirm|verify|first time/i.test(serverMessage)) {
               statusTextEl.innerHTML =
                 `<strong>One-Time Email Verification Required:</strong> Check <strong>${RSVP_RECEIVER_EMAIL}</strong> (and its <strong>Spam</strong> folder) for an email from <em>FormSubmit</em> and click <strong>"Activate Form"</strong>. Once clicked, every RSVP email arrives automatically!`;
@@ -2185,7 +2166,7 @@
                 `Note: Automatic email APIs require opening the page via Live Server (<code>http://127.0.0.1:5500</code>) or a hosted URL rather than <code>file://</code>.`;
             } else {
               statusTextEl.innerHTML =
-                `&#10003; RSVP dispatched to <strong>${RSVP_RECEIVER_EMAIL}</strong> (${submittedAtIST})!`;
+                `✓ RSVP dispatched to <strong>${RSVP_RECEIVER_EMAIL}</strong> (${submittedAtIST})!`;
             }
           }
         });
@@ -2284,11 +2265,16 @@
 
     function initCurtainAndChrome() {
       const overlay = document.getElementById('curtain-overlay');
+      const heroTempleBg = document.getElementById('hero-temple-bg');
       if (overlay) {
         const handleCurtainOpen = (e) => {
           if (overlay.classList.contains('curtain-open')) return;
           if (e && e.cancelable) e.preventDefault();
           overlay.classList.add('curtain-open');
+          if (heroTempleBg) {
+            heroTempleBg.classList.remove('opacity-0', 'scale-105');
+            heroTempleBg.classList.add('opacity-65', 'scale-100');
+          }
           SoundEngine.start();
           setTimeout(() => {
             overlay.style.display = 'none';
