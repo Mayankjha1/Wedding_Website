@@ -413,8 +413,8 @@
       <!-- Card Inner Content (Safe-zone padded away from side garlands) -->
       <div class="relative z-10 mx-auto flex w-full max-w-[235px] sm:max-w-[280px] flex-col items-center">
         <!-- Ganpati Ji Logo -->
-        <div class="mb-3 flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center">
-          <img src="./ganpati-logo.png" alt="Ganpati Ji" class="h-full w-full object-contain drop-shadow-sm" />
+        <div class="relative z-10 mt-8 mb-3 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-dashed border-[#D99B26] bg-[#FFF3DC] p-1.5 sm:mt-0 sm:h-20 sm:w-20">
+          <img src="./ganpati-logo.png" alt="Ganpati Ji" width="640" height="640" loading="lazy" decoding="async" class="h-full w-full object-contain drop-shadow-sm" />
         </div>
 
         <p class="font-serif text-[13px] sm:text-sm italic text-[#7B4053]">Two families, one joyful celebration.</p>
@@ -433,7 +433,7 @@
           </svg>
         </div>
 
-        <p class="text-[8.5px] sm:text-[9.5px] font-semibold uppercase leading-snug tracking-[0.16em] sm:tracking-[0.2em] text-[#7D193B]">
+        <p class="font-serif text-[8.5px] sm:text-[9.5px] italic uppercase leading-snug tracking-[0.16em] sm:tracking-[0.2em] text-[#7D193B]">
           REQUESTS THE HONOUR OF YOUR PRESENCE AS
         </p>
 
@@ -896,8 +896,8 @@
       hashtag: '#NikitaKiRohan',
       welcomeMessage:
         'Together with our families, we joyfully invite you to join us as we begin this new chapter. Your presence, blessings, and love will make our celebration complete.',
-      customAudioUrl: './dori-instrumental.mp3',
-      musicTitle: 'Lost Stories - Dori (Instrumental)',
+      customAudioUrl: './wedding-music.mp3',
+      musicTitle: 'Every Lamha Feels Different When You Hear This',
       events: [
         {
           number: '01 / 3',
@@ -962,6 +962,17 @@
           id: '05',
           caption: 'Nikita & Rohan — Golden Hour Together',
           src: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/template-coupleIntro/f5933067-1f30-4e2a-b899-d5317b891e33-img-3268.jpg'
+        },
+        {
+          id: '06',
+          caption: 'Nikita & Rohan — A Sunny Day Out',
+          src: './gallery-couple-outing.jpg'
+        },
+        {
+          id: '07',
+          caption: 'Nikita & Rohan — Seeking Blessings Together',
+          src: './gallery-couple-home.jpg',
+          orientation: 'landscape'
         }
       ]
     };
@@ -1098,7 +1109,7 @@
           if (!APP_STATE.isSoundPlaying) return;
           APP_STATE.isSoundPlaying = false;
           updateSoundUI();
-          showToast('Unable to play the music file. Check that the Drive file is shared publicly.');
+          showToast('Music could not load. Open the hosted invitation and make sure wedding-music.mp3 is uploaded.');
         });
       },
 
@@ -1659,8 +1670,11 @@
       track.innerHTML = combined.map((photo, idx) => {
         const realIndex = idx % items.length;
         const tilt = tilts[realIndex % tilts.length];
+        const cardSize = photo.orientation === 'landscape'
+          ? 'h-[180px] w-[320px] sm:h-[270px] sm:w-[480px]'
+          : 'h-[360px] w-[260px] sm:h-[490px] sm:w-[360px]';
         return `
-          <figure class="gallery-photo-card group relative h-[360px] w-[260px] shrink-0 cursor-pointer select-none overflow-hidden border border-[#D4B07A]/25 bg-[#1d0a13] p-2 sm:p-2.5 shadow-2xl transition duration-500 sm:h-[490px] sm:w-[360px] ${tilt}">
+          <figure class="gallery-photo-card group relative ${cardSize} shrink-0 cursor-pointer select-none overflow-hidden border border-[#D4B07A]/25 bg-[#1d0a13] p-2 sm:p-2.5 shadow-2xl transition duration-500 ${tilt}">
             <div class="h-full w-full overflow-hidden">
               <img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.caption)}" loading="lazy" draggable="false" class="h-full w-full object-cover object-[center_20%] transition duration-700 group-hover:scale-105" />
             </div>
