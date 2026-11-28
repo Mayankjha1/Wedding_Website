@@ -215,9 +215,7 @@
     <canvas id="sky-lantern-canvas" class="pointer-events-none absolute inset-0 h-full w-full"></canvas>
 
     <!-- Editorial Watermark Monogram Bottom-Right -->
-    <div class="pointer-events-none absolute -bottom-6 right-4 sm:-bottom-10 sm:right-6 select-none font-serif text-[110px] leading-none text-white/[0.04] sm:text-[210px] md:text-[260px]" data-bind="monogram">
-      NR
-    </div>
+    <img src="./couple-logo.png" alt="" aria-hidden="true" class="pointer-events-none absolute -bottom-6 right-4 h-[220px] w-[220px] select-none object-contain opacity-[0.04] brightness-0 invert sm:-bottom-10 sm:right-6 sm:h-[360px] sm:w-[360px] md:h-[420px] md:w-[420px]" />
 
     <div class="relative z-10 mx-auto max-w-2xl">
       <p class="mb-4 sm:mb-5 text-[9px] sm:text-[10px] uppercase tracking-[0.32em] sm:tracking-[0.36em] text-[#D4B07A] drop-shadow">
@@ -230,7 +228,7 @@
         <span class="hero-gold-text block text-5xl font-normal tracking-tight sm:text-8xl md:text-[108px]" data-bind="groomName">Rohan</span>
       </h1>
 
-      <p class="mx-auto mt-6 sm:mt-8 max-w-lg font-serif text-base italic leading-relaxed text-[#F5EFE6]/95 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)] sm:text-xl" data-bind="welcomeMessage">
+      <p class="mx-auto mt-6 sm:mt-8 max-w-lg font-serif text-lg italic leading-relaxed text-[#F5EFE6]/95 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)] sm:text-xl" data-bind="welcomeMessage">
         Together with our families, we joyfully invite you to join us as we begin this new chapter. Your presence, blessings, and love will make our celebration complete.
       </p>
 
@@ -423,18 +421,12 @@
         </p>
 
         <!-- Interlocking Floral Crest Logo -->
-        <div class="my-3.5 sm:my-4 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center">
-          <svg viewBox="0 0 80 80" class="h-full w-full">
-            <circle cx="40" cy="40" r="34" fill="#FFF8EE" stroke="#D4B07A" stroke-width="1.5" />
-            <circle cx="40" cy="40" r="29" fill="none" stroke="#8C2343" stroke-width="0.7" stroke-dasharray="2 2" />
-            <circle cx="40" cy="8" r="3" fill="#F97316" />
-            <circle cx="40" cy="72" r="3" fill="#FACC15" />
-            <text x="40" y="45" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="21" font-weight="700" fill="#7D193B" letter-spacing="1">N&R</text>
-          </svg>
+        <div class="my-3.5 sm:my-4 flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center">
+          <img src="./couple-logo.png" alt="Nikita and Rohan logo" width="640" height="640" loading="lazy" decoding="async" class="h-full w-full object-contain" />
         </div>
 
-        <p class="font-serif text-[8.5px] sm:text-[9.5px] italic uppercase leading-snug tracking-[0.16em] sm:tracking-[0.2em] text-[#7D193B]">
-          REQUESTS THE HONOUR OF YOUR PRESENCE AS
+        <p class="font-serif text-[8.5px] sm:text-[9.5px] italic leading-snug tracking-[0.16em] sm:tracking-[0.2em] text-[#7D193B]">
+          Requests the honour of your presence as
         </p>
 
         <h2 class="mt-5 sm:mt-6 font-serif text-4xl sm:text-5xl font-bold leading-[1.08] text-[#7D193B]">
@@ -805,7 +797,7 @@
 
       <div class="mt-8 sm:mt-10 max-w-sm border border-[#D4B07A]/20 bg-[#1a0911]/85 p-6 sm:p-7">
         <p class="text-[8px] uppercase tracking-[0.28em] text-[#D4B07A]">SHARE THE MOMENT</p>
-        <p class="mt-3 break-all font-serif text-2xl text-[#FAF3E8]" data-bind="hashtag">#NikitaKiRohan</p>
+        <p class="mt-3 break-all font-serif text-2xl text-[#FAF3E8]" data-bind="hashtag">#NIKIgotROmantic</p>
         <p class="mt-2 text-xs leading-relaxed text-[#E5D1B2]/70">
           Share your favorite moments from the celebration and tag the couple.
         </p>
@@ -821,9 +813,7 @@
        ========================================== -->
   <footer class="relative z-10 bg-[#11050a] px-4 pb-20 pt-10">
     <div class="mx-auto max-w-3xl rounded-2xl bg-[#F4EAD8] px-6 py-12 sm:py-16 text-center text-[#2B121B] shadow-[0_30px_90px_rgba(0,0,0,0.8)] sm:px-12">
-      <div class="mx-auto mb-7 flex h-11 w-11 items-center justify-center rounded-full border border-[#8A5A44]/35 font-serif text-sm font-semibold text-[#5D1327]" data-bind="monogram">
-        NR
-      </div>
+      <img src="./couple-logo.png" alt="Nikita and Rohan logo" width="640" height="640" loading="lazy" decoding="async" class="mx-auto mb-7 h-16 w-16 sm:h-20 sm:w-20 object-contain" />
 
       <div class="mx-auto mb-8 w-52 overflow-hidden rounded-xl border-4 border-white shadow-xl sm:w-64">
         <img
@@ -889,11 +879,10 @@
     const DEFAULT_WEDDING_CONFIG = {
       brideName: 'Nikita',
       groomName: 'Rohan',
-      monogram: 'NR',
       weddingDateISO: '2027-01-29',
       primaryVenue: 'Regenta Place Verka, Amritsar',
       venueCityFull: 'Amritsar, Punjab, India',
-      hashtag: '#NikitaKiRohan',
+      hashtag: '#NIKIgotROmantic',
       welcomeMessage:
         'Together with our families, we joyfully invite you to join us as we begin this new chapter. Your presence, blessings, and love will make our celebration complete.',
       customAudioUrl: './wedding-music.mp3',
@@ -918,7 +907,6 @@
           dateText: '29 JANUARY 2027',
           time: '11:00 AM',
           venue: 'Gurudwara Baba Sri Chand Ji Tahli Sahib',
-          dressCode: 'Dress: Indian Pastels',
           startISO: '20270129T110000',
           endISO: '20270129T130000',
           image: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/rsvp-events/9599c9e9-ab37-43da-b63e-8bb692a2838d-img-1180.jpg'
@@ -950,29 +938,23 @@
         },
         {
           id: '03',
-          caption: 'Nikita & Rohan — Celebration Joy',
-          src: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/gallery/a7c05851-6a46-4106-99d2-d5a4d2fcacca-img-4627.jpg'
-        },
-        {
-          id: '04',
-          caption: 'Nikita & Rohan — Festive Blessings',
-          src: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/gallery/4136b49c-541a-4096-a438-015ca33a724f-img20250827200937-original.jpg'
-        },
-        {
-          id: '05',
           caption: 'Nikita & Rohan — Golden Hour Together',
           src: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/template-coupleIntro/f5933067-1f30-4e2a-b899-d5317b891e33-img-3268.jpg'
         },
         {
-          id: '06',
+          id: '04',
+          caption: 'Nikita & Rohan — Celebration Joy',
+          src: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/gallery/a7c05851-6a46-4106-99d2-d5a4d2fcacca-img-4627.jpg'
+        },
+        {
+          id: '05',
           caption: 'Nikita & Rohan — A Sunny Day Out',
           src: './gallery-couple-outing.jpg'
         },
         {
-          id: '07',
-          caption: 'Nikita & Rohan — Seeking Blessings Together',
-          src: './gallery-couple-home.jpg',
-          orientation: 'landscape'
+          id: '06',
+          caption: 'Nikita & Rohan — Festive Blessings',
+          src: 'https://media.wedence.in/event-images/43031212-45c7-42b0-9ce0-56d05719065a/gallery/4136b49c-541a-4096-a438-015ca33a724f-img20250827200937-original.jpg'
         }
       ]
     };
@@ -1059,7 +1041,6 @@
       const d = parseWeddingDate(WEDDING_CONFIG.weddingDateISO);
       document.querySelectorAll('[data-bind="brideName"]').forEach(el => { el.textContent = WEDDING_CONFIG.brideName; });
       document.querySelectorAll('[data-bind="groomName"]').forEach(el => { el.textContent = WEDDING_CONFIG.groomName; });
-      document.querySelectorAll('[data-bind="monogram"]').forEach(el => { el.textContent = WEDDING_CONFIG.monogram; });
       document.querySelectorAll('[data-bind="primaryVenue"]').forEach(el => { el.textContent = WEDDING_CONFIG.primaryVenue; });
       document.querySelectorAll('[data-bind="venueCityFull"]').forEach(el => { el.textContent = WEDDING_CONFIG.venueCityFull; });
       document.querySelectorAll('[data-bind="hashtag"]').forEach(el => { el.textContent = WEDDING_CONFIG.hashtag; });
