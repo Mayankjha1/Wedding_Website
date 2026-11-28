@@ -283,10 +283,10 @@
       <div id="scratch-card-box" class="relative z-10 h-[240px] w-[92vw] max-w-[520px] select-none overflow-hidden rounded-[20px] border border-[#D4B07A]/40 shadow-[0_32px_95px_rgba(0,0,0,0.85)] sm:h-[310px]" style="background: radial-gradient(circle at 50% 35%, #3d1729 0%, #230b16 75%, #17060e 100%);">
         <!-- Revealed Underneath Content -->
         <div class="flex h-full w-full flex-col items-center justify-center px-4 sm:px-6 text-center">
-          <span class="font-serif text-sm sm:text-lg italic tracking-wide text-[#E5D1B2]/85">The date is written</span>
-          <span id="scratch-day" class="mt-1 font-serif text-6xl sm:text-8xl font-normal leading-none text-[#F7E7CE]">29</span>
-          <span id="scratch-month" class="mt-2.5 sm:mt-3 inline-block border border-[#D4B07A]/40 px-4 sm:px-5 py-1 sm:py-1.5 text-[10px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.32em] text-[#E5C38F]">JANUARY</span>
-          <span id="scratch-year" class="mt-2 sm:mt-2.5 font-serif text-lg sm:text-2xl italic tracking-widest text-[#E5D1B2]/90">2027</span>
+          <span class="font-serif text-lg sm:text-xl italic tracking-wide text-[#E5D1B2]/85">The date is</span>
+          <span id="scratch-day" class="mt-1 font-serif text-7xl sm:text-9xl font-normal leading-none text-[#F7E7CE]">29</span>
+          <span id="scratch-month" class="mt-2.5 sm:mt-3 inline-block border border-[#D4B07A]/40 px-4 sm:px-5 py-1 sm:py-1.5 text-xs sm:text-sm uppercase tracking-[0.3em] sm:tracking-[0.32em] text-[#E5C38F]">JANUARY</span>
+          <span id="scratch-year" class="mt-2 sm:mt-2.5 font-serif text-xl sm:text-3xl italic tracking-widest text-[#E5D1B2]/90">2027</span>
           <span class="mt-2 sm:mt-2.5 text-[8.5px] sm:text-[11px] uppercase tracking-[0.22em] sm:tracking-[0.28em] text-[#D4B07A]/80">SAVE IT IN YOUR HEARTS & CALENDARS</span>
         </div>
 
@@ -411,21 +411,21 @@
       <!-- Card Inner Content (Safe-zone padded away from side garlands) -->
       <div class="relative z-10 mx-auto flex w-full max-w-[235px] sm:max-w-[280px] flex-col items-center">
         <!-- Ganpati Ji Logo -->
-        <div class="relative z-10 mt-8 mb-3 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-dashed border-[#D99B26] bg-[#FFF3DC] p-1.5 sm:mt-0 sm:h-20 sm:w-20">
+        <div class="relative z-10 mt-[72px] mb-3 flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-full border border-dashed border-[#D99B26] bg-[#FFF3DC] p-1.5 sm:mt-0 sm:h-20 sm:w-20">
           <img src="./ganpati-logo.png" alt="Ganpati Ji" width="640" height="640" loading="lazy" decoding="async" class="h-full w-full object-contain drop-shadow-sm" />
         </div>
 
         <p class="font-serif text-[13px] sm:text-sm italic text-[#7B4053]">Two families, one joyful celebration.</p>
-        <p class="mt-2 text-[8.5px] sm:text-[10px] font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-[#7D193B]">
+        <p class="mt-2 text-xs sm:text-sm font-semibold uppercase tracking-normal sm:tracking-[0.14em] text-[#7D193B]">
           Kitwani &amp; Mahajan Family
         </p>
 
         <!-- Interlocking Floral Crest Logo -->
-        <div class="my-3.5 sm:my-4 flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center">
-          <img src="./couple-logo.png" alt="Nikita and Rohan logo" width="640" height="640" loading="lazy" decoding="async" class="h-full w-full object-contain" />
+        <div class="my-3.5 sm:my-4 flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center">
+          <img src="./couple-logo.png" alt="Nikita and Rohan logo" width="430" height="330" loading="lazy" decoding="async" class="h-full w-full object-contain" />
         </div>
 
-        <p class="font-serif text-[8.5px] sm:text-[9.5px] italic leading-snug tracking-[0.16em] sm:tracking-[0.2em] text-[#7D193B]">
+        <p class="font-serif text-[12.5px] sm:text-sm italic leading-snug tracking-[0.05em] sm:tracking-[0.06em] text-[#7D193B]">
           Requests the honour of your presence as
         </p>
 
@@ -683,12 +683,16 @@
               </p>
 
               <div id="rsvp-email-status-box" class="mx-auto max-w-md rounded-xl border border-[#D4B07A]/40 bg-[#FBF4EC] px-4 py-3 text-xs text-[#5D1327]">
-                <span id="rsvp-email-status-text">Automatically sending RSVP email to fbox198@gmail.com...</span>
+                <span id="rsvp-email-status-text">Automatically sending RSVP email to nkitwani6@gmail.com...</span>
+              </div>
+
+              <div id="rsvp-sheet-status-box" class="mx-auto max-w-md rounded-xl border border-[#D4B07A]/40 bg-[#FBF4EC] px-4 py-3 text-xs text-[#5D1327]">
+                <span id="rsvp-sheet-status-text">Your RSVP details will also be saved to the Google Sheet.</span>
               </div>
 
               <div id="rsvp-email-action-row" class="hidden flex-col items-center justify-center gap-2 pt-1">
                 <button id="btn-activate-email-now" type="button" class="rounded-full bg-[#5D1327] px-6 py-2.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white shadow-md transition hover:bg-[#430c1b]">
-                  CLICK ONCE TO VERIFY fbox198@gmail.com
+                  CLICK ONCE TO VERIFY nkitwani6@gmail.com
                 </button>
               </div>
 
@@ -706,7 +710,7 @@
 
   <!--Hidden iframe + form for automatic background POST delivery-->
   <iframe name="rsvp_hidden_iframe" id="rsvp_hidden_iframe" class="hidden"></iframe>
-  <form id="rsvp-fallback-post-form" action="https://formsubmit.co/fbox198@gmail.com" method="POST" target="rsvp_hidden_iframe" class="hidden">
+  <form id="rsvp-fallback-post-form" action="https://formsubmit.co/nkitwani6@gmail.com" method="POST" target="rsvp_hidden_iframe" class="hidden">
     <input type="hidden" name="_subject" id="fb-subject" value="New Wedding RSVP" />
     <input type="hidden" name="_captcha" value="false" />
     <input type="hidden" name="_template" value="table" />
@@ -813,7 +817,7 @@
        ========================================== -->
   <footer class="relative z-10 bg-[#11050a] px-4 pb-20 pt-10">
     <div class="mx-auto max-w-3xl rounded-2xl bg-[#F4EAD8] px-6 py-12 sm:py-16 text-center text-[#2B121B] shadow-[0_30px_90px_rgba(0,0,0,0.8)] sm:px-12">
-      <img src="./couple-logo.png" alt="Nikita and Rohan logo" width="640" height="640" loading="lazy" decoding="async" class="mx-auto mb-7 h-16 w-16 sm:h-20 sm:w-20 object-contain" />
+      <img src="./couple-logo.png" alt="Nikita and Rohan logo" width="430" height="330" loading="lazy" decoding="async" class="mx-auto mb-7 h-24 w-24 sm:h-28 sm:w-28 object-contain" />
 
       <div class="mx-auto mb-8 w-52 overflow-hidden rounded-xl border-4 border-white shadow-xl sm:w-64">
         <img
@@ -872,7 +876,8 @@
       WISHES: 'wedence_nr_wishes_v18'
     };
 
-    const RSVP_RECEIVER_EMAIL = 'fbox198@gmail.com';
+    const RSVP_RECEIVER_EMAIL = 'nkitwani6@gmail.com';
+    const RSVP_SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzbMvzyKNlkDIGEKwhqIVQ8CAmOBcodarN92as3tKLiiOpW_1eRaR0XIrbt04s-pNGM/exec';
     const WEB3FORMS_ACCESS_KEY = '';
     window.__CLOUD_WISHES = null;
 
@@ -959,11 +964,20 @@
       ]
     };
 
-    const DEFAULT_WISHES = [
-      { author: 'YOUR LOVED ONES', text: 'Be the first to leave a blessing for this beautiful new chapter.', align: 'right' },
-      { author: 'THE SHARMAS', text: 'Wishing you a lifetime of love, laughter and happily ever after.', align: 'left' },
-      { author: 'AANYA & VIR', text: "So happy for you both - here's to forever!", align: 'right' }
-    ];
+    const DEFAULT_WISHES = [];
+    const LEGACY_DEMO_WISHES = new Set([
+      'YOUR LOVED ONES|be the first to leave a blessing for this beautiful new chapter.',
+      'THE SHARMAS|wishing you a lifetime of love, laughter and happily ever after.',
+      "AANYA & VIR|so happy for you both - here's to forever!"
+    ]);
+
+    function removeDemoWishes(wishes) {
+      return wishes.filter((wish) => {
+        const author = String(wish?.author || '').trim().toUpperCase();
+        const text = String(wish?.text || '').trim().replace(/\s+/g, ' ').toLowerCase();
+        return !LEGACY_DEMO_WISHES.has(`${author}|${text}`);
+      });
+    }
 
     function loadCustomConfig() {
       try {
@@ -999,6 +1013,24 @@
         hour12: true
       }).toUpperCase();
       return `${dateStr}, ${timeStr} (IST)`;
+    }
+
+    async function saveRSVPToGoogleSheet(rsvpRecord) {
+      try {
+        const response = await fetch(RSVP_SHEETS_WEB_APP_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+          body: JSON.stringify(rsvpRecord)
+        });
+        const result = await response.json();
+        if (!response.ok || !result.success) {
+          throw new Error(result.error || `HTTP ${response.status}`);
+        }
+        return true;
+      } catch (error) {
+        console.error('Google Sheets RSVP save failed:', error);
+        return false;
+      }
     }
 
     function showToast(message) {
@@ -1909,6 +1941,7 @@
             contact,
             attendance: responseLabel,
             blessing: note,
+            couple: `${WEDDING_CONFIG.brideName} & ${WEDDING_CONFIG.groomName}`,
             submittedAtIST,
             submittedAt: new Date().toISOString()
           };
@@ -1990,13 +2023,18 @@
           }
 
           const statusTextEl = document.getElementById('rsvp-email-status-text');
+          const sheetStatusTextEl = document.getElementById('rsvp-sheet-status-text');
           const actionRowEl = document.getElementById('rsvp-email-action-row');
           if (statusTextEl) {
             statusTextEl.textContent = `Automatically sending RSVP to ${RSVP_RECEIVER_EMAIL}...`;
           }
+          if (sheetStatusTextEl) {
+            sheetStatusTextEl.textContent = 'Saving RSVP details to the Google Sheet...';
+          }
           if (actionRowEl) actionRowEl.classList.add('hidden');
 
           setStep(4);
+          const sheetSavePromise = saveRSVPToGoogleSheet(rsvpRecord);
           showToast(
             isDecline
               ? `Thank you for your warm wishes, ${name}!`
@@ -2088,19 +2126,39 @@
                 `✓ RSVP dispatched to <strong>${RSVP_RECEIVER_EMAIL}</strong> (${submittedAtIST})!`;
             }
           }
+
+          const sheetSaved = await sheetSavePromise;
+          if (sheetStatusTextEl) {
+            sheetStatusTextEl.textContent = sheetSaved
+              ? '✓ RSVP details saved to the Google Sheet.'
+              : 'Unable to confirm saving your RSVP to the Google Sheet. Please contact the couple.';
+          }
         });
       }
     };
 
     function loadWishes() {
       if (Array.isArray(window.__CLOUD_WISHES) && window.__CLOUD_WISHES.length > 0) {
-        return window.__CLOUD_WISHES;
+        const wishes = removeDemoWishes(window.__CLOUD_WISHES);
+        if (wishes.length !== window.__CLOUD_WISHES.length) {
+          window.__CLOUD_WISHES = wishes;
+          try {
+            localStorage.setItem(STORAGE_KEYS.WISHES, JSON.stringify(wishes));
+          } catch (e) {}
+        }
+        return wishes;
       }
       try {
         const raw = localStorage.getItem(STORAGE_KEYS.WISHES);
         if (raw) {
           const parsed = JSON.parse(raw);
-          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+          if (Array.isArray(parsed)) {
+            const wishes = removeDemoWishes(parsed);
+            if (wishes.length !== parsed.length) {
+              localStorage.setItem(STORAGE_KEYS.WISHES, JSON.stringify(wishes));
+            }
+            if (wishes.length > 0) return wishes;
+          }
         }
         localStorage.setItem(STORAGE_KEYS.WISHES, JSON.stringify(DEFAULT_WISHES));
         return DEFAULT_WISHES.slice();
@@ -2348,7 +2406,7 @@
               }
             });
             cloudItems.sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
-            const combined = [...DEFAULT_WISHES, ...cloudItems];
+            const combined = removeDemoWishes([...DEFAULT_WISHES, ...cloudItems]);
             window.__CLOUD_WISHES = combined;
             try {
               localStorage.setItem(STORAGE_KEYS.WISHES, JSON.stringify(combined));
